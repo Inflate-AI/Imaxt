@@ -1,0 +1,11 @@
+---
+import { type CodeWalkData, renderCodeWalk } from '@inflate-ai/imaxt-core';
+
+interface Props extends CodeWalkData {}
+---
+
+<Fragment set:html={renderCodeWalk(Astro.props)} />
+<script>
+  import { attachCodeWalk } from '@inflate-ai/imaxt-core';
+  attachCodeWalk(document);
+</script>

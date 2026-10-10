@@ -108,22 +108,22 @@
 
 ## 26. astro: standalone components
 
-- [ ] 26.1 Implement thin `.astro` wrappers for Statement, PullQuote, Sidenote, Bars, Marquee, Heatmap, CurvedText that call the matching `core` render function via `set:html` - verify with an Astro Container API test per component asserting its output matches `core`'s direct output for the same props (`bun test packages/astro`)
+- [x] 26.1 Implement thin `.astro` wrappers for Statement, PullQuote, Sidenote, Bars, Marquee, Heatmap, CurvedText that call the matching `core` render function via `set:html` - verify with an Astro Container API test per component asserting its output matches `core`'s direct output for the same props (`bun test packages/astro`)
 
 ## 27. astro: composite components
 
-- [ ] 27.1 Implement `.astro` wrappers for StatRow/Stat, Compare/Side, Steps/Step, Timeline/Event, Scrolly/Beat accepting children via the default slot - verify with Container API tests asserting nested children render in order (`bun test packages/astro`)
-- [ ] 27.2 Implement the CodeWalk `.astro` wrapper (wraps a code-sample child plus a steps prop) - verify with a Container API test
+- [x] 27.1 Implement `.astro` wrappers for StatRow/Stat, Compare/Side, Steps/Step, Timeline/Event, Scrolly/Beat accepting children via the default slot - verify with Container API tests asserting nested children render in order (`bun test packages/astro`)
+- [x] 27.2 Implement the CodeWalk `.astro` wrapper (wraps a code-sample child plus a steps prop) - verify with a Container API test
 
 ## 28. astro: ImaxtCover, TypeLab island, and convenience import
 
-- [ ] 28.1 Implement the ImaxtCover `.astro` component and the TypeLab `.astro` island (`client:visible`, calling `core`'s vanilla `attachTypeLab`) - verify with Container API tests, including one asserting TypeLab's script only attaches behavior, never hydrates a framework
-- [ ] 28.2 Implement `src/index.ts`'s `imaxt` convenience object exporting every standalone and composite-parent component by name - verify with a test importing it and asserting every expected key is present and is the right component
+- [x] 28.1 Implement the ImaxtCover `.astro` component and the TypeLab `.astro` island (`client:visible`, calling `core`'s vanilla `attachTypeLab`) - verify with Container API tests, including one asserting TypeLab's script only attaches behavior, never hydrates a framework
+- [x] 28.2 Implement `src/index.ts`'s `imaxt` convenience object exporting every standalone and composite-parent component by name - verify with a test importing it and asserting every expected key is present and is the right component
 
 ## 29. astro: package finalization
 
-- [ ] 29.1 Run `astro check` against the package and fix any error - verify it reports zero errors
-- [ ] 29.2 Run `bun run --filter=@inflate-ai/imaxt-astro build` and `typecheck` - verify both exit 0
+- [x] 29.1 Run `astro check` against the package and fix any error - verify it reports zero errors
+- [x] 29.2 Run `bun run --filter=@inflate-ai/imaxt-astro build` and `typecheck` - verify both exit 0
 
 ## 30. Workspace-wide validation
 

@@ -1,0 +1,88 @@
+---
+import {
+  ImaxtCover,
+  imaxt,
+} from '../../../src/index.ts';
+
+const {
+  Statement,
+  PullQuote,
+  Sidenote,
+  Bars,
+  Marquee,
+  Heatmap,
+  CurvedText,
+  TypeLab,
+  StatRow,
+  Stat,
+  Compare,
+  Side,
+  Steps,
+  Step,
+  Timeline,
+  Event,
+  Scrolly,
+  Beat,
+  CodeWalk,
+} = imaxt;
+---
+
+<html lang="en">
+  <head><meta charset="utf-8" /><title>Imaxt test site</title></head>
+  <body>
+    <Statement tone="mint" align="center">Boring is <em>dependable</em>.</Statement>
+
+    <PullQuote by="Design rule">The best API is a short one.</PullQuote>
+
+    <Sidenote label="Mock data">Numbers here are placeholders.</Sidenote>
+
+    <Bars unit="%" tone="accent" items={[{ label: 'Model A', value: 72 }, { label: 'Model B', value: 81 }]} />
+
+    <Marquee words={['Embed', 'Filter', 'Rank']} tone="accent" />
+
+    <Heatmap
+      caption="Common modes"
+      rows={['600', '644']}
+      cols={['Owner', 'Others']}
+      data={[[6, 0], [6, 4]]}
+      min={0}
+      max={7}
+    />
+
+    <CurvedText text="Drafted" shape="circle" mark="D" tone="mint" spin decorative />
+
+    <TypeLab sample="Same letters, different voice" />
+
+    <StatRow>
+      <Stat value="5" unit="ms" label="p95 query time" tone="mint" />
+      <Stat value="10×" label="fewer calls" tone="sky" />
+    </StatRow>
+
+    <Compare>
+      <Side kind="before" label="Before">Three pipelines, three sets of bugs</Side>
+      <Side label="After">One small API, one set of bugs</Side>
+    </Compare>
+
+    <Steps>
+      <Step title="Chunk">Split each document into pieces.</Step>
+      <Step title="Embed">Turn every chunk into a vector.</Step>
+    </Steps>
+
+    <Timeline>
+      <Event date="Step 1" title="Propose">A leader suggests a value.</Event>
+      <Event date="Step 2" title="Accept">A majority accepts it.</Event>
+    </Timeline>
+
+    <Scrolly tone="sky">
+      <Beat stage="Chunk" sub="step 1">Split each document into pieces.</Beat>
+      <Beat stage="Embed" sub="step 2">Turn every chunk into a vector.</Beat>
+    </Scrolly>
+
+    <CodeWalk
+      code={"const id = `${doc.id}`;\nawait index.upsert({ id, vector });"}
+      steps={[{ lines: '1', title: 'Stable id', text: 'Same chunk, same id.' }, { lines: '2', title: 'Upsert' }]}
+    />
+
+    <ImaxtCover title="One API for every vector" tone="mint" ratio="4 / 3" />
+  </body>
+</html>

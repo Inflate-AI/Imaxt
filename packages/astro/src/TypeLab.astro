@@ -1,0 +1,26 @@
+---
+import { renderTypeLab, type TypeLabData } from '@inflate-ai/imaxt-core';
+
+interface Props extends TypeLabData {}
+const html = renderTypeLab(Astro.props);
+---
+
+<div class="imx imx-wide imx-typelab-island" data-imx-typelab set:html={html} />
+<script>
+  import { attachTypeLab } from '@inflate-ai/imaxt-core';
+
+  function hydrate() {
+    for (const root of document.querySelectorAll<HTMLElement>('[data-imx-typelab]')) {
+      if (root.dataset.imxHydrated) continue;
+      root.dataset.imxHydrated = '';
+      attachTypeLab(root);
+    }
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) hydrate();
+    }
+  });
+  document.querySelectorAll('[data-imx-typelab]').forEach((el) => observer.observe(el));
+</script>
