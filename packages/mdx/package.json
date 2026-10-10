@@ -36,7 +36,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rm -rf dist && bun build ./src/index.ts --outdir dist --target node --format esm --sourcemap=external && tsc -p tsconfig.json --emitDeclarationOnly --declaration --declarationMap --outDir dist",
+    "build": "rm -rf dist && bun build ./src/index.ts --outdir dist --target node --format esm --sourcemap=external --packages=external && tsc -p tsconfig.json --emitDeclarationOnly --declaration --declarationMap --outDir dist",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "bun test"
   },

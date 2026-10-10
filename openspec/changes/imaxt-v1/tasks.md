@@ -87,24 +87,24 @@
 
 ## 21. mdx: frontmatter and ImaxtCover
 
-- [ ] 21.1 Write failing tests for parsing and stringifying YAML frontmatter (including the `cover` key for ImaxtCover data) independent of the body, then implement - verify with `bun test packages/mdx`
+- [x] 21.1 Write failing tests for parsing and stringifying YAML frontmatter (including the `cover` key for ImaxtCover data) independent of the body, then implement - verify with `bun test packages/mdx`
 
 ## 22. mdx: standalone block compile and parse
 
-- [ ] 22.1 Write failing tests for `blocksToMdx`/`mdxToBlocks` on every standalone block (Statement, PullQuote, Sidenote, Bars, Marquee, Heatmap, CurvedText, TypeLab) asserting exact existing JSX syntax on compile and lossless round-trip on parse, then implement - verify with `bun test packages/mdx`
+- [x] 22.1 Write failing tests for `blocksToMdx`/`mdxToBlocks` on every standalone block (Statement, PullQuote, Sidenote, Bars, Marquee, Heatmap, CurvedText, TypeLab) asserting exact existing JSX syntax on compile and lossless round-trip on parse, then implement - verify with `bun test packages/mdx`
 
 ## 23. mdx: composite block compile and parse
 
-- [ ] 23.1 Write failing tests for `blocksToMdx`/`mdxToBlocks` on every composite block pair (StatRow/Stat, Compare/Side, Steps/Step, Timeline/Event, Scrolly/Beat, CodeWalk) asserting nested-element output and lossless round-trip, then implement - verify with `bun test packages/mdx`
+- [x] 23.1 Write failing tests for `blocksToMdx`/`mdxToBlocks` on every composite block pair (StatRow/Stat, Compare/Side, Steps/Step, Timeline/Event, Scrolly/Beat, CodeWalk) asserting nested-element output and lossless round-trip, then implement - verify with `bun test packages/mdx`
 
 ## 24. mdx: unrecognized content passthrough
 
-- [ ] 24.1 Write failing tests asserting plain prose and non-Imaxt JSX between recognized blocks survive a parse→compile round-trip unchanged, then implement the generic `markdown` passthrough block type - verify with `bun test packages/mdx`
+- [x] 24.1 Write failing tests asserting plain prose and non-Imaxt JSX between recognized blocks survive a parse→compile round-trip unchanged, then implement the generic `markdown` passthrough block type - verify with `bun test packages/mdx`
 
 ## 25. mdx: golden fixtures and package finalization
 
-- [ ] 25.1 Write golden-fixture tests using representative hand-written-style `.mdx` strings covering every block at least once, asserting `mdxToBlocks` then `blocksToMdx` reproduces the original source - verify with `bun test packages/mdx`
-- [ ] 25.2 Run `bun run --filter=@inflate-ai/imaxt-mdx build` and `typecheck` and fix any error - verify both exit 0
+- [x] 25.1 Write golden-fixture tests using representative hand-written-style `.mdx` strings covering every block at least once, asserting `mdxToBlocks` then `blocksToMdx` reproduces the original source - verify with `bun test packages/mdx`
+- [x] 25.2 Run `bun run --filter=@inflate-ai/imaxt-mdx build` and `typecheck` and fix any error - verify both exit 0
 
 ## 26. astro: standalone components
 

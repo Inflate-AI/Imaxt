@@ -1,1 +1,3 @@
-export const IMAXT_MDX_VERSION = '0.1.0';
+export type { Block, ImaxtDocument } from './blocks.ts';
+export { mdxToBlocks } from './from-mdx.ts';
+export { blocksToMdx } from './to-mdx.ts';
