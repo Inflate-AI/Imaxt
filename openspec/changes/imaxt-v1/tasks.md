@@ -68,22 +68,22 @@
 
 ## 17. editorjs: shared base
 
-- [ ] 17.1 Write failing tests for a shared tone-picker settings mixin (offers exactly the six tones) and shared toolbox-icon helpers, then implement - verify with `bun test packages/editorjs`
+- [x] 17.1 Write failing tests for a shared tone-picker settings mixin (offers exactly the six tones) and shared toolbox-icon helpers, then implement - verify with `bun test packages/editorjs`
 
 ## 18. editorjs: standalone tools
 
-- [ ] 18.1 Write failing tests for the Statement, PullQuote, Sidenote, CurvedText, Marquee, Heatmap, and Bars tools (toolbox entry present, `render()` preview matches the matching `core` render function's output for given data, `save()` output is JSON-round-trippable, `validate()` rejects missing required fields), then implement each tool - verify with `bun test packages/editorjs`
-- [ ] 18.2 Write failing tests for the TypeLab tool (wraps `core`'s `renderTypeLab`/`attachTypeLab`), then implement - verify with `bun test packages/editorjs`
+- [x] 18.1 Write failing tests for the Statement, PullQuote, Sidenote, CurvedText, Marquee, Heatmap, and Bars tools (toolbox entry present, `render()` preview matches the matching `core` render function's output for given data, `save()` output is JSON-round-trippable, `validate()` rejects missing required fields), then implement each tool - verify with `bun test packages/editorjs`
+- [x] 18.2 Write failing tests for the TypeLab tool (wraps `core`'s `renderTypeLab`/`attachTypeLab`), then implement - verify with `bun test packages/editorjs`
 
 ## 19. editorjs: composite tools
 
-- [ ] 19.1 Write failing tests for the StatRow, Steps, Timeline, and Scrolly tools (add/remove child entries update both the internal list and `save()` output, in order), then implement each - verify with `bun test packages/editorjs`
-- [ ] 19.2 Write failing tests for the Compare tool (always exactly two sides, no add/remove past two) and the CodeWalk tool (steps list plus a code-sample field), then implement both - verify with `bun test packages/editorjs`
+- [x] 19.1 Write failing tests for the StatRow, Steps, Timeline, and Scrolly tools (add/remove child entries update both the internal list and `save()` output, in order), then implement each - verify with `bun test packages/editorjs`
+- [x] 19.2 Write failing tests for the Compare tool (always exactly two sides, no add/remove past two) and the CodeWalk tool (steps list plus a code-sample field), then implement both - verify with `bun test packages/editorjs`
 
 ## 20. editorjs: package finalization
 
-- [ ] 20.1 Write a test asserting ImaxtCover is not registered among the exported tools, then confirm it passes
-- [ ] 20.2 Run `bun run --filter=@inflate-ai/imaxt-editorjs build` and `typecheck` and fix any error - verify both exit 0
+- [x] 20.1 Write a test asserting ImaxtCover is not registered among the exported tools, then confirm it passes
+- [x] 20.2 Run `bun run --filter=@inflate-ai/imaxt-editorjs build` and `typecheck` and fix any error - verify both exit 0
 
 ## 21. mdx: frontmatter and ImaxtCover
 
