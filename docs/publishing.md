@@ -38,11 +38,20 @@ attached to it. So each new package goes through this once:
 1. Make sure `main` exists and is this repo's default branch - the release
    workflow only triggers on pushes to `main`.
 2. Publish the package for the first time from a maintainer's own machine,
-   signed in with `npm login` (interactive, so normal 2FA applies):
+   signed in with `npm login`. If your account requires 2FA for publishing,
+   pass a fresh one-time code directly rather than relying on the
+   interactive prompt - `changeset publish`'s OTP prompt depends on the
+   terminal reporting a real TTY, which some shells don't do reliably
+   through `bunx`:
    ```sh
-   bun install && bun run build
-   bunx changeset publish
+   bun install
+   bun run release -- --otp=123456
    ```
+   `release` builds every package, resolves each package's `workspace:*`
+   dependency ranges to the matching real version (npm has no notion of
+   that range, unlike pnpm/yarn, which resolve it natively), runs
+   `changeset publish`, and restores the `workspace:*` ranges in the
+   working tree afterward either way.
 3. On that package's page on npmjs.com, go to **Settings → Trusted
    Publisher** and add a GitHub Actions publisher: organization/user,
    repository name, and the workflow filename (`release.yml`) - these are
