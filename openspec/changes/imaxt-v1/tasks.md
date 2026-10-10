@@ -127,9 +127,9 @@
 
 ## 30. Workspace-wide validation
 
-- [ ] 30.1 Run `bun run lint`, `bun run typecheck`, `bun test`, and `bun run build` from the repo root - verify every one exits 0 across all four packages
-- [ ] 30.2 Re-run `npm view <pkg> version` for every pinned dependency and confirm each package.json still matches the latest stable version available (re-pin and re-test if any has moved) - verify by diffing the recorded versions against fresh `npm view` output
-- [ ] 30.3 Review all four `package.json` files for npm-publish readiness (name, version, license, repository, exports, files, publishConfig.access) - verify with `npm pack --dry-run` in each package directory producing no unexpected files and no errors
+- [x] 30.1 Run `bun run lint`, `bun run typecheck`, `bun test`, and `bun run build` from the repo root - verify every one exits 0 across all four packages
+- [x] 30.2 Re-run `npm view <pkg> version` for every pinned dependency and confirm each package.json still matches the latest stable version available (re-pin and re-test if any has moved) - verify by diffing the recorded versions against fresh `npm view` output
+- [x] 30.3 Review all four `package.json` files for npm-publish readiness (name, version, license, repository, exports, files, publishConfig.access) - verify with `npm pack --dry-run` in each package directory producing no unexpected files and no errors
 
 ## Workflow follow-up
 

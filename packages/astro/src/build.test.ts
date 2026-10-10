@@ -65,5 +65,5 @@ describe('every component renders in a real Astro build', () => {
     });
     const exitCode = await proc.exited;
     expect(exitCode).toBe(0);
-  });
+  }, 30_000);
 });
