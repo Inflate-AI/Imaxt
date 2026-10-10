@@ -3,25 +3,16 @@
 ## Setup
 
 ```sh
-bun install   # also installs this repo's git hooks (see below)
+bun install
 bun test      # run every package's tests
 bun run build # build every package
 ```
 
 Requires [Bun](https://bun.sh) 1.4+.
 
-## How this repo validates changes
-
-There's no CI job re-running your tests. `bun install` sets up local git
-hooks instead:
-
-- **pre-commit** runs `bun run lint`.
-- **pre-push** runs `bun run typecheck && bun test && bun run build` — the
-  real gate, since nothing re-checks it once it's on GitHub.
-
-If a hook fails, fix the issue rather than skipping it. See
-[`docs/publishing.md`](./docs/publishing.md) for why this repo works this
-way and how to skip a hook in a genuine emergency.
+`bun install` also sets up this repo's git hooks: pre-commit runs
+`bun run lint`, and pre-push runs `bun run typecheck && bun test &&
+bun run build`. If a hook fails, fix the issue rather than skipping it.
 
 ## Workflow: TDD + OpenSpec
 
@@ -65,7 +56,6 @@ file it writes under `.changeset/` along with the rest of your PR. See
 - Keep each PR scoped to one change (one OpenSpec change, one logical
   fix).
 - Make sure `bun run lint`, `bun run typecheck`, `bun test`, and
-  `bun run build` all pass before opening the PR - the pre-push hook
-  already checked this for you if you didn't bypass it.
+  `bun run build` all pass before opening the PR.
 - Describe what changed and why in the PR description; link the OpenSpec
   change if there is one.

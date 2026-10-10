@@ -31,9 +31,9 @@ canvas.
 
 ## Notes
 
-- Ported from a React island in the original design to vanilla
-  TypeScript in `imaxt-core`, specifically so it needs no framework
-  runtime in either the EditorJS canvas or an Astro page.
+- Implemented in vanilla TypeScript in `imaxt-core`, with no framework
+  dependency, so the same code runs unmodified inside the EditorJS canvas
+  and as a dependency-free Astro island.
 - In Astro, it renders a static shell immediately and defers attaching
   its interactivity until the component scrolls into view
   (`IntersectionObserver`), not on initial page load.

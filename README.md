@@ -53,19 +53,16 @@ data shape and usage from both EditorJS and Astro/MDX, in the
 This is a [Bun](https://bun.sh) workspace.
 
 ```sh
-bun install     # also installs this repo's git hooks
+bun install
 bun test        # run all package tests
 bun run build   # build all packages
 bun run lint    # biome
 bun run typecheck
 ```
 
-Validation happens locally via git hooks (pre-commit lints, pre-push
-typechecks/tests/builds), not in CI — see
-[docs/publishing.md](./docs/publishing.md) for why. Development follows an
-[OpenSpec](https://github.com/Fission-AI/OpenSpec) spec-driven workflow (see
-`openspec/` for active and archived changes) and TDD: tests are written
-before the implementation they cover. See
+Development follows an [OpenSpec](https://github.com/Fission-AI/OpenSpec)
+spec-driven workflow (see `openspec/` for active and archived changes) and
+TDD: tests are written before the implementation they cover. See
 **[CONTRIBUTING.md](./CONTRIBUTING.md)** before opening a PR.
 
 ## Community

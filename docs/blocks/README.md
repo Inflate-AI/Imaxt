@@ -4,7 +4,7 @@ Each row is one `packages/core/src/*.ts` module. A composite block's
 children (`Stat`, `Side`, `Step`, `Event`, `Beat`) don't get their own
 EditorJS tool — their parent tool manages them as a repeatable internal
 list — but they are real, separate Astro components, nested via `<slot />`
-exactly like the original hand-written MDX syntax.
+just like any other parent/child composition in MDX or Astro.
 
 | Block | Core module | EditorJS tool | Astro component(s) |
 |---|---|---|---|

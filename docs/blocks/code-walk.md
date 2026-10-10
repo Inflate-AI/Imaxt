@@ -39,10 +39,9 @@ repeatable list of steps (lines/title/text), with add/remove controls.
 
 ## Notes
 
-- **No syntax highlighting.** The original blog component passed a
-  separately syntax-highlighted `<Code>` child; `imaxt-core` has zero
-  runtime dependencies and doesn't ship a highlighter, so `code` is plain
-  text, escaped and split into `.line`-classed spans for the
-  highlight-on-click behavior. Layering a highlighter on top (in a
-  consuming site, or as a later addition here) only needs to produce that
-  same `.line`-per-line structure to keep the click behavior working.
+- **No syntax highlighting.** `imaxt-core` has zero runtime dependencies
+  and doesn't ship a highlighter, so `code` is plain text, escaped and
+  split into `.line`-classed spans for the highlight-on-click behavior.
+  Layering a highlighter on top (in a consuming site, or as a later
+  addition here) only needs to produce that same `.line`-per-line
+  structure to keep the click behavior working.
