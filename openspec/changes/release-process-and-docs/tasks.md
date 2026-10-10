@@ -26,7 +26,7 @@
 ## 5. Final validation
 
 - [x] 5.1 Run `bun run lint`, `bun run typecheck`, `bun test`, `bun run build` from the repo root - verify all exit 0 (this change touches no package source, so this is a regression check, not new coverage)
-- [ ] 5.2 Commit and push to `ccr-11238ad0-go18z6`
+- [x] 5.2 Commit and push to `ccr-11238ad0-go18z6`
 
 ## Workflow follow-up
 
