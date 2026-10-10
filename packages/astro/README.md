@@ -1,5 +1,7 @@
 # @inflate-ai/imaxt-astro
 
+[![npm version](https://img.shields.io/npm/v/@inflate-ai/imaxt-astro.svg)](https://www.npmjs.com/package/@inflate-ai/imaxt-astro)
+
 [Astro](https://astro.build) components for every
 [Imaxt](https://github.com/Inflate-AI/Imaxt) block — for sites that author
 content directly in `.mdx`.

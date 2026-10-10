@@ -1,5 +1,7 @@
 # @inflate-ai/imaxt-core
 
+[![npm version](https://img.shields.io/npm/v/@inflate-ai/imaxt-core.svg)](https://www.npmjs.com/package/@inflate-ai/imaxt-core)
+
 Framework-agnostic render functions, design tokens, and vanilla-JS
 interactivity for every [Imaxt](https://github.com/Inflate-AI/Imaxt) block.
 The single source of truth [`@inflate-ai/imaxt-editorjs`](https://www.npmjs.com/package/@inflate-ai/imaxt-editorjs)

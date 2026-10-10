@@ -1,5 +1,7 @@
 # @inflate-ai/imaxt-mdx
 
+[![npm version](https://img.shields.io/npm/v/@inflate-ai/imaxt-mdx.svg)](https://www.npmjs.com/package/@inflate-ai/imaxt-mdx)
+
 Bidirectional compiler between [Imaxt](https://github.com/Inflate-AI/Imaxt)
 EditorJS block JSON and MDX source.
 

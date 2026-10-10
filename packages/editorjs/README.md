@@ -1,5 +1,7 @@
 # @inflate-ai/imaxt-editorjs
 
+[![npm version](https://img.shields.io/npm/v/@inflate-ai/imaxt-editorjs.svg)](https://www.npmjs.com/package/@inflate-ai/imaxt-editorjs)
+
 [EditorJS](https://editorjs.io) Block Tools for every
 [Imaxt](https://github.com/Inflate-AI/Imaxt) block — visual authoring for
 typographic article blocks, no images.
