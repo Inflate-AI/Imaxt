@@ -67,6 +67,7 @@ TDD: tests are written before the implementation they cover. See
 
 ## Community
 
+- [ROADMAP.md](./ROADMAP.md)
 - [CONTRIBUTING.md](./CONTRIBUTING.md)
 - [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
 - [SECURITY.md](./SECURITY.md)
