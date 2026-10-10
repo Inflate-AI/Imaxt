@@ -9,6 +9,7 @@
         "@changesets/cli": "3.0.3",
         "@types/node": "26.6.5",
         "happy-dom": "20.14.6",
+        "simple-git-hooks": "2.14.0",
         "typescript": "7.0.2",
       },
     },
@@ -842,6 +843,8 @@
     "shell-quote": ["shell-quote@1.12.0", "", {}, "sha512-PcByqNyT/38F2kDNi006HAMRJaULuBzq/FOsw3qdZvX/GA9W/jamDaRskgHjubHiftXK5sIFxLNkvrXUwcof6Q=="],
 
     "shiki": ["shiki@4.5.0", "", { "dependencies": { "@shikijs/core": "4.5.0", "@shikijs/engine-javascript": "4.5.0", "@shikijs/engine-oniguruma": "4.5.0", "@shikijs/langs": "4.5.0", "@shikijs/themes": "4.5.0", "@shikijs/types": "4.5.0", "@shikijs/vscode-textmate": "^10.0.2", "@types/hast": "^3.0.5" } }, "sha512-OcRW72ngQvc+MSVWBRIovC/BTW589iUE/Vxav7VeM4RcY9MUjqB+IR6ILG1k9nuW6LiG/nct9uma4/MBtnZbmQ=="],
+
+    "simple-git-hooks": ["simple-git-hooks@2.14.0", "", { "bin": { "simple-git-hooks": "cli.js" } }, "sha512-kkTORPAuxQz2g1QUuN0J8yGWT28tjGBfPOdJ4xT7Vbeu30veKUZQIoID2qGgCDAakaQn59UeZJJ4cFGB8PVP2A=="],
 
     "sisteransi": ["sisteransi@1.0.5", "", {}, "sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg=="],
 

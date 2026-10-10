@@ -24,8 +24,6 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Build
         run: bun run build
-      - name: Test
-        run: bun test
       - name: Create release pull request or publish to npm
         uses: changesets/action@v1
         with:
