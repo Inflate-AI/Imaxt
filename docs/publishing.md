@@ -23,23 +23,36 @@ exactly two things, in order:
    package and runs `changeset publish`, which publishes to npm only the
    packages whose `package.json` version isn't already on the registry.
 
-No one ever runs `npm publish` by hand. The workflow needs an `NPM_TOKEN`
-repository secret (Settings → Secrets and variables → Actions) with
-publish access to the `@inflate-ai` npm scope - without it, the publish
-step fails with an auth error but the version-PR step still works.
+No one ever runs `npm publish` by hand. Publishing authenticates via npm's
+[Trusted Publishing](https://docs.npmjs.com/trusted-publishers/) (OIDC) -
+GitHub Actions proves its identity to npm directly, scoped to this exact
+repository and workflow file, with no long-lived secret to generate, store,
+or rotate.
 
-## One-time setup before the first real release
+## One-time setup
 
-1. Create (or get added to) the `@inflate-ai` organization on
-   [npmjs.com](https://www.npmjs.com/).
-2. Generate an npm **Automation** access token scoped to that
-   organization (Account Settings → Access Tokens → Generate New Token →
-   Automation - automation tokens work with 2FA-required orgs, which
-   "Publish" tokens don't).
-3. Add it to this repo as the `NPM_TOKEN` secret.
-4. Make sure `main` exists and is this repo's default branch — the
-   release workflow only triggers on pushes to `main`.
+Trusted Publishing can't perform a package's very first publish - npm
+requires the package to already exist before a trusted publisher can be
+attached to it. So each new package goes through this once:
+
+1. Make sure `main` exists and is this repo's default branch - the release
+   workflow only triggers on pushes to `main`.
+2. Publish the package for the first time from a maintainer's own machine,
+   signed in with `npm login` (interactive, so normal 2FA applies):
+   ```sh
+   bun install && bun run build
+   bunx changeset publish
+   ```
+3. On that package's page on npmjs.com, go to **Settings → Trusted
+   Publisher** and add a GitHub Actions publisher: organization/user,
+   repository name, and the workflow filename (`release.yml`) - these are
+   case-sensitive. Leave the environment field blank unless this workflow
+   is scoped to one.
+4. Do this soon after creating the trusted-publisher entry: npm expects a
+   successful publish from that exact workflow within a short window of
+   it being configured, or you'll need to reconfigure it.
 
 After that, the normal loop is: merge PRs with changesets → the bot keeps
 a "Version Packages" PR up to date → merge that PR when you're ready to
-release → the four packages with version bumps publish automatically.
+release → the workflow publishes the packages with version bumps via
+OIDC, no token involved.
