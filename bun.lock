@@ -21,6 +21,7 @@
       "devDependencies": {
         "@astrojs/check": "0.9.10",
         "astro": "7.3.8",
+        "bun-types": "1.4.2",
         "typescript": "6.0.3",
       },
       "peerDependencies": {
@@ -30,8 +31,12 @@
     "packages/core": {
       "name": "@inflate-ai/imaxt-core",
       "version": "0.1.0",
+      "dependencies": {
+        "@fontsource-variable/fraunces": "5.3.0",
+      },
       "devDependencies": {
         "@types/node": "26.6.5",
+        "bun-types": "1.4.2",
         "happy-dom": "20.14.6",
         "typescript": "7.0.2",
       },
@@ -45,6 +50,7 @@
       "devDependencies": {
         "@editorjs/editorjs": "2.31.7",
         "@types/node": "26.6.5",
+        "bun-types": "1.4.2",
         "happy-dom": "20.14.6",
         "typescript": "7.0.2",
       },
@@ -70,6 +76,7 @@
         "@types/mdast": "4.0.4",
         "@types/node": "26.6.5",
         "@types/unist": "3.0.3",
+        "bun-types": "1.4.2",
         "typescript": "7.0.2",
       },
     },
@@ -222,6 +229,8 @@
     "@emnapi/runtime": ["@emnapi/runtime@1.11.3", "", { "dependencies": { "tslib": "^2.4.0" } }, "sha512-Xz4Tpyki7XyrpbUK1jR1AhdAdaXyhhY4lZ3neLodmhpuWfy2PAQN5B46sAiU4liOXGLkHypn/qU+jvfWSCYYLA=="],
 
     "@emnapi/wasi-threads": ["@emnapi/wasi-threads@1.2.3", "", { "dependencies": { "tslib": "^2.4.0" } }, "sha512-ELEBe8PsLvvJ6QMr0zLt8ffvOHW/dc1m3CEzNMg7aJUv3bMaoDtw2TXyDAwkYBuroxxuHEwhRTLJSe5sya547g=="],
+
+    "@fontsource-variable/fraunces": ["@fontsource-variable/fraunces@5.3.0", "", {}, "sha512-9BYGySn4AHEJdgp9Z28tQ3X+laJMEOITXkQarZXeloWQZDq5oOvXJ3kDA8c7MGIfpogIaZfjrQBqmda8POOCKA=="],
 
     "@img/colour": ["@img/colour@1.1.0", "", {}, "sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ=="],
 
@@ -460,6 +469,8 @@
     "boolbase": ["boolbase@1.0.0", "", {}, "sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww=="],
 
     "buffer-image-size": ["buffer-image-size@0.6.4", "", { "dependencies": { "@types/node": "*" } }, "sha512-nEh+kZOPY1w+gcCMobZ6ETUp9WfibndnosbpwB1iJk/8Gt5ZF2bhS6+B6bPYz424KtwsR6Rflc3tCz1/ghX2dQ=="],
+
+    "bun-types": ["bun-types@1.4.2", "", { "dependencies": { "@types/node": "*" } }, "sha512-bxV1FgK7yBIzjRe5zBozIM4Bem11ZJcCXSrjWRG3YWLt8yFDePu4cLjpebO8OvPeIE9trbyPF4fuj3Cia4Fj3w=="],
 
     "cac": ["cac@7.0.1", "", {}, "sha512-86diuUyeeWM8CrqhpGCaDafrzjS1s++7sWy2AbAPoFNz/xKv7ID57CR4pZsMuGCh60PtsnEx4z68b+Vgt07VPw=="],
 

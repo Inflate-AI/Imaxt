@@ -20,7 +20,9 @@
     "editorjs",
     "astro"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "files": [
     "dist"
   ],
@@ -42,8 +44,12 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "bun test"
   },
+  "dependencies": {
+    "@fontsource-variable/fraunces": "5.3.0"
+  },
   "devDependencies": {
     "@types/node": "26.6.5",
+    "bun-types": "1.4.2",
     "happy-dom": "20.14.6",
     "typescript": "7.0.2"
   }

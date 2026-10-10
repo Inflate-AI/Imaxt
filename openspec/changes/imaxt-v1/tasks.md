@@ -7,64 +7,64 @@
 
 ## 2. core: shared tokens and motion-reduction utility
 
-- [ ] 2.1 Write failing tests for a `tone` type/validator (exactly mint/lilac/sky/rose/accent/ink, default ink) and a `prefersReducedMotion()` helper, then implement both until tests pass - verify with `bun test packages/core/src/shared`
+- [x] 2.1 Write failing tests for a `tone` type/validator (exactly mint/lilac/sky/rose/accent/ink, default ink) and a `prefersReducedMotion()` helper, then implement both until tests pass - verify with `bun test packages/core/src/shared`
 
 ## 3. core: Statement, PullQuote, Sidenote
 
-- [ ] 3.1 Write failing tests for `renderStatement`, `renderPullQuote`, `renderSidenote` (per block-render-engine spec scenarios: emphasis markup, attribution, label), then implement until tests pass - verify with `bun test packages/core`
+- [x] 3.1 Write failing tests for `renderStatement`, `renderPullQuote`, `renderSidenote` (per block-render-engine spec scenarios: emphasis markup, attribution, label), then implement until tests pass - verify with `bun test packages/core`
 
 ## 4. core: Stat and StatRow
 
-- [ ] 4.1 Write failing tests for `renderStat` (numeric vs non-numeric value, final value always present as text) and `renderStatRow`, then implement, then implement the `attachStatCountUp` interactivity (count-up once on first intersection, reduced-motion skips animation) with its own tests - verify with `bun test packages/core`
+- [x] 4.1 Write failing tests for `renderStat` (numeric vs non-numeric value, final value always present as text) and `renderStatRow`, then implement, then implement the `attachStatCountUp` interactivity (count-up once on first intersection, reduced-motion skips animation) with its own tests - verify with `bun test packages/core`
 
 ## 5. core: Compare and Side
 
-- [ ] 5.1 Write failing tests for `renderCompare`/`renderSide` (exactly two sides, before/after kind, narrow-viewport stacking expressed via CSS class/attribute the test can assert on), then implement - verify with `bun test packages/core`
+- [x] 5.1 Write failing tests for `renderCompare`/`renderSide` (exactly two sides, before/after kind, narrow-viewport stacking expressed via CSS class/attribute the test can assert on), then implement - verify with `bun test packages/core`
 
 ## 6. core: Steps and Step
 
-- [ ] 6.1 Write failing tests for `renderSteps`/`renderStep` (document-order numbering), then implement - verify with `bun test packages/core`
+- [x] 6.1 Write failing tests for `renderSteps`/`renderStep` (document-order numbering), then implement - verify with `bun test packages/core`
 
 ## 7. core: Timeline and Event
 
-- [ ] 7.1 Write failing tests for `renderTimeline`/`renderEvent` (order preservation), then implement - verify with `bun test packages/core`
+- [x] 7.1 Write failing tests for `renderTimeline`/`renderEvent` (order preservation), then implement - verify with `bun test packages/core`
 
 ## 8. core: Bars
 
-- [ ] 8.1 Write failing tests for `renderBars` (bar width proportional to max, every value/label present as text), then implement - verify with `bun test packages/core`
+- [x] 8.1 Write failing tests for `renderBars` (bar width proportional to max, every value/label present as text), then implement - verify with `bun test packages/core`
 
 ## 9. core: CodeWalk
 
-- [ ] 9.1 Write failing tests for `renderCodeWalk` (all lines/steps visible with no JS), then implement - verify with `bun test packages/core`
+- [x] 9.1 Write failing tests for `renderCodeWalk` (all lines/steps visible with no JS), then implement - verify with `bun test packages/core`
 
 ## 10. core: Marquee
 
-- [ ] 10.1 Write failing tests for `renderMarquee` and its reduced-motion behavior (static when `prefers-reduced-motion: reduce`), then implement - verify with `bun test packages/core`
+- [x] 10.1 Write failing tests for `renderMarquee` and its reduced-motion behavior (static when `prefers-reduced-motion: reduce`), then implement - verify with `bun test packages/core`
 
 ## 11. core: Heatmap
 
-- [ ] 11.1 Write failing tests for `renderHeatmap` (cell value always rendered as text alongside the tint, rows/cols/data dimension matching), then implement - verify with `bun test packages/core`
+- [x] 11.1 Write failing tests for `renderHeatmap` (cell value always rendered as text alongside the tint, rows/cols/data dimension matching), then implement - verify with `bun test packages/core`
 
 ## 12. core: CurvedText
 
-- [ ] 12.1 Write failing tests for `renderCurvedText` (text stays selectable for every shape, `decorative` excluded from accessibility tree, spin stops under reduced motion), then implement - verify with `bun test packages/core`
+- [x] 12.1 Write failing tests for `renderCurvedText` (text stays selectable for every shape, `decorative` excluded from accessibility tree, spin stops under reduced motion), then implement - verify with `bun test packages/core`
 
 ## 13. core: Scrolly and Beat
 
-- [ ] 13.1 Write failing tests for `renderScrolly`/`renderBeat` (no-JS/narrow-viewport fallback renders each Beat's own stage/sub inline) and the `attachScrolly` pin/swap interactivity, then implement - verify with `bun test packages/core`
+- [x] 13.1 Write failing tests for `renderScrolly`/`renderBeat` (no-JS/narrow-viewport fallback renders each Beat's own stage/sub inline) and the `attachScrolly` pin/swap interactivity, then implement - verify with `bun test packages/core`
 
 ## 14. core: TypeLab (vanilla port)
 
-- [ ] 14.1 Write failing tests for `renderTypeLab` (sample text present, family scoping) and `attachTypeLab` (axis controls manipulate rendered sample), porting the behavior of the source repo's React `TypeLab.tsx`/`TypeLab.astro` to vanilla TS with no framework dependency, then implement - verify with `bun test packages/core`
+- [x] 14.1 Write failing tests for `renderTypeLab` (sample text present, family scoping) and `attachTypeLab` (axis controls manipulate rendered sample), porting the behavior of the source repo's React `TypeLab.tsx`/`TypeLab.astro` to vanilla TS with no framework dependency, then implement - verify with `bun test packages/core`
 
 ## 15. core: ImaxtCover
 
-- [ ] 15.1 Write failing tests for `renderImaxtCover` (word/stat/quote/stack kinds, stack-from-title fallback, aspect ratio prop), then implement - verify with `bun test packages/core`
+- [x] 15.1 Write failing tests for `renderImaxtCover` (word/stat/quote/stack kinds, stack-from-title fallback, aspect ratio prop), then implement - verify with `bun test packages/core`
 
 ## 16. core: styles and package finalization
 
-- [ ] 16.1 Port `imaxt.css`'s tone tokens and per-block styles into `packages/core/src/styles.css`, replacing the placeholder - verify every render function's test suite still passes with real class names wired to real CSS selectors (`bun test packages/core`)
-- [ ] 16.2 Run `bun run --filter=@inflate-ai/imaxt-core build` and `typecheck` and fix any error - verify both exit 0 and `dist/index.js`, `dist/index.d.ts`, `dist/styles.css` exist
+- [x] 16.1 Port `imaxt.css`'s tone tokens and per-block styles into `packages/core/src/styles.css`, replacing the placeholder - verify every render function's test suite still passes with real class names wired to real CSS selectors (`bun test packages/core`)
+- [x] 16.2 Run `bun run --filter=@inflate-ai/imaxt-core build` and `typecheck` and fix any error - verify both exit 0 and `dist/index.js`, `dist/index.d.ts`, `dist/styles.css` exist
 
 ## 17. editorjs: shared base
 
