@@ -48,6 +48,11 @@ describe('every component renders in a real Astro build', () => {
     expect(html).toContain('Stable id');
   });
 
+  test('CodeWalk renders a default slot as its code markup, in place of the plain-text code', () => {
+    expect(html).toContain('fixture-highlighted');
+    expect(html).toContain('const slotted = true;');
+  });
+
   test('ImaxtCover falls back to a stacked cover built from the title', () => {
     expect(html).toContain('data-kind="stack"');
     expect(html).toContain('imx-cover-line');

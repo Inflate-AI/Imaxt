@@ -10,6 +10,8 @@ export interface CodeWalkData {
   code: string;
   steps: CodeWalkStep[];
   wide?: boolean;
+  /** Pre-rendered code markup (e.g. syntax-highlighted HTML), used in place of a plain-text rendering of `code`. `code` is still required: it stays the canonical, editable value. */
+  html?: string;
 }
 
 function renderCodeLines(code: string): string {
@@ -30,9 +32,10 @@ export function renderCodeWalk(data: CodeWalkData): string {
       );
     })
     .join('');
+  const codeHtml = data.html ?? `<pre><code>${renderCodeLines(data.code)}</code></pre>`;
   return (
     `<div class="${wrapClass}"><div class="imx-walk imx-slab">` +
-    `<div class="imx-walk-code"><pre><code>${renderCodeLines(data.code)}</code></pre></div>` +
+    `<div class="imx-walk-code">${codeHtml}</div>` +
     `<div class="imx-walk-steps" role="group" aria-label="Walkthrough steps">${steps}</div>` +
     `</div></div>`
   );

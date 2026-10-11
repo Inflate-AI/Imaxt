@@ -24,6 +24,16 @@ describe('renderCodeWalk', () => {
     const html = renderCodeWalk({ code: 'const x = a < b;', steps: [{ lines: '1', title: 't' }] });
     expect(html).toContain('&lt;');
   });
+
+  test('uses pre-rendered html in place of the plain-text code when given', () => {
+    const html = renderCodeWalk({
+      code: 'const x = 1;',
+      html: '<pre class="astro-code"><code><span class="line">const x = 1;</span></code></pre>',
+      steps: [{ lines: '1', title: 't' }],
+    });
+    expect(html).toContain('astro-code');
+    expect(html.match(/<pre/g)?.length).toBe(1);
+  });
 });
 
 describe('attachCodeWalk', () => {
