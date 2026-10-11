@@ -1,5 +1,11 @@
 # @inflate-ai/imaxt-core
 
+## 0.4.0
+
+### Minor Changes
+
+- 3f562fa: Add five new technical-writing blocks: `Terminal`, `Diff`, `FileTree`, `ErrorBox`, and `Changelog`. `Diff` computes its own line-level diff from plain `before`/`after` text using a minimal LCS algorithm, with no new dependency.
+
 ## 0.3.0
 
 ### Minor Changes
