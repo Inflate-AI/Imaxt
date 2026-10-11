@@ -1,6 +1,6 @@
 {
   "name": "@inflate-ai/imaxt-mdx",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Bidirectional compiler between Imaxt EditorJS block JSON and MDX source.",
   "type": "module",
   "license": "MIT",
