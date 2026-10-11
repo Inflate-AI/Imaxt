@@ -1,12 +1,16 @@
 import type {
   BarsData,
   CalloutData,
+  ChangelogData,
   ChecklistData,
   CodeWalkData,
   CompareData,
   CurvedTextData,
   DeltaData,
+  DiffData,
+  ErrorBoxData,
   FaqData,
+  FileTreeData,
   FootnoteData,
   FunnelData,
   GaugeData,
@@ -24,6 +28,7 @@ import type {
   StatRowData,
   StepsData,
   TakeawaysData,
+  TerminalData,
   TimelineData,
   TypeLabData,
   VersusData,
@@ -48,6 +53,11 @@ export type Block =
   | { type: 'glossary'; data: GlossaryData }
   | { type: 'versus'; data: VersusData }
   | { type: 'checklist'; data: ChecklistData }
+  | { type: 'terminal'; data: TerminalData }
+  | { type: 'diff'; data: DiffData }
+  | { type: 'file-tree'; data: FileTreeData }
+  | { type: 'error-box'; data: ErrorBoxData }
+  | { type: 'changelog'; data: ChangelogData }
   | { type: 'marquee'; data: MarqueeData }
   | { type: 'heatmap'; data: HeatmapData }
   | { type: 'curved-text'; data: CurvedTextData }

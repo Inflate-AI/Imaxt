@@ -1,11 +1,15 @@
 import { BarsTool } from './bars.ts';
 import { CalloutTool } from './callout.ts';
+import { ChangelogTool } from './changelog.ts';
 import { ChecklistTool } from './checklist.ts';
 import { CodeWalkTool } from './code-walk.ts';
 import { CompareTool } from './compare.ts';
 import { CurvedTextTool } from './curved-text.ts';
 import { DeltaTool } from './delta.ts';
+import { DiffTool } from './diff.ts';
+import { ErrorBoxTool } from './error-box.ts';
 import { FaqTool } from './faq.ts';
+import { FileTreeTool } from './file-tree.ts';
 import { FootnoteTool } from './footnote.ts';
 import { FunnelTool } from './funnel.ts';
 import { GaugeTool } from './gauge.ts';
@@ -23,6 +27,7 @@ import { StatRowTool } from './stat-row.ts';
 import { StatementTool } from './statement.ts';
 import { StepsTool } from './steps.ts';
 import { TakeawaysTool } from './takeaways.ts';
+import { TerminalTool } from './terminal.ts';
 import { TimelineTool } from './timeline.ts';
 import { TypeLabTool } from './type-lab.ts';
 import { VersusTool } from './versus.ts';
@@ -30,12 +35,16 @@ import { VersusTool } from './versus.ts';
 export {
   BarsTool,
   CalloutTool,
+  ChangelogTool,
   ChecklistTool,
   CodeWalkTool,
   CompareTool,
   CurvedTextTool,
   DeltaTool,
+  DiffTool,
+  ErrorBoxTool,
   FaqTool,
+  FileTreeTool,
   FootnoteTool,
   FunnelTool,
   GaugeTool,
@@ -53,6 +62,7 @@ export {
   StatRowTool,
   StepsTool,
   TakeawaysTool,
+  TerminalTool,
   TimelineTool,
   TypeLabTool,
   VersusTool,
@@ -67,12 +77,16 @@ export {
 export const imaxtTools = {
   bars: BarsTool,
   callout: CalloutTool,
+  changelog: ChangelogTool,
   checklist: ChecklistTool,
   codeWalk: CodeWalkTool,
   compare: CompareTool,
   curvedText: CurvedTextTool,
   delta: DeltaTool,
+  diff: DiffTool,
+  errorBox: ErrorBoxTool,
   faq: FaqTool,
+  fileTree: FileTreeTool,
   footnote: FootnoteTool,
   funnel: FunnelTool,
   gauge: GaugeTool,
@@ -90,6 +104,7 @@ export const imaxtTools = {
   statement: StatementTool,
   steps: StepsTool,
   takeaways: TakeawaysTool,
+  terminal: TerminalTool,
   timeline: TimelineTool,
   typeLab: TypeLabTool,
   versus: VersusTool,

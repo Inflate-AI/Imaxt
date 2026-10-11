@@ -121,6 +121,27 @@ function blockToNode(block: Block): unknown {
         ...exprAttr('items', block.data.items),
         ...stringAttr('title', block.data.title),
       ]);
+    case 'terminal':
+      return jsxElement('Terminal', [
+        ...exprAttr('lines', block.data.lines),
+        ...stringAttr('title', block.data.title),
+      ]);
+    case 'diff':
+      return jsxElement('Diff', [
+        ...stringAttr('before', block.data.before),
+        ...stringAttr('after', block.data.after),
+        ...stringAttr('lang', block.data.lang),
+      ]);
+    case 'file-tree':
+      return jsxElement('FileTree', exprAttr('tree', block.data.tree));
+    case 'error-box':
+      return jsxElement('ErrorBox', [
+        ...stringAttr('title', block.data.title),
+        ...stringAttr('message', block.data.message),
+        ...stringAttr('stack', block.data.stack),
+      ]);
+    case 'changelog':
+      return jsxElement('Changelog', exprAttr('entries', block.data.entries));
     case 'marquee':
       return jsxElement('Marquee', [
         ...exprAttr('words', block.data.words),
