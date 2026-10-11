@@ -53,6 +53,7 @@ export interface TypeLabData {
 }
 
 function slider(
+  instanceId: string,
   id: string,
   label: string,
   min: number,
@@ -62,25 +63,44 @@ function slider(
   unit = '',
   axisAttr = '',
 ): string {
+  const controlId = `${instanceId}-${id}`;
   return (
-    `<div class="imx-tl-ctl"${axisAttr}><label class="imx-label">${escapeHtml(label)}</label>` +
-    `<input type="range" data-control="${id}" min="${min}" max="${max}" step="${step}" value="${value}">` +
+    `<div class="imx-tl-ctl"${axisAttr}><label class="imx-label" for="${controlId}">${escapeHtml(label)}</label>` +
+    `<input type="range" id="${controlId}" data-control="${id}" min="${min}" max="${max}" step="${step}" value="${value}">` +
     `<output class="imx-tl-val">${value}${unit}</output></div>`
   );
 }
 
-function renderAxisControls(family: Family): string {
+function renderAxisControls(instanceId: string, family: Family): string {
   return family.axes
     .map((axis) =>
-      slider(axis.tag, axis.label, axis.min, axis.max, 1, axis.def, '', ' data-axis="true"'),
+      slider(
+        instanceId,
+        axis.tag,
+        axis.label,
+        axis.min,
+        axis.max,
+        1,
+        axis.def,
+        '',
+        ' data-axis="true"',
+      ),
     )
     .join('');
+}
+
+/** A stable per-instance id prefix, derived from content so rendering stays a pure function. */
+function instanceIdFor(seed: string): string {
+  let hash = 7;
+  for (const char of seed) hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+  return `tl${hash.toString(36)}`;
 }
 
 export function renderTypeLab(data: TypeLabData): string {
   const sample = data.sample ?? 'Typography is the interface';
   const familyKey = data.family ?? 'fraunces';
   const family = FAMILIES[familyKey];
+  const instanceId = instanceIdFor(sample);
 
   const familyButtons = (Object.keys(FAMILIES) as FamilyKey[])
     .map(
@@ -94,17 +114,17 @@ export function renderTypeLab(data: TypeLabData): string {
     : '';
 
   return (
-    `<div class="imx-typelab imx-slab" data-family="${familyKey}">` +
+    `<div class="imx-typelab imx-slab" data-family="${familyKey}" data-tl-id="${instanceId}">` +
     `<div class="imx-tl-head"><div class="imx-tl-fam" role="group" aria-label="Typeface">${familyButtons}</div>` +
     `<button type="button" class="imx-tl-reset">Reset</button></div>` +
     `<div class="imx-tl-stage"><div class="imx-tl-preview">${escapeHtml(sample)}</div></div>` +
     `<div class="imx-tl-controls">` +
-    `<div class="imx-tl-ctl imx-tl-text"><label class="imx-label">Sample text</label>` +
-    `<input type="text" class="imx-tl-text-input" value="${escapeHtml(sample)}"></div>` +
-    `${renderAxisControls(family)}` +
-    `${slider('size', 'Size', 16, 140, 1, DEFAULT_SIZE, 'px')}` +
-    `${slider('lh', 'Line height', 0.8, 2, 0.01, DEFAULT_LINE_HEIGHT)}` +
-    `${slider('ls', 'Tracking', -0.1, 0.3, 0.005, DEFAULT_TRACKING, 'em')}` +
+    `<div class="imx-tl-ctl imx-tl-text"><label class="imx-label" for="${instanceId}-sample">Sample text</label>` +
+    `<input type="text" id="${instanceId}-sample" class="imx-tl-text-input" value="${escapeHtml(sample)}"></div>` +
+    `${renderAxisControls(instanceId, family)}` +
+    `${slider(instanceId, 'size', 'Size', 16, 140, 1, DEFAULT_SIZE, 'px')}` +
+    `${slider(instanceId, 'lh', 'Line height', 0.8, 2, 0.01, DEFAULT_LINE_HEIGHT)}` +
+    `${slider(instanceId, 'ls', 'Tracking', -0.1, 0.3, 0.005, DEFAULT_TRACKING, 'em')}` +
     `${italicToggle}</div>` +
     `<div class="imx-tl-out"><pre><code></code></pre><button type="button" class="btn sm imx-tl-copy">Copy CSS</button></div>` +
     `</div>`
@@ -189,12 +209,13 @@ export function attachTypeLab(root: ParentNode = document): () => void {
       output.textContent = computeCss(state);
     };
 
+    const instanceId = lab.dataset.tlId ?? instanceIdFor(initialSample);
     const rebuildAxisControls = () => {
       controls.querySelectorAll('[data-axis]').forEach((el) => {
         el.remove();
       });
       const textRow = controls.querySelector('.imx-tl-text');
-      const axisHtml = renderAxisControls(FAMILIES[state.family]);
+      const axisHtml = renderAxisControls(instanceId, FAMILIES[state.family]);
       textRow?.insertAdjacentHTML('afterend', axisHtml);
       wireAxisInputs();
     };

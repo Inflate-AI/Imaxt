@@ -25,6 +25,19 @@ describe('renderTypeLab', () => {
     const pressed = doc.querySelector('[aria-pressed="true"]');
     expect(pressed?.textContent).toBe('Archivo');
   });
+
+  test('every label is associated with its control via id/for', () => {
+    const html = renderTypeLab({ sample: 'x', family: 'archivo' });
+    const doc = document.implementation.createHTMLDocument('');
+    doc.body.innerHTML = html;
+    for (const label of [...doc.querySelectorAll<HTMLLabelElement>('.imx-tl-ctl > label')]) {
+      const forId = label.getAttribute('for');
+      expect(forId).toBeTruthy();
+      const control = doc.getElementById(forId!);
+      expect(control).not.toBeNull();
+      expect(control?.parentElement).toBe(label.parentElement);
+    }
+  });
 });
 
 describe('attachTypeLab', () => {
