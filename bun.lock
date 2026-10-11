@@ -15,7 +15,7 @@
     },
     "packages/astro": {
       "name": "@inflate-ai/imaxt-astro",
-      "version": "0.1.0",
+      "version": "0.1.2",
       "dependencies": {
         "@inflate-ai/imaxt-core": "workspace:*",
       },
@@ -31,7 +31,7 @@
     },
     "packages/core": {
       "name": "@inflate-ai/imaxt-core",
-      "version": "0.1.0",
+      "version": "0.1.2",
       "dependencies": {
         "@fontsource-variable/fraunces": "5.3.0",
       },
@@ -44,7 +44,7 @@
     },
     "packages/editorjs": {
       "name": "@inflate-ai/imaxt-editorjs",
-      "version": "0.1.0",
+      "version": "0.1.2",
       "dependencies": {
         "@inflate-ai/imaxt-core": "workspace:*",
       },
@@ -61,7 +61,7 @@
     },
     "packages/mdx": {
       "name": "@inflate-ai/imaxt-mdx",
-      "version": "0.1.0",
+      "version": "0.1.2",
       "dependencies": {
         "@inflate-ai/imaxt-core": "workspace:*",
         "mdast-util-from-markdown": "2.1.0",
