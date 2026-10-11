@@ -30,11 +30,20 @@ example of each.
 
 ## Blocks
 
-Statement, Stat/StatRow, PullQuote, Compare/Side, Steps/Step, Timeline/Event,
-Bars, Sidenote, CodeWalk, Marquee, Heatmap, CurvedText, Scrolly/Beat, TypeLab,
-and the typographic post cover (ImaxtCover) — every one documented, with its
-data shape and usage from both EditorJS and Astro/MDX, in the
-**[block reference](./docs/blocks/README.md)**.
+40 blocks, every one documented with its data shape and usage from both
+EditorJS and Astro/MDX in the **[block reference](./docs/blocks/README.md)**:
+
+- **Narrative:** Statement, PullQuote, Sidenote, Callout, Faq, Takeaways,
+  Footnote, Glossary, Versus, Checklist
+- **Data & numbers:** Bars, Ranked, Matrix, Delta, Gauge, Scorecard,
+  Sparkline, Funnel, Stat/StatRow, Heatmap
+- **Technical writing:** CodeWalk, Terminal, Diff, FileTree, ErrorBox,
+  Changelog, Formula
+- **Structure:** Compare/Side, Steps/Step, Timeline/Event, Scrolly/Beat
+- **Typographic/visual:** Marquee, CurvedText, TypeLab, Ticker, DropCap,
+  Redacted, Stamp, Banner
+
+Plus the typographic post cover (ImaxtCover).
 
 ## Documentation
 
