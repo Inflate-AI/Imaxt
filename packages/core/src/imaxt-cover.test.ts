@@ -56,4 +56,14 @@ describe('renderImaxtCover', () => {
     const html = renderImaxtCover({ title: 'x' });
     expect(html).toContain('aspect-ratio:16 / 9');
   });
+
+  test('appends a given style to the aspect-ratio declaration', () => {
+    const html = renderImaxtCover({ title: 'x', style: 'box-shadow:var(--hard)' });
+    expect(html).toContain('style="aspect-ratio:16 / 9;box-shadow:var(--hard)"');
+  });
+
+  test('omits the trailing semicolon when no style is given', () => {
+    const html = renderImaxtCover({ title: 'x' });
+    expect(html).toContain('style="aspect-ratio:16 / 9"');
+  });
 });

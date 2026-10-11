@@ -12,6 +12,8 @@ export interface ImaxtCoverData {
   tone?: string;
   caption?: string;
   ratio?: string;
+  /** Appended, as-is, to the root element's `style` attribute after the aspect-ratio declaration. */
+  style?: string;
 }
 
 /** Breaks a phrase into at most `max` balanced lines (greedy, by character count). */
@@ -68,8 +70,10 @@ export function renderImaxtCover(data: ImaxtCoverData): string {
           .join('');
   const sub = cover.sub ? `<span class="imx-cover-sub">${escapeHtml(cover.sub)}</span>` : '';
 
+  const style = `aspect-ratio:${ratio}${data.style ? `;${data.style}` : ''}`;
+
   return (
-    `<div class="imx-cover" data-tone="${tone}" data-kind="${cover.kind}" style="aspect-ratio:${ratio}" aria-hidden="true">` +
+    `<div class="imx-cover" data-tone="${tone}" data-kind="${cover.kind}" style="${style}" aria-hidden="true">` +
     `${caption}<div class="imx-cover-in">${body}${sub}</div></div>`
   );
 }
