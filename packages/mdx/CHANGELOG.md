@@ -1,5 +1,12 @@
 # @inflate-ai/imaxt-mdx
 
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies [9c2e811]
+  - @inflate-ai/imaxt-core@0.1.4
+
 ## 0.1.3
 
 ### Patch Changes
