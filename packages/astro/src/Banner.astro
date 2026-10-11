@@ -1,0 +1,7 @@
+---
+import { type BannerData, renderBanner } from '@inflate-ai/imaxt-core';
+
+interface Props extends BannerData {}
+---
+
+<Fragment set:html={renderBanner(Astro.props)} />

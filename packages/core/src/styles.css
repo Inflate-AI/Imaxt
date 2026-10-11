@@ -1752,3 +1752,109 @@
   font-size: 13px;
   color: var(--muted);
 }
+
+/* ---------- Ticker ---------- */
+.imx-ticker {
+  position: relative;
+  margin: 0;
+  padding: 10px 0;
+  list-style: none;
+  min-height: 1.6em;
+}
+.imx-ticker-i {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 85;
+  font-weight: 800;
+  font-size: clamp(22px, 5cqi, 34px);
+}
+.imx-ticker:not([data-js]) {
+  display: grid;
+  gap: 6px;
+}
+.imx-ticker[data-js] .imx-ticker-i {
+  display: none;
+  position: absolute;
+  inset: 0;
+}
+.imx-ticker[data-js] .imx-ticker-i[data-active="true"] {
+  display: block;
+}
+
+/* ---------- DropCap ---------- */
+.imx-dropcap-l {
+  float: left;
+  font-family: var(--font-fraunces);
+  font-variation-settings: "opsz" 144;
+  font-weight: 700;
+  font-size: 3.4em;
+  line-height: 0.82;
+  padding-right: 0.08em;
+  color: var(--accent);
+}
+
+/* ---------- Redacted ---------- */
+.imx-redacted {
+  display: inline;
+}
+.imx-redacted-d {
+  display: inline;
+}
+.imx-redacted-bar {
+  display: inline-block;
+  cursor: pointer;
+  background: #1c1c1c;
+  color: transparent;
+  border-radius: 3px;
+  padding: 0 0.6em;
+  list-style: none;
+}
+.imx-redacted-bar::before {
+  content: "redacted";
+}
+.imx-redacted-d[open] .imx-redacted-bar {
+  display: none;
+}
+.imx-redacted-body {
+  display: none;
+}
+.imx-redacted-d[open] .imx-redacted-body {
+  display: inline;
+}
+
+/* ---------- Stamp ---------- */
+.imx-stamp {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 3px solid var(--imx-tone, var(--accent));
+  border-radius: 6px;
+  color: var(--imx-tone, var(--accent));
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transform: rotate(var(--a));
+}
+.imx-stamp[data-tone="accent"] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---------- Banner ---------- */
+.imx-banner {
+  padding: 0.3em 0;
+  overflow: hidden;
+  background-color: var(--imx-tone);
+  color: var(--imx-on);
+}
+.imx-banner-t {
+  display: block;
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 70;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(32px, 9vw, 92px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-align: center;
+  overflow-wrap: anywhere;
+}

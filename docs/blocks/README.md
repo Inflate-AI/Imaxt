@@ -36,6 +36,11 @@ just like any other parent/child composition in MDX or Astro.
 | [ErrorBox](./error-box.md) | `error-box.ts` | `ErrorBoxTool` | `ErrorBox` |
 | [Changelog](./changelog.md) | `changelog.ts` | `ChangelogTool` | `Changelog` |
 | [Formula](./formula.md) | `formula.ts` | `FormulaTool` | `Formula` |
+| [Ticker](./ticker.md) | `ticker.ts` | `TickerTool` | `Ticker` |
+| [DropCap](./drop-cap.md) | `drop-cap.ts` | `DropCapTool` | `DropCap` |
+| [Redacted](./redacted.md) | `redacted.ts` | `RedactedTool` | `Redacted` |
+| [Stamp](./stamp.md) | `stamp.ts` | `StampTool` | `Stamp` |
+| [Banner](./banner.md) | `banner.ts` | `BannerTool` | `Banner` |
 | [CodeWalk](./code-walk.md) | `code-walk.ts` | `CodeWalkTool` (composite) | `CodeWalk` |
 | [Marquee](./marquee.md) | `marquee.ts` | `MarqueeTool` | `Marquee` |
 | [Heatmap](./heatmap.md) | `heatmap.ts` | `HeatmapTool` | `Heatmap` |
