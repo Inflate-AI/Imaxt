@@ -89,6 +89,38 @@ function blockToNode(block: Block): unknown {
         ...stringAttr('unit', block.data.unit),
         ...stringAttr('tone', block.data.tone),
       ]);
+    case 'callout':
+      return jsxElement(
+        'Callout',
+        [...stringAttr('kind', block.data.kind), ...stringAttr('title', block.data.title)],
+        htmlChildren(block.data.html),
+      );
+    case 'faq':
+      return jsxElement('Faq', exprAttr('items', block.data.items));
+    case 'takeaways':
+      return jsxElement('Takeaways', [
+        ...exprAttr('items', block.data.items),
+        ...stringAttr('title', block.data.title),
+      ]);
+    case 'footnote':
+      return jsxElement(
+        'Footnote',
+        stringAttr('marker', block.data.marker),
+        htmlChildren(block.data.html),
+      );
+    case 'glossary':
+      return jsxElement('Glossary', exprAttr('items', block.data.items));
+    case 'versus':
+      return jsxElement('Versus', [
+        ...exprAttr('sides', block.data.sides),
+        ...stringAttr('vsLabel', block.data.vsLabel),
+        ...stringAttr('tone', block.data.tone),
+      ]);
+    case 'checklist':
+      return jsxElement('Checklist', [
+        ...exprAttr('items', block.data.items),
+        ...stringAttr('title', block.data.title),
+      ]);
     case 'marquee':
       return jsxElement('Marquee', [
         ...exprAttr('words', block.data.words),

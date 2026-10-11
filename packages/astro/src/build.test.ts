@@ -44,6 +44,13 @@ describe('every component renders in a real Astro build', () => {
     expect(html).toContain('imx-scorecard');
     expect(html).toContain('imx-spark');
     expect(html).toContain('imx-funnel');
+    expect(html).toContain('Callouts need no icons.');
+    expect(html).toContain('Is this free?');
+    expect(html).toContain('Key takeaways');
+    expect(html).toContain('A citation goes here.');
+    expect(html).toContain('Retrieval-augmented generation');
+    expect(html).toContain('imx-versus');
+    expect(html).toContain('imx-checklist');
   });
 
   test('composite components render their nested children, in order', () => {

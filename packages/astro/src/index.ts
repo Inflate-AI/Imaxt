@@ -1,12 +1,17 @@
 import Bars from './Bars.astro';
 import Beat from './Beat.astro';
+import Callout from './Callout.astro';
+import Checklist from './Checklist.astro';
 import CodeWalk from './CodeWalk.astro';
 import Compare from './Compare.astro';
 import CurvedText from './CurvedText.astro';
 import Delta from './Delta.astro';
 import Event from './Event.astro';
+import Faq from './Faq.astro';
+import Footnote from './Footnote.astro';
 import Funnel from './Funnel.astro';
 import Gauge from './Gauge.astro';
+import Glossary from './Glossary.astro';
 import Heatmap from './Heatmap.astro';
 import Marquee from './Marquee.astro';
 import Matrix from './Matrix.astro';
@@ -22,8 +27,10 @@ import Statement from './Statement.astro';
 import StatRow from './StatRow.astro';
 import Step from './Step.astro';
 import Steps from './Steps.astro';
+import Takeaways from './Takeaways.astro';
 import Timeline from './Timeline.astro';
 import TypeLab from './TypeLab.astro';
+import Versus from './Versus.astro';
 
 export { default as ImaxtCover } from './ImaxtCover.astro';
 
@@ -47,6 +54,13 @@ export const imaxt = {
   Scorecard,
   Sparkline,
   Funnel,
+  Callout,
+  Faq,
+  Takeaways,
+  Footnote,
+  Glossary,
+  Versus,
+  Checklist,
   Sidenote,
   CodeWalk,
   Marquee,

@@ -1,11 +1,16 @@
 import type {
   BarsData,
+  CalloutData,
+  ChecklistData,
   CodeWalkData,
   CompareData,
   CurvedTextData,
   DeltaData,
+  FaqData,
+  FootnoteData,
   FunnelData,
   GaugeData,
+  GlossaryData,
   HeatmapData,
   MarqueeData,
   MatrixData,
@@ -18,8 +23,10 @@ import type {
   StatementData,
   StatRowData,
   StepsData,
+  TakeawaysData,
   TimelineData,
   TypeLabData,
+  VersusData,
 } from '@inflate-ai/imaxt-core';
 
 export type Block =
@@ -34,6 +41,13 @@ export type Block =
   | { type: 'scorecard'; data: ScorecardData }
   | { type: 'sparkline'; data: SparklineData }
   | { type: 'funnel'; data: FunnelData }
+  | { type: 'callout'; data: CalloutData }
+  | { type: 'faq'; data: FaqData }
+  | { type: 'takeaways'; data: TakeawaysData }
+  | { type: 'footnote'; data: FootnoteData }
+  | { type: 'glossary'; data: GlossaryData }
+  | { type: 'versus'; data: VersusData }
+  | { type: 'checklist'; data: ChecklistData }
   | { type: 'marquee'; data: MarqueeData }
   | { type: 'heatmap'; data: HeatmapData }
   | { type: 'curved-text'; data: CurvedTextData }

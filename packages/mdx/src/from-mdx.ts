@@ -124,6 +124,49 @@ function elementToBlock(element: MdxJsxElement): Block | null {
           tone: getStringAttr(element, 'tone'),
         },
       };
+    case 'Callout':
+      return {
+        type: 'callout',
+        data: {
+          html: html(element),
+          kind: getStringAttr(element, 'kind') as never,
+          title: getStringAttr(element, 'title'),
+        },
+      };
+    case 'Faq':
+      return { type: 'faq', data: { items: getExprAttr(element, 'items') as never } };
+    case 'Takeaways':
+      return {
+        type: 'takeaways',
+        data: {
+          items: getExprAttr(element, 'items') as string[],
+          title: getStringAttr(element, 'title'),
+        },
+      };
+    case 'Footnote':
+      return {
+        type: 'footnote',
+        data: { html: html(element), marker: getStringAttr(element, 'marker') },
+      };
+    case 'Glossary':
+      return { type: 'glossary', data: { items: getExprAttr(element, 'items') as never } };
+    case 'Versus':
+      return {
+        type: 'versus',
+        data: {
+          sides: getExprAttr(element, 'sides') as never,
+          vsLabel: getStringAttr(element, 'vsLabel'),
+          tone: getStringAttr(element, 'tone'),
+        },
+      };
+    case 'Checklist':
+      return {
+        type: 'checklist',
+        data: {
+          items: getExprAttr(element, 'items') as never,
+          title: getStringAttr(element, 'title'),
+        },
+      };
     case 'Marquee':
       return {
         type: 'marquee',
