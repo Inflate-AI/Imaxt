@@ -1,5 +1,12 @@
 # @inflate-ai/imaxt-editorjs
 
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies [abf5cc9]
+  - @inflate-ai/imaxt-core@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes
