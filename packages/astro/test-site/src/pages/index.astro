@@ -16,6 +16,13 @@ const {
   Scorecard,
   Sparkline,
   Funnel,
+  Callout,
+  Faq,
+  Takeaways,
+  Footnote,
+  Glossary,
+  Versus,
+  Checklist,
   Marquee,
   Heatmap,
   CurvedText,
@@ -63,6 +70,20 @@ const {
     <Sparkline values={[12, 18, 9, 24]} label="Weekly signups" />
 
     <Funnel stages={[{ label: 'Visitors', value: 1000 }, { label: 'Signups', value: 500 }]} />
+
+    <Callout kind="tip" title="Heads up">Callouts need no icons.</Callout>
+
+    <Faq items={[{ q: 'Is this free?', a: 'Yes.' }]} />
+
+    <Takeaways title="Key takeaways" items={['First point', 'Second point']} />
+
+    <Footnote marker="1">A citation goes here.</Footnote>
+
+    <Glossary items={[{ term: 'RAG', definition: 'Retrieval-augmented generation' }]} />
+
+    <Versus sides={[{ label: 'Postgres', html: 'Relational' }, { label: 'SQLite', html: 'Embedded' }]} />
+
+    <Checklist title="Launch checklist" items={[{ text: 'Write tests', done: true }, { text: 'Ship it' }]} />
 
     <Marquee words={['Embed', 'Filter', 'Rank']} tone="accent" />
 

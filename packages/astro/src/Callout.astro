@@ -1,0 +1,9 @@
+---
+import { type CalloutData, renderCallout } from '@inflate-ai/imaxt-core';
+
+interface Props extends Omit<CalloutData, 'html'> {}
+const { kind, title } = Astro.props;
+const html = await Astro.slots.render('default');
+---
+
+<Fragment set:html={renderCallout({ html, kind, title })} />

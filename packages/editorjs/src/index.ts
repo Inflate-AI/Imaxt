@@ -1,10 +1,15 @@
 import { BarsTool } from './bars.ts';
+import { CalloutTool } from './callout.ts';
+import { ChecklistTool } from './checklist.ts';
 import { CodeWalkTool } from './code-walk.ts';
 import { CompareTool } from './compare.ts';
 import { CurvedTextTool } from './curved-text.ts';
 import { DeltaTool } from './delta.ts';
+import { FaqTool } from './faq.ts';
+import { FootnoteTool } from './footnote.ts';
 import { FunnelTool } from './funnel.ts';
 import { GaugeTool } from './gauge.ts';
+import { GlossaryTool } from './glossary.ts';
 import { HeatmapTool } from './heatmap.ts';
 import { MarqueeTool } from './marquee.ts';
 import { MatrixTool } from './matrix.ts';
@@ -17,17 +22,24 @@ import { SparklineTool } from './sparkline.ts';
 import { StatRowTool } from './stat-row.ts';
 import { StatementTool } from './statement.ts';
 import { StepsTool } from './steps.ts';
+import { TakeawaysTool } from './takeaways.ts';
 import { TimelineTool } from './timeline.ts';
 import { TypeLabTool } from './type-lab.ts';
+import { VersusTool } from './versus.ts';
 
 export {
   BarsTool,
+  CalloutTool,
+  ChecklistTool,
   CodeWalkTool,
   CompareTool,
   CurvedTextTool,
   DeltaTool,
+  FaqTool,
+  FootnoteTool,
   FunnelTool,
   GaugeTool,
+  GlossaryTool,
   HeatmapTool,
   MarqueeTool,
   MatrixTool,
@@ -40,8 +52,10 @@ export {
   StatementTool,
   StatRowTool,
   StepsTool,
+  TakeawaysTool,
   TimelineTool,
   TypeLabTool,
+  VersusTool,
 };
 
 /**
@@ -52,12 +66,17 @@ export {
  */
 export const imaxtTools = {
   bars: BarsTool,
+  callout: CalloutTool,
+  checklist: ChecklistTool,
   codeWalk: CodeWalkTool,
   compare: CompareTool,
   curvedText: CurvedTextTool,
   delta: DeltaTool,
+  faq: FaqTool,
+  footnote: FootnoteTool,
   funnel: FunnelTool,
   gauge: GaugeTool,
+  glossary: GlossaryTool,
   heatmap: HeatmapTool,
   marquee: MarqueeTool,
   matrix: MatrixTool,
@@ -70,6 +89,8 @@ export const imaxtTools = {
   statRow: StatRowTool,
   statement: StatementTool,
   steps: StepsTool,
+  takeaways: TakeawaysTool,
   timeline: TimelineTool,
   typeLab: TypeLabTool,
+  versus: VersusTool,
 } as const;

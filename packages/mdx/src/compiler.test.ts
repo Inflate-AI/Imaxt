@@ -70,6 +70,32 @@ const SAMPLE_BLOCKS: Block[] = [
       tone: 'rose',
     },
   },
+  { type: 'callout', data: { html: 'Read the docs first.', kind: 'tip', title: 'Heads up' } },
+  { type: 'faq', data: { items: [{ q: 'Is this free?', a: 'Yes.' }] } },
+  { type: 'takeaways', data: { items: ['First point', 'Second point'], title: 'Key takeaways' } },
+  { type: 'footnote', data: { html: 'A citation.', marker: '1' } },
+  {
+    type: 'glossary',
+    data: { items: [{ term: 'RAG', definition: 'Retrieval-augmented generation' }] },
+  },
+  {
+    type: 'versus',
+    data: {
+      sides: [
+        { label: 'Postgres', html: 'Relational' },
+        { label: 'SQLite', html: 'Embedded' },
+      ],
+      vsLabel: 'OR',
+      tone: 'sky',
+    },
+  },
+  {
+    type: 'checklist',
+    data: {
+      items: [{ text: 'Write tests', done: true }, { text: 'Ship it' }],
+      title: 'Launch checklist',
+    },
+  },
   { type: 'marquee', data: { words: ['Embed', 'Filter', 'Rank'], tone: 'accent', seconds: 20 } },
   {
     type: 'heatmap',
@@ -167,6 +193,13 @@ const COMPONENT_NAME: Record<Block['type'], string> = {
   scorecard: 'Scorecard',
   sparkline: 'Sparkline',
   funnel: 'Funnel',
+  callout: 'Callout',
+  faq: 'Faq',
+  takeaways: 'Takeaways',
+  footnote: 'Footnote',
+  glossary: 'Glossary',
+  versus: 'Versus',
+  checklist: 'Checklist',
   marquee: 'Marquee',
   heatmap: 'Heatmap',
   'curved-text': 'CurvedText',

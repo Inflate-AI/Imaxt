@@ -6,12 +6,17 @@ describe('imaxtTools', () => {
     expect(Object.keys(imaxtTools).sort()).toEqual(
       [
         'bars',
+        'callout',
+        'checklist',
         'codeWalk',
         'compare',
         'curvedText',
         'delta',
+        'faq',
+        'footnote',
         'funnel',
         'gauge',
+        'glossary',
         'heatmap',
         'marquee',
         'matrix',
@@ -24,8 +29,10 @@ describe('imaxtTools', () => {
         'statRow',
         'statement',
         'steps',
+        'takeaways',
         'timeline',
         'typeLab',
+        'versus',
       ].sort(),
     );
   });
