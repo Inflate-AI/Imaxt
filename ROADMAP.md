@@ -11,18 +11,20 @@ issue.
 - Four packages: `imaxt-core` (the render engine), `imaxt-editorjs`
   (visual authoring), `imaxt-mdx` (JSON ↔ MDX compiler), `imaxt-astro`
   (static-site components)
-- 15 typographic blocks plus the post cover, each documented with its
-  data shape from both EditorJS and Astro/MDX
+- **40 typographic blocks** plus the post cover, each documented with
+  its data shape from both EditorJS and Astro/MDX - the v1.0.0 release
+  locks this as the stable API surface going forward
 - Published to npm under `@inflate-ai`, releasing via [Trusted
   Publishing](https://docs.npmjs.com/trusted-publishers/) (OIDC) - no
   long-lived registry token, triggered by merging a Changesets version
   PR
+- **Proven in production**: migrated `saranmahadev/blog`'s posts onto
+  the published packages, including fixing four real upstream bugs
+  (tone coverage, a label-association accessibility violation, and two
+  slot/style-passthrough gaps) surfaced by that migration
 
 ## Now
 
-- **Prove it in production.** Migrate an existing site's posts onto the
-  published packages - the first real adoption, and the fastest way to
-  find rough edges before anyone else hits them.
 - **A demo site.** A small Astro site, built with Imaxt itself, that
   renders every block with real content - doubles as living
   documentation and a visual baseline.
