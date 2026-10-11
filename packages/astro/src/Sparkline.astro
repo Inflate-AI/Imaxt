@@ -1,0 +1,7 @@
+---
+import { renderSparkline, type SparklineData } from '@inflate-ai/imaxt-core';
+
+interface Props extends SparklineData {}
+---
+
+<Fragment set:html={renderSparkline(Astro.props)} />

@@ -3,11 +3,18 @@ import type {
   CodeWalkData,
   CompareData,
   CurvedTextData,
+  DeltaData,
+  FunnelData,
+  GaugeData,
   HeatmapData,
   MarqueeData,
+  MatrixData,
   PullQuoteData,
+  RankedData,
+  ScorecardData,
   ScrollyData,
   SidenoteData,
+  SparklineData,
   StatementData,
   StatRowData,
   StepsData,
@@ -20,6 +27,13 @@ export type Block =
   | { type: 'pull-quote'; data: PullQuoteData }
   | { type: 'sidenote'; data: SidenoteData }
   | { type: 'bars'; data: BarsData }
+  | { type: 'ranked'; data: RankedData }
+  | { type: 'matrix'; data: MatrixData }
+  | { type: 'delta'; data: DeltaData }
+  | { type: 'gauge'; data: GaugeData }
+  | { type: 'scorecard'; data: ScorecardData }
+  | { type: 'sparkline'; data: SparklineData }
+  | { type: 'funnel'; data: FunnelData }
   | { type: 'marquee'; data: MarqueeData }
   | { type: 'heatmap'; data: HeatmapData }
   | { type: 'curved-text'; data: CurvedTextData }

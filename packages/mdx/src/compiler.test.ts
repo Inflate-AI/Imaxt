@@ -26,6 +26,50 @@ const SAMPLE_BLOCKS: Block[] = [
       tone: 'accent',
     },
   },
+  {
+    type: 'ranked',
+    data: {
+      items: [
+        { label: 'Model A', value: '92', delta: 3 },
+        { label: 'Model B', value: '88', delta: 'new' },
+      ],
+      unit: '%',
+      tone: 'mint',
+    },
+  },
+  {
+    type: 'matrix',
+    data: {
+      rows: ['Free', 'Pro'],
+      cols: ['Exports'],
+      cells: [['no'], ['yes']],
+      caption: 'Plan comparison',
+    },
+  },
+  { type: 'delta', data: { label: 'Latency', from: 120, to: 80, unit: 'ms', tone: 'accent' } },
+  { type: 'gauge', data: { value: 42, max: 100, label: 'Capacity', unit: '%' } },
+  {
+    type: 'scorecard',
+    data: {
+      items: [
+        { label: 'MRR', value: 42000, unit: '$' },
+        { label: 'Churn', value: '2.1', unit: '%', delta: '-0.4' },
+      ],
+      tone: 'sky',
+    },
+  },
+  { type: 'sparkline', data: { values: [12, 18, 9, 24], label: 'Weekly signups' } },
+  {
+    type: 'funnel',
+    data: {
+      stages: [
+        { label: 'Visitors', value: 1000 },
+        { label: 'Signups', value: 500 },
+      ],
+      unit: '',
+      tone: 'rose',
+    },
+  },
   { type: 'marquee', data: { words: ['Embed', 'Filter', 'Rank'], tone: 'accent', seconds: 20 } },
   {
     type: 'heatmap',
@@ -116,6 +160,13 @@ const COMPONENT_NAME: Record<Block['type'], string> = {
   'pull-quote': 'PullQuote',
   sidenote: 'Sidenote',
   bars: 'Bars',
+  ranked: 'Ranked',
+  matrix: 'Matrix',
+  delta: 'Delta',
+  gauge: 'Gauge',
+  scorecard: 'Scorecard',
+  sparkline: 'Sparkline',
+  funnel: 'Funnel',
   marquee: 'Marquee',
   heatmap: 'Heatmap',
   'curved-text': 'CurvedText',
@@ -138,7 +189,8 @@ describe('blocksToMdx', () => {
   }
 
   test('compiles a StatRow with nested Stat children in order', () => {
-    const mdx = blocksToMdx({ frontmatter: {}, blocks: [SAMPLE_BLOCKS[8]!] });
+    const statRowBlock = SAMPLE_BLOCKS.find((block) => block.type === 'stat-row')!;
+    const mdx = blocksToMdx({ frontmatter: {}, blocks: [statRowBlock] });
     expect(mdx.indexOf('<Stat ')).toBeGreaterThan(mdx.indexOf('<StatRow'));
     expect(mdx.indexOf('p95')).toBeLessThan(mdx.indexOf('fewer calls'));
   });
