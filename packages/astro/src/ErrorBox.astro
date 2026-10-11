@@ -1,0 +1,7 @@
+---
+import { type ErrorBoxData, renderErrorBox } from '@inflate-ai/imaxt-core';
+
+interface Props extends ErrorBoxData {}
+---
+
+<Fragment set:html={renderErrorBox(Astro.props)} />

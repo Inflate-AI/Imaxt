@@ -51,6 +51,11 @@ describe('every component renders in a real Astro build', () => {
     expect(html).toContain('Retrieval-augmented generation');
     expect(html).toContain('imx-versus');
     expect(html).toContain('imx-checklist');
+    expect(html).toContain('npm install');
+    expect(html).toContain('imx-diff');
+    expect(html).toContain('src/');
+    expect(html).toContain('Cannot read property');
+    expect(html).toContain('imx-changelog');
   });
 
   test('composite components render their nested children, in order', () => {

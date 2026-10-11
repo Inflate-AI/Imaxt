@@ -167,6 +167,39 @@ function elementToBlock(element: MdxJsxElement): Block | null {
           title: getStringAttr(element, 'title'),
         },
       };
+    case 'Terminal':
+      return {
+        type: 'terminal',
+        data: {
+          lines: getExprAttr(element, 'lines') as never,
+          title: getStringAttr(element, 'title'),
+        },
+      };
+    case 'Diff':
+      return {
+        type: 'diff',
+        data: {
+          before: getStringAttr(element, 'before') ?? '',
+          after: getStringAttr(element, 'after') ?? '',
+          lang: getStringAttr(element, 'lang'),
+        },
+      };
+    case 'FileTree':
+      return { type: 'file-tree', data: { tree: getExprAttr(element, 'tree') as never } };
+    case 'ErrorBox':
+      return {
+        type: 'error-box',
+        data: {
+          title: getStringAttr(element, 'title') ?? '',
+          message: getStringAttr(element, 'message') ?? '',
+          stack: getStringAttr(element, 'stack'),
+        },
+      };
+    case 'Changelog':
+      return {
+        type: 'changelog',
+        data: { entries: getExprAttr(element, 'entries') as never },
+      };
     case 'Marquee':
       return {
         type: 'marquee',

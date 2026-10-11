@@ -1580,3 +1580,157 @@
   color: #1a7a4c;
   text-decoration: none;
 }
+
+/* ---------- Terminal ---------- */
+.imx-term {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1c1c1c;
+  color: #f4f1e8;
+  border: 1.5px solid var(--line);
+}
+.imx-term-head {
+  padding: 10px 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #a9a59a;
+  border-bottom: 1px solid #35353b;
+}
+.imx-term-body {
+  margin: 0;
+  padding: 16px;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+.imx-term-line[data-kind="output"] {
+  color: #a9a59a;
+}
+.imx-term-prompt {
+  color: #6a9955;
+  margin-right: 0.6em;
+}
+.imx-term-cmd {
+  color: #f4f1e8;
+}
+
+/* ---------- Diff ---------- */
+.imx-diff {
+  margin: 0;
+  padding: 14px 0;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+.imx-diff-line {
+  display: flex;
+  gap: 10px;
+  padding: 0 14px;
+  white-space: pre;
+}
+.imx-diff-prefix {
+  width: 1ch;
+  flex: none;
+  text-align: center;
+}
+.imx-diff-line[data-kind="add"] {
+  background: color-mix(in srgb, #1a7a4c 14%, transparent);
+}
+.imx-diff-line[data-kind="add"] .imx-diff-prefix {
+  color: #1a7a4c;
+  font-weight: 700;
+}
+.imx-diff-line[data-kind="del"] {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+.imx-diff-line[data-kind="del"] .imx-diff-prefix {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---------- FileTree ---------- */
+.imx-tree,
+.imx-tree-children {
+  list-style: none;
+  margin: 0;
+  padding-left: 1.4em;
+}
+.imx-tree {
+  padding-left: 0;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.imx-tree-node[data-kind="folder"] > .imx-tree-name {
+  font-weight: 700;
+}
+.imx-tree-node[data-kind="file"] > .imx-tree-name {
+  color: var(--muted);
+}
+
+/* ---------- ErrorBox ---------- */
+.imx-errorbox {
+  padding: 18px 20px;
+  border: 1.5px solid var(--accent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 8%, var(--card));
+}
+.imx-errorbox-t {
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--accent);
+}
+.imx-errorbox-m {
+  margin: 6px 0 0;
+  font-family: var(--font-sans);
+}
+.imx-errorbox-stack {
+  margin: 12px 0 0;
+  padding: 12px 14px;
+  background: #1c1c1c;
+  color: #f4f1e8;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+/* ---------- Changelog ---------- */
+.imx-changelog {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  display: grid;
+  gap: 20px;
+}
+.imx-changelog-e {
+  border-left: 3px solid var(--line);
+  padding-left: 16px;
+}
+.imx-changelog-v {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 16px;
+}
+.imx-changelog-d {
+  margin-left: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.imx-changelog-e ul {
+  margin: 8px 0 0;
+  padding-left: 1.2em;
+}
+.imx-changelog-i {
+  font-family: var(--font-serif);
+  line-height: 1.5;
+}

@@ -23,6 +23,11 @@ const {
   Glossary,
   Versus,
   Checklist,
+  Terminal,
+  Diff,
+  FileTree,
+  ErrorBox,
+  Changelog,
   Marquee,
   Heatmap,
   CurvedText,
@@ -84,6 +89,16 @@ const {
     <Versus sides={[{ label: 'Postgres', html: 'Relational' }, { label: 'SQLite', html: 'Embedded' }]} />
 
     <Checklist title="Launch checklist" items={[{ text: 'Write tests', done: true }, { text: 'Ship it' }]} />
+
+    <Terminal title="Setup" lines={[{ command: 'npm install' }, { output: 'added 42 packages' }]} />
+
+    <Diff before={"const a = 1;"} after={"const a = 2;"} />
+
+    <FileTree tree={[{ name: 'src', children: [{ name: 'index.ts' }] }]} />
+
+    <ErrorBox title="TypeError" message="Cannot read property 'x'" stack={"    at foo (file.ts:1:1)"} />
+
+    <Changelog entries={[{ version: '0.2.0', date: '2026-10-11', items: ['Added X'] }]} />
 
     <Marquee words={['Embed', 'Filter', 'Rank']} tone="accent" />
 
