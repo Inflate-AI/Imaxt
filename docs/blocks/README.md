@@ -16,6 +16,13 @@ just like any other parent/child composition in MDX or Astro.
 | [Steps / Step](./steps.md) | `steps.ts` | `StepsTool` (composite) | `Steps`, `Step` |
 | [Timeline / Event](./timeline.md) | `timeline.ts` | `TimelineTool` (composite) | `Timeline`, `Event` |
 | [Bars](./bars.md) | `bars.ts` | `BarsTool` | `Bars` |
+| [Ranked](./ranked.md) | `ranked.ts` | `RankedTool` | `Ranked` |
+| [Matrix](./matrix.md) | `matrix.ts` | `MatrixTool` | `Matrix` |
+| [Delta](./delta.md) | `delta.ts` | `DeltaTool` | `Delta` |
+| [Gauge](./gauge.md) | `gauge.ts` | `GaugeTool` | `Gauge` |
+| [Scorecard](./scorecard.md) | `scorecard.ts` | `ScorecardTool` | `Scorecard` |
+| [Sparkline](./sparkline.md) | `sparkline.ts` | `SparklineTool` | `Sparkline` |
+| [Funnel](./funnel.md) | `funnel.ts` | `FunnelTool` | `Funnel` |
 | [CodeWalk](./code-walk.md) | `code-walk.ts` | `CodeWalkTool` (composite) | `CodeWalk` |
 | [Marquee](./marquee.md) | `marquee.ts` | `MarqueeTool` | `Marquee` |
 | [Heatmap](./heatmap.md) | `heatmap.ts` | `HeatmapTool` | `Heatmap` |

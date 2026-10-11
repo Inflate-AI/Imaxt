@@ -36,6 +36,14 @@ describe('every component renders in a real Astro build', () => {
     expect(html).toContain('Common modes');
     expect(html).toContain('Drafted');
     expect(html).toContain('Same letters, different voice');
+    expect(html).toContain('imx-ranked');
+    expect(html).toContain('imx-matrix');
+    expect(html).toContain('Plan comparison');
+    expect(html).toContain('Latency');
+    expect(html).toContain('imx-gauge');
+    expect(html).toContain('imx-scorecard');
+    expect(html).toContain('imx-spark');
+    expect(html).toContain('imx-funnel');
   });
 
   test('composite components render their nested children, in order', () => {

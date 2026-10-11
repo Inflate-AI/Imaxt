@@ -44,6 +44,51 @@ function blockToNode(block: Block): unknown {
         ...stringAttr('unit', block.data.unit),
         ...stringAttr('tone', block.data.tone),
       ]);
+    case 'ranked':
+      return jsxElement('Ranked', [
+        ...exprAttr('items', block.data.items),
+        ...stringAttr('unit', block.data.unit),
+        ...stringAttr('tone', block.data.tone),
+      ]);
+    case 'matrix':
+      return jsxElement('Matrix', [
+        ...exprAttr('rows', block.data.rows),
+        ...exprAttr('cols', block.data.cols),
+        ...exprAttr('cells', block.data.cells),
+        ...stringAttr('caption', block.data.caption),
+      ]);
+    case 'delta':
+      return jsxElement('Delta', [
+        ...stringAttr('label', block.data.label),
+        ...exprAttr('from', block.data.from),
+        ...exprAttr('to', block.data.to),
+        ...stringAttr('unit', block.data.unit),
+        ...stringAttr('tone', block.data.tone),
+      ]);
+    case 'gauge':
+      return jsxElement('Gauge', [
+        ...exprAttr('value', block.data.value),
+        ...exprAttr('max', block.data.max),
+        ...stringAttr('label', block.data.label),
+        ...stringAttr('unit', block.data.unit),
+        ...stringAttr('tone', block.data.tone),
+      ]);
+    case 'scorecard':
+      return jsxElement('Scorecard', [
+        ...exprAttr('items', block.data.items),
+        ...stringAttr('tone', block.data.tone),
+      ]);
+    case 'sparkline':
+      return jsxElement('Sparkline', [
+        ...exprAttr('values', block.data.values),
+        ...stringAttr('label', block.data.label),
+      ]);
+    case 'funnel':
+      return jsxElement('Funnel', [
+        ...exprAttr('stages', block.data.stages),
+        ...stringAttr('unit', block.data.unit),
+        ...stringAttr('tone', block.data.tone),
+      ]);
     case 'marquee':
       return jsxElement('Marquee', [
         ...exprAttr('words', block.data.words),

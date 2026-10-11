@@ -58,6 +58,72 @@ function elementToBlock(element: MdxJsxElement): Block | null {
           tone: getStringAttr(element, 'tone'),
         },
       };
+    case 'Ranked':
+      return {
+        type: 'ranked',
+        data: {
+          items: getExprAttr(element, 'items') as never,
+          unit: getStringAttr(element, 'unit'),
+          tone: getStringAttr(element, 'tone'),
+        },
+      };
+    case 'Matrix':
+      return {
+        type: 'matrix',
+        data: {
+          rows: getExprAttr(element, 'rows') as string[],
+          cols: getExprAttr(element, 'cols') as string[],
+          cells: getExprAttr(element, 'cells') as never,
+          caption: getStringAttr(element, 'caption'),
+        },
+      };
+    case 'Delta':
+      return {
+        type: 'delta',
+        data: {
+          label: getStringAttr(element, 'label') ?? '',
+          from: getExprAttr(element, 'from') as string | number,
+          to: getExprAttr(element, 'to') as string | number,
+          unit: getStringAttr(element, 'unit'),
+          tone: getStringAttr(element, 'tone'),
+        },
+      };
+    case 'Gauge':
+      return {
+        type: 'gauge',
+        data: {
+          value: getExprAttr(element, 'value') as number,
+          max: getExprAttr(element, 'max') as number,
+          label: getStringAttr(element, 'label'),
+          unit: getStringAttr(element, 'unit'),
+          tone: getStringAttr(element, 'tone'),
+        },
+      };
+    case 'Scorecard':
+      return {
+        type: 'scorecard',
+        data: {
+          items: getExprAttr(element, 'items') as never,
+          tone: getStringAttr(element, 'tone'),
+        },
+      };
+    case 'Sparkline':
+      return {
+        type: 'sparkline',
+        data: {
+          values: getExprAttr(element, 'values') as number[],
+          label: getStringAttr(element, 'label'),
+        },
+      };
+    case 'Funnel':
+      return {
+        type: 'funnel',
+        data: {
+          stages: getExprAttr(element, 'stages') as never,
+          unit: getStringAttr(element, 'unit'),
+          tone: getStringAttr(element, 'tone'),
+        },
+      };
     case 'Marquee':
       return {
         type: 'marquee',

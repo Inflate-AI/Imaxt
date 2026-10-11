@@ -3,13 +3,20 @@ import Beat from './Beat.astro';
 import CodeWalk from './CodeWalk.astro';
 import Compare from './Compare.astro';
 import CurvedText from './CurvedText.astro';
+import Delta from './Delta.astro';
 import Event from './Event.astro';
+import Funnel from './Funnel.astro';
+import Gauge from './Gauge.astro';
 import Heatmap from './Heatmap.astro';
 import Marquee from './Marquee.astro';
+import Matrix from './Matrix.astro';
 import PullQuote from './PullQuote.astro';
+import Ranked from './Ranked.astro';
+import Scorecard from './Scorecard.astro';
 import Scrolly from './Scrolly.astro';
 import Side from './Side.astro';
 import Sidenote from './Sidenote.astro';
+import Sparkline from './Sparkline.astro';
 import Stat from './Stat.astro';
 import Statement from './Statement.astro';
 import StatRow from './StatRow.astro';
@@ -33,6 +40,13 @@ export const imaxt = {
   Timeline,
   Event,
   Bars,
+  Ranked,
+  Matrix,
+  Delta,
+  Gauge,
+  Scorecard,
+  Sparkline,
+  Funnel,
   Sidenote,
   CodeWalk,
   Marquee,

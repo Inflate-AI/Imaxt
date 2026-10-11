@@ -1,0 +1,7 @@
+---
+import { type DeltaData, renderDelta } from '@inflate-ai/imaxt-core';
+
+interface Props extends DeltaData {}
+---
+
+<Fragment set:html={renderDelta(Astro.props)} />

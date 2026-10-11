@@ -1,0 +1,7 @@
+---
+import { type MatrixData, renderMatrix } from '@inflate-ai/imaxt-core';
+
+interface Props extends MatrixData {}
+---
+
+<Fragment set:html={renderMatrix(Astro.props)} />
