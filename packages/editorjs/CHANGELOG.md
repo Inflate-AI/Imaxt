@@ -1,5 +1,16 @@
 # @inflate-ai/imaxt-editorjs
 
+## 0.3.0
+
+### Minor Changes
+
+- b9d03b7: Add seven new narrative/structure blocks: `Callout`, `Faq`, `Takeaways`, `Footnote`, `Glossary`, `Versus`, and `Checklist`. `Faq` and `Footnote` use native `<details>`/`<summary>` disclosure, requiring no client-side JavaScript.
+
+### Patch Changes
+
+- Updated dependencies [b9d03b7]
+  - @inflate-ai/imaxt-core@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes
