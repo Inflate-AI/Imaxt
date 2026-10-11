@@ -200,6 +200,15 @@ function elementToBlock(element: MdxJsxElement): Block | null {
         type: 'changelog',
         data: { entries: getExprAttr(element, 'entries') as never },
       };
+    case 'Formula':
+      return {
+        type: 'formula',
+        data: {
+          tex: getStringAttr(element, 'tex') ?? '',
+          display: getExprAttr(element, 'display') === true ? true : undefined,
+          caption: getStringAttr(element, 'caption'),
+        },
+      };
     case 'Marquee':
       return {
         type: 'marquee',

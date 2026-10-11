@@ -12,6 +12,7 @@ import type {
   FaqData,
   FileTreeData,
   FootnoteData,
+  FormulaData,
   FunnelData,
   GaugeData,
   GlossaryData,
@@ -58,6 +59,7 @@ export type Block =
   | { type: 'file-tree'; data: FileTreeData }
   | { type: 'error-box'; data: ErrorBoxData }
   | { type: 'changelog'; data: ChangelogData }
+  | { type: 'formula'; data: FormulaData }
   | { type: 'marquee'; data: MarqueeData }
   | { type: 'heatmap'; data: HeatmapData }
   | { type: 'curved-text'; data: CurvedTextData }

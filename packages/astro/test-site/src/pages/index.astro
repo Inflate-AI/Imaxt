@@ -28,6 +28,7 @@ const {
   FileTree,
   ErrorBox,
   Changelog,
+  Formula,
   Marquee,
   Heatmap,
   CurvedText,
@@ -99,6 +100,10 @@ const {
     <ErrorBox title="TypeError" message="Cannot read property 'x'" stack={"    at foo (file.ts:1:1)"} />
 
     <Changelog entries={[{ version: '0.2.0', date: '2026-10-11', items: ['Added X'] }]} />
+
+    <Formula tex="E=mc^2" caption="Mass-energy equivalence" />
+
+    <Formula tex="\int_0^\infty e^{-x} dx = 1" display />
 
     <Marquee words={['Embed', 'Filter', 'Rank']} tone="accent" />
 

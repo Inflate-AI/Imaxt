@@ -142,6 +142,12 @@ function blockToNode(block: Block): unknown {
       ]);
     case 'changelog':
       return jsxElement('Changelog', exprAttr('entries', block.data.entries));
+    case 'formula':
+      return jsxElement('Formula', [
+        ...stringAttr('tex', block.data.tex),
+        ...(block.data.display ? exprAttr('display', true) : []),
+        ...stringAttr('caption', block.data.caption),
+      ]);
     case 'marquee':
       return jsxElement('Marquee', [
         ...exprAttr('words', block.data.words),

@@ -45,9 +45,11 @@
     "test": "bun test"
   },
   "dependencies": {
-    "@fontsource-variable/fraunces": "5.3.0"
+    "@fontsource-variable/fraunces": "5.3.0",
+    "katex": "0.16.21"
   },
   "devDependencies": {
+    "@types/katex": "^0.16.8",
     "@types/node": "26.6.5",
     "bun-types": "1.4.3",
     "happy-dom": "20.14.6",
