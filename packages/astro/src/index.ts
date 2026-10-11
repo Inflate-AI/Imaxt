@@ -1,3 +1,4 @@
+import Banner from './Banner.astro';
 import Bars from './Bars.astro';
 import Beat from './Beat.astro';
 import Callout from './Callout.astro';
@@ -8,6 +9,7 @@ import Compare from './Compare.astro';
 import CurvedText from './CurvedText.astro';
 import Delta from './Delta.astro';
 import Diff from './Diff.astro';
+import DropCap from './DropCap.astro';
 import ErrorBox from './ErrorBox.astro';
 import Event from './Event.astro';
 import Faq from './Faq.astro';
@@ -22,11 +24,13 @@ import Marquee from './Marquee.astro';
 import Matrix from './Matrix.astro';
 import PullQuote from './PullQuote.astro';
 import Ranked from './Ranked.astro';
+import Redacted from './Redacted.astro';
 import Scorecard from './Scorecard.astro';
 import Scrolly from './Scrolly.astro';
 import Side from './Side.astro';
 import Sidenote from './Sidenote.astro';
 import Sparkline from './Sparkline.astro';
+import Stamp from './Stamp.astro';
 import Stat from './Stat.astro';
 import Statement from './Statement.astro';
 import StatRow from './StatRow.astro';
@@ -34,6 +38,7 @@ import Step from './Step.astro';
 import Steps from './Steps.astro';
 import Takeaways from './Takeaways.astro';
 import Terminal from './Terminal.astro';
+import Ticker from './Ticker.astro';
 import Timeline from './Timeline.astro';
 import TypeLab from './TypeLab.astro';
 import Versus from './Versus.astro';
@@ -73,6 +78,11 @@ export const imaxt = {
   ErrorBox,
   Changelog,
   Formula,
+  Ticker,
+  DropCap,
+  Redacted,
+  Stamp,
+  Banner,
   Sidenote,
   CodeWalk,
   Marquee,

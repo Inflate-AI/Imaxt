@@ -1,0 +1,7 @@
+---
+import { renderTicker, type TickerData } from '@inflate-ai/imaxt-core';
+
+interface Props extends TickerData {}
+---
+
+<Fragment set:html={renderTicker(Astro.props)} />

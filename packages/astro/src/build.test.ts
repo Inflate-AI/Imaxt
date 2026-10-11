@@ -59,6 +59,14 @@ describe('every component renders in a real Astro build', () => {
     expect(html).toContain('katex');
     expect(html).toContain('katex-display');
     expect(html).toContain('Mass-energy equivalence');
+    expect(html).toContain('imx-ticker');
+    expect(html).toContain('Embed');
+    expect(html).toContain('imx-dropcap');
+    expect(html).toContain('imx-dropcap-l">L</span>orem ipsum');
+    expect(html).toContain('imx-redacted');
+    expect(html).toContain('The launch date is March 3rd.');
+    expect(html).toContain('DRAFT');
+    expect(html).toContain('Launching soon');
   });
 
   test('composite components render their nested children, in order', () => {

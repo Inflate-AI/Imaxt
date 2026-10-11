@@ -209,6 +209,42 @@ function elementToBlock(element: MdxJsxElement): Block | null {
           caption: getStringAttr(element, 'caption'),
         },
       };
+    case 'Ticker':
+      return {
+        type: 'ticker',
+        data: {
+          phrases: getExprAttr(element, 'phrases') as string[],
+          seconds: getExprAttr(element, 'seconds') as number | undefined,
+          tone: getStringAttr(element, 'tone'),
+        },
+      };
+    case 'DropCap':
+      return {
+        type: 'drop-cap',
+        data: { html: html(element), tone: getStringAttr(element, 'tone') },
+      };
+    case 'Redacted':
+      return {
+        type: 'redacted',
+        data: { html: html(element), revealLabel: getStringAttr(element, 'revealLabel') },
+      };
+    case 'Stamp':
+      return {
+        type: 'stamp',
+        data: {
+          text: getStringAttr(element, 'text') ?? '',
+          angle: getExprAttr(element, 'angle') as number | undefined,
+          tone: getStringAttr(element, 'tone'),
+        },
+      };
+    case 'Banner':
+      return {
+        type: 'banner',
+        data: {
+          text: getStringAttr(element, 'text') ?? '',
+          tone: getStringAttr(element, 'tone'),
+        },
+      };
     case 'Marquee':
       return {
         type: 'marquee',

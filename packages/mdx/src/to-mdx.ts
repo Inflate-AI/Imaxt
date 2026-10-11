@@ -148,6 +148,35 @@ function blockToNode(block: Block): unknown {
         ...(block.data.display ? exprAttr('display', true) : []),
         ...stringAttr('caption', block.data.caption),
       ]);
+    case 'ticker':
+      return jsxElement('Ticker', [
+        ...exprAttr('phrases', block.data.phrases),
+        ...(block.data.seconds !== undefined ? exprAttr('seconds', block.data.seconds) : []),
+        ...stringAttr('tone', block.data.tone),
+      ]);
+    case 'drop-cap':
+      return jsxElement(
+        'DropCap',
+        stringAttr('tone', block.data.tone),
+        htmlChildren(block.data.html),
+      );
+    case 'redacted':
+      return jsxElement(
+        'Redacted',
+        stringAttr('revealLabel', block.data.revealLabel),
+        htmlChildren(block.data.html),
+      );
+    case 'stamp':
+      return jsxElement('Stamp', [
+        ...stringAttr('text', block.data.text),
+        ...(block.data.angle !== undefined ? exprAttr('angle', block.data.angle) : []),
+        ...stringAttr('tone', block.data.tone),
+      ]);
+    case 'banner':
+      return jsxElement('Banner', [
+        ...stringAttr('text', block.data.text),
+        ...stringAttr('tone', block.data.tone),
+      ]);
     case 'marquee':
       return jsxElement('Marquee', [
         ...exprAttr('words', block.data.words),
