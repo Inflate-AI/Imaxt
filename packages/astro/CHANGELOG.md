@@ -1,5 +1,16 @@
 # @inflate-ai/imaxt-astro
 
+## 0.6.0
+
+### Minor Changes
+
+- 16e6a33: Add five new visual/typographic blocks: `Ticker`, `DropCap`, `Redacted`, `Stamp`, and `Banner`. `Redacted` reveals its content via native `<details>`/`<summary>`, requiring no client-side JavaScript. This completes the five-batch v1.0.0 component-library push.
+
+### Patch Changes
+
+- Updated dependencies [16e6a33]
+  - @inflate-ai/imaxt-core@0.6.0
+
 ## 0.5.0
 
 ### Minor Changes
