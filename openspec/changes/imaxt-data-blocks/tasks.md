@@ -1,0 +1,31 @@
+# Tasks
+
+## 1. core: Ranked, Matrix, Delta, Gauge, Scorecard, Sparkline, Funnel
+
+- [x] 1.1 Write failing tests for all seven `render*` functions per the spec
+  scenarios above, then implement until tests pass - verify with
+  `bun test packages/core`
+
+## 2. editorjs: tools for all seven blocks
+
+- [x] 2.1 Write failing tests for all seven EditorJS tools (toolbox entry,
+  live preview matches render engine, save()/validate(), Matrix dimension
+  validation), then implement - verify with `bun test packages/editorjs`
+
+## 3. astro: components for all seven blocks
+
+- [x] 3.1 Add `Ranked`/`Matrix`/`Delta`/`Gauge`/`Scorecard`/`Sparkline`/`Funnel`
+  Astro components, wire into `imaxt` convenience export, extend
+  `test-site` fixture - verify with `bun test packages/astro`
+
+## 4. mdx: compiler mappings for all seven blocks
+
+- [x] 4.1 Add `to-mdx.ts`/`from-mdx.ts` mappings and `Block` union members,
+  extend `SAMPLE_BLOCKS`/`COMPONENT_NAME` in `compiler.test.ts` - verify
+  with `bun test packages/mdx`
+
+## 5. docs + changeset
+
+- [x] 5.1 Add one docs page per block under `docs/blocks/`, update the table
+  in `docs/blocks/README.md`
+- [x] 5.2 Add a minor changeset for all four packages

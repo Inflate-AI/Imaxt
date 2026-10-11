@@ -1,0 +1,7 @@
+---
+import { type GaugeData, renderGauge } from '@inflate-ai/imaxt-core';
+
+interface Props extends GaugeData {}
+---
+
+<Fragment set:html={renderGauge(Astro.props)} />
