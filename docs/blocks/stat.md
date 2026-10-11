@@ -12,7 +12,7 @@ interface StatData {
   label: string;
   unit?: string;            // e.g. "ms"
   note?: string;
-  tone?: string;             // mint | lilac | sky | rose | accent | ink (default: ink)
+  tone?: string;             // mint | lilac | sky | rose | accent | ink | white (default: ink)
 }
 
 interface StatRowData {

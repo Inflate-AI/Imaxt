@@ -2,8 +2,8 @@ import { describe, expect, test } from 'bun:test';
 import { classNames, escapeHtml, prefersReducedMotion, resolveTone, TONES } from './shared.ts';
 
 describe('TONES', () => {
-  test('is exactly the six documented tones', () => {
-    expect(TONES).toEqual(['mint', 'lilac', 'sky', 'rose', 'accent', 'ink']);
+  test('is exactly the seven documented tones', () => {
+    expect(TONES).toEqual(['mint', 'lilac', 'sky', 'rose', 'accent', 'ink', 'white']);
   });
 });
 

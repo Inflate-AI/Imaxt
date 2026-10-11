@@ -8,7 +8,7 @@ italic text gets an expressive italic face.
 ```ts
 interface StatementData {
   html: string;              // rich text: plain text, <strong>, <em>, <br>
-  tone?: string;              // mint | lilac | sky | rose | accent | ink (default: ink)
+  tone?: string;              // mint | lilac | sky | rose | accent | ink | white (default: ink)
   align?: 'left' | 'center';  // default: left
   wide?: boolean;
   bleed?: boolean;

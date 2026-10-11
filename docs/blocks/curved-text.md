@@ -10,7 +10,7 @@ interface CurvedTextData {
   text: string;
   shape?: 'arc' | 'wave' | 'circle'; // default: 'arc'
   mark?: string;                      // a short glyph in the middle of a circle
-  tone?: string;                       // mint | lilac | sky | rose | accent | ink
+  tone?: string;                       // mint | lilac | sky | rose | accent | ink | white
   spin?: boolean;                      // circle only; off under reduced motion
   decorative?: boolean;                // excludes it from the accessibility tree
 }

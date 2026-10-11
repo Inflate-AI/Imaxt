@@ -1,4 +1,4 @@
-export const TONES = ['mint', 'lilac', 'sky', 'rose', 'accent', 'ink'] as const;
+export const TONES = ['mint', 'lilac', 'sky', 'rose', 'accent', 'ink', 'white'] as const;
 
 export type Tone = (typeof TONES)[number];
 

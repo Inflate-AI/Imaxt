@@ -15,7 +15,7 @@ interface BarsData {
   items: BarItem[];
   max?: number;   // the value a full-width bar represents; default: the largest item's value
   unit?: string;   // appended to each printed value, e.g. "%"
-  tone?: string;    // mint | lilac | sky | rose | accent | ink (default: ink)
+  tone?: string;    // mint | lilac | sky | rose | accent | ink | white (default: ink)
 }
 ```
 

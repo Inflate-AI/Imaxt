@@ -8,7 +8,7 @@ A horizontally scrolling band of words, used as a section break. Static
 ```ts
 interface MarqueeData {
   words: string[];
-  tone?: string;    // mint | lilac | sky | rose | accent | ink (default: ink)
+  tone?: string;    // mint | lilac | sky | rose | accent | ink | white (default: ink)
   bleed?: boolean;
   seconds?: number;  // one full loop's duration; default: 34
 }
