@@ -4,6 +4,7 @@
    redeclaring any of these custom properties in its own CSS loaded after this file. */
 @import "@fontsource-variable/fraunces/opsz.css";
 @import "@fontsource-variable/fraunces/opsz-italic.css";
+@import "katex/dist/katex.min.css";
 
 :root {
   --font-fraunces: "Fraunces Variable", "Fraunces", Georgia, "Times New Roman", serif;
@@ -1733,4 +1734,21 @@
 .imx-changelog-i {
   font-family: var(--font-serif);
   line-height: 1.5;
+}
+
+/* ---------- Formula ---------- */
+.imx-formula {
+  margin: 1.4rem 0;
+  padding: 0;
+  text-align: center;
+}
+.imx-formula[data-display="true"] {
+  overflow-x: auto;
+  padding: 10px 0;
+}
+.imx-formula-cap {
+  margin-top: 8px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--muted);
 }

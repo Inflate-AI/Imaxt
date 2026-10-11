@@ -18,6 +18,7 @@ describe('imaxtTools', () => {
         'faq',
         'fileTree',
         'footnote',
+        'formula',
         'funnel',
         'gauge',
         'glossary',

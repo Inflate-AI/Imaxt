@@ -35,6 +35,7 @@ just like any other parent/child composition in MDX or Astro.
 | [FileTree](./file-tree.md) | `file-tree.ts` | `FileTreeTool` | `FileTree` |
 | [ErrorBox](./error-box.md) | `error-box.ts` | `ErrorBoxTool` | `ErrorBox` |
 | [Changelog](./changelog.md) | `changelog.ts` | `ChangelogTool` | `Changelog` |
+| [Formula](./formula.md) | `formula.ts` | `FormulaTool` | `Formula` |
 | [CodeWalk](./code-walk.md) | `code-walk.ts` | `CodeWalkTool` (composite) | `CodeWalk` |
 | [Marquee](./marquee.md) | `marquee.ts` | `MarqueeTool` | `Marquee` |
 | [Heatmap](./heatmap.md) | `heatmap.ts` | `HeatmapTool` | `Heatmap` |

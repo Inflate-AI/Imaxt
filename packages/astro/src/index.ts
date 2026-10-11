@@ -13,6 +13,7 @@ import Event from './Event.astro';
 import Faq from './Faq.astro';
 import FileTree from './FileTree.astro';
 import Footnote from './Footnote.astro';
+import Formula from './Formula.astro';
 import Funnel from './Funnel.astro';
 import Gauge from './Gauge.astro';
 import Glossary from './Glossary.astro';
@@ -71,6 +72,7 @@ export const imaxt = {
   FileTree,
   ErrorBox,
   Changelog,
+  Formula,
   Sidenote,
   CodeWalk,
   Marquee,

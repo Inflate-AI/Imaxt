@@ -56,6 +56,9 @@ describe('every component renders in a real Astro build', () => {
     expect(html).toContain('src/');
     expect(html).toContain('Cannot read property');
     expect(html).toContain('imx-changelog');
+    expect(html).toContain('katex');
+    expect(html).toContain('katex-display');
+    expect(html).toContain('Mass-energy equivalence');
   });
 
   test('composite components render their nested children, in order', () => {
