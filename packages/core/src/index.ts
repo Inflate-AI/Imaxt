@@ -24,6 +24,8 @@ export type { FileTreeData, FileTreeNode } from './file-tree.ts';
 export { renderFileTree } from './file-tree.ts';
 export type { FootnoteData } from './footnote.ts';
 export { renderFootnote } from './footnote.ts';
+export type { FormulaData } from './formula.ts';
+export { renderFormula } from './formula.ts';
 export type { FunnelData, FunnelStage } from './funnel.ts';
 export { renderFunnel } from './funnel.ts';
 export type { GaugeData } from './gauge.ts';

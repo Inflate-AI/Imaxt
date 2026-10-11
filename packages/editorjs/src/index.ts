@@ -11,6 +11,7 @@ import { ErrorBoxTool } from './error-box.ts';
 import { FaqTool } from './faq.ts';
 import { FileTreeTool } from './file-tree.ts';
 import { FootnoteTool } from './footnote.ts';
+import { FormulaTool } from './formula.ts';
 import { FunnelTool } from './funnel.ts';
 import { GaugeTool } from './gauge.ts';
 import { GlossaryTool } from './glossary.ts';
@@ -46,6 +47,7 @@ export {
   FaqTool,
   FileTreeTool,
   FootnoteTool,
+  FormulaTool,
   FunnelTool,
   GaugeTool,
   GlossaryTool,
@@ -88,6 +90,7 @@ export const imaxtTools = {
   faq: FaqTool,
   fileTree: FileTreeTool,
   footnote: FootnoteTool,
+  formula: FormulaTool,
   funnel: FunnelTool,
   gauge: GaugeTool,
   glossary: GlossaryTool,

@@ -117,6 +117,10 @@ const SAMPLE_BLOCKS: Block[] = [
     type: 'changelog',
     data: { entries: [{ version: '0.2.0', date: '2026-10-11', items: ['Added X'] }] },
   },
+  {
+    type: 'formula',
+    data: { tex: 'E=mc^2', display: true, caption: 'Mass-energy equivalence' },
+  },
   { type: 'marquee', data: { words: ['Embed', 'Filter', 'Rank'], tone: 'accent', seconds: 20 } },
   {
     type: 'heatmap',
@@ -226,6 +230,7 @@ const COMPONENT_NAME: Record<Block['type'], string> = {
   'file-tree': 'FileTree',
   'error-box': 'ErrorBox',
   changelog: 'Changelog',
+  formula: 'Formula',
   marquee: 'Marquee',
   heatmap: 'Heatmap',
   'curved-text': 'CurvedText',
