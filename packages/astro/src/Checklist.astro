@@ -1,0 +1,7 @@
+---
+import { type ChecklistData, renderChecklist } from '@inflate-ai/imaxt-core';
+
+interface Props extends ChecklistData {}
+---
+
+<Fragment set:html={renderChecklist(Astro.props)} />

@@ -1,0 +1,7 @@
+---
+import { type GlossaryData, renderGlossary } from '@inflate-ai/imaxt-core';
+
+interface Props extends GlossaryData {}
+---
+
+<Fragment set:html={renderGlossary(Astro.props)} />

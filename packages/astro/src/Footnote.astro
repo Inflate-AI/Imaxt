@@ -1,0 +1,9 @@
+---
+import { type FootnoteData, renderFootnote } from '@inflate-ai/imaxt-core';
+
+interface Props extends Omit<FootnoteData, 'html'> {}
+const { marker } = Astro.props;
+const html = await Astro.slots.render('default');
+---
+
+<Fragment set:html={renderFootnote({ html, marker })} />

@@ -23,6 +23,13 @@ just like any other parent/child composition in MDX or Astro.
 | [Scorecard](./scorecard.md) | `scorecard.ts` | `ScorecardTool` | `Scorecard` |
 | [Sparkline](./sparkline.md) | `sparkline.ts` | `SparklineTool` | `Sparkline` |
 | [Funnel](./funnel.md) | `funnel.ts` | `FunnelTool` | `Funnel` |
+| [Callout](./callout.md) | `callout.ts` | `CalloutTool` | `Callout` |
+| [Faq](./faq.md) | `faq.ts` | `FaqTool` | `Faq` |
+| [Takeaways](./takeaways.md) | `takeaways.ts` | `TakeawaysTool` | `Takeaways` |
+| [Footnote](./footnote.md) | `footnote.ts` | `FootnoteTool` | `Footnote` |
+| [Glossary](./glossary.md) | `glossary.ts` | `GlossaryTool` | `Glossary` |
+| [Versus](./versus.md) | `versus.ts` | `VersusTool` | `Versus` |
+| [Checklist](./checklist.md) | `checklist.ts` | `ChecklistTool` | `Checklist` |
 | [CodeWalk](./code-walk.md) | `code-walk.ts` | `CodeWalkTool` (composite) | `CodeWalk` |
 | [Marquee](./marquee.md) | `marquee.ts` | `MarqueeTool` | `Marquee` |
 | [Heatmap](./heatmap.md) | `heatmap.ts` | `HeatmapTool` | `Heatmap` |
