@@ -34,6 +34,6 @@ describe('ScrollyTool', () => {
   test('renderSettings offers the shared tone picker', () => {
     const tool = new ScrollyTool({ data: { items: [{ stage: 'a', html: 'x' }] } } as never);
     tool.render();
-    expect(tool.renderSettings().querySelectorAll('[data-tone]').length).toBe(6);
+    expect(tool.renderSettings().querySelectorAll('[data-tone]').length).toBe(7);
   });
 });

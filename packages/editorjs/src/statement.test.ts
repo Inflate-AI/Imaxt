@@ -55,6 +55,6 @@ describe('StatementTool', () => {
     const tool = makeTool({ html: 'x' });
     tool.render();
     const settings = tool.renderSettings();
-    expect(settings.querySelectorAll('[data-tone]').length).toBe(6);
+    expect(settings.querySelectorAll('[data-tone]').length).toBe(7);
   });
 });

@@ -2,7 +2,7 @@ import { describe, expect, test } from 'bun:test';
 import { createRepeatableList, createTonePicker, TOOLBOX_ICON } from './shared.ts';
 
 describe('createTonePicker', () => {
-  test('offers exactly the six documented tones', () => {
+  test('offers exactly the seven documented tones', () => {
     const picker = createTonePicker('mint', () => {});
     const buttons = [...picker.querySelectorAll<HTMLButtonElement>('button')];
     expect(buttons.map((b) => b.dataset.tone)).toEqual([
@@ -12,6 +12,7 @@ describe('createTonePicker', () => {
       'rose',
       'accent',
       'ink',
+      'white',
     ]);
   });
 
