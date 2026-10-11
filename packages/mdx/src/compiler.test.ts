@@ -96,6 +96,27 @@ const SAMPLE_BLOCKS: Block[] = [
       title: 'Launch checklist',
     },
   },
+  {
+    type: 'terminal',
+    data: { lines: [{ command: 'npm install' }, { output: 'added 42 packages' }], title: 'Setup' },
+  },
+  { type: 'diff', data: { before: 'const a = 1;', after: 'const a = 2;', lang: 'ts' } },
+  {
+    type: 'file-tree',
+    data: { tree: [{ name: 'src', children: [{ name: 'index.ts' }] }] },
+  },
+  {
+    type: 'error-box',
+    data: {
+      title: 'TypeError',
+      message: 'Cannot read property "x"',
+      stack: '    at foo (file.ts:1:1)',
+    },
+  },
+  {
+    type: 'changelog',
+    data: { entries: [{ version: '0.2.0', date: '2026-10-11', items: ['Added X'] }] },
+  },
   { type: 'marquee', data: { words: ['Embed', 'Filter', 'Rank'], tone: 'accent', seconds: 20 } },
   {
     type: 'heatmap',
@@ -200,6 +221,11 @@ const COMPONENT_NAME: Record<Block['type'], string> = {
   glossary: 'Glossary',
   versus: 'Versus',
   checklist: 'Checklist',
+  terminal: 'Terminal',
+  diff: 'Diff',
+  'file-tree': 'FileTree',
+  'error-box': 'ErrorBox',
+  changelog: 'Changelog',
   marquee: 'Marquee',
   heatmap: 'Heatmap',
   'curved-text': 'CurvedText',

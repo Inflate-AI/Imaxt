@@ -1,13 +1,17 @@
 import Bars from './Bars.astro';
 import Beat from './Beat.astro';
 import Callout from './Callout.astro';
+import Changelog from './Changelog.astro';
 import Checklist from './Checklist.astro';
 import CodeWalk from './CodeWalk.astro';
 import Compare from './Compare.astro';
 import CurvedText from './CurvedText.astro';
 import Delta from './Delta.astro';
+import Diff from './Diff.astro';
+import ErrorBox from './ErrorBox.astro';
 import Event from './Event.astro';
 import Faq from './Faq.astro';
+import FileTree from './FileTree.astro';
 import Footnote from './Footnote.astro';
 import Funnel from './Funnel.astro';
 import Gauge from './Gauge.astro';
@@ -28,6 +32,7 @@ import StatRow from './StatRow.astro';
 import Step from './Step.astro';
 import Steps from './Steps.astro';
 import Takeaways from './Takeaways.astro';
+import Terminal from './Terminal.astro';
 import Timeline from './Timeline.astro';
 import TypeLab from './TypeLab.astro';
 import Versus from './Versus.astro';
@@ -61,6 +66,11 @@ export const imaxt = {
   Glossary,
   Versus,
   Checklist,
+  Terminal,
+  Diff,
+  FileTree,
+  ErrorBox,
+  Changelog,
   Sidenote,
   CodeWalk,
   Marquee,

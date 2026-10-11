@@ -30,6 +30,11 @@ just like any other parent/child composition in MDX or Astro.
 | [Glossary](./glossary.md) | `glossary.ts` | `GlossaryTool` | `Glossary` |
 | [Versus](./versus.md) | `versus.ts` | `VersusTool` | `Versus` |
 | [Checklist](./checklist.md) | `checklist.ts` | `ChecklistTool` | `Checklist` |
+| [Terminal](./terminal.md) | `terminal.ts` | `TerminalTool` | `Terminal` |
+| [Diff](./diff.md) | `diff.ts` | `DiffTool` | `Diff` |
+| [FileTree](./file-tree.md) | `file-tree.ts` | `FileTreeTool` | `FileTree` |
+| [ErrorBox](./error-box.md) | `error-box.ts` | `ErrorBoxTool` | `ErrorBox` |
+| [Changelog](./changelog.md) | `changelog.ts` | `ChangelogTool` | `Changelog` |
 | [CodeWalk](./code-walk.md) | `code-walk.ts` | `CodeWalkTool` (composite) | `CodeWalk` |
 | [Marquee](./marquee.md) | `marquee.ts` | `MarqueeTool` | `Marquee` |
 | [Heatmap](./heatmap.md) | `heatmap.ts` | `HeatmapTool` | `Heatmap` |
