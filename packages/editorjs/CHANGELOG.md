@@ -1,5 +1,16 @@
 # @inflate-ai/imaxt-editorjs
 
+## 0.2.0
+
+### Minor Changes
+
+- 2cc7397: Add seven new data/numbers blocks: `Ranked`, `Matrix`, `Delta`, `Gauge`, `Scorecard`, `Sparkline`, and `Funnel`. Each is available as a render function, an EditorJS tool, an Astro component, and an MDX compiler mapping.
+
+### Patch Changes
+
+- Updated dependencies [2cc7397]
+  - @inflate-ai/imaxt-core@0.2.0
+
 ## 0.1.4
 
 ### Patch Changes
