@@ -29,6 +29,11 @@ const {
   ErrorBox,
   Changelog,
   Formula,
+  Ticker,
+  DropCap,
+  Redacted,
+  Stamp,
+  Banner,
   Marquee,
   Heatmap,
   CurvedText,
@@ -104,6 +109,16 @@ const {
     <Formula tex="E=mc^2" caption="Mass-energy equivalence" />
 
     <Formula tex="\int_0^\infty e^{-x} dx = 1" display />
+
+    <Ticker phrases={['Embed', 'Filter', 'Rank']} />
+
+    <DropCap>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</DropCap>
+
+    <Redacted revealLabel="Reveal the date">The launch date is March 3rd.</Redacted>
+
+    <Stamp text="DRAFT" />
+
+    <Banner text="Launching soon" tone="accent" />
 
     <Marquee words={['Embed', 'Filter', 'Rank']} tone="accent" />
 

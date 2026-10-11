@@ -1,4 +1,5 @@
 import type {
+  BannerData,
   BarsData,
   CalloutData,
   ChangelogData,
@@ -8,6 +9,7 @@ import type {
   CurvedTextData,
   DeltaData,
   DiffData,
+  DropCapData,
   ErrorBoxData,
   FaqData,
   FileTreeData,
@@ -21,15 +23,18 @@ import type {
   MatrixData,
   PullQuoteData,
   RankedData,
+  RedactedData,
   ScorecardData,
   ScrollyData,
   SidenoteData,
   SparklineData,
+  StampData,
   StatementData,
   StatRowData,
   StepsData,
   TakeawaysData,
   TerminalData,
+  TickerData,
   TimelineData,
   TypeLabData,
   VersusData,
@@ -60,6 +65,11 @@ export type Block =
   | { type: 'error-box'; data: ErrorBoxData }
   | { type: 'changelog'; data: ChangelogData }
   | { type: 'formula'; data: FormulaData }
+  | { type: 'ticker'; data: TickerData }
+  | { type: 'drop-cap'; data: DropCapData }
+  | { type: 'redacted'; data: RedactedData }
+  | { type: 'stamp'; data: StampData }
+  | { type: 'banner'; data: BannerData }
   | { type: 'marquee'; data: MarqueeData }
   | { type: 'heatmap'; data: HeatmapData }
   | { type: 'curved-text'; data: CurvedTextData }
