@@ -1,5 +1,11 @@
 # @inflate-ai/imaxt-core
 
+## 0.5.0
+
+### Minor Changes
+
+- 64bce5f: Add a `Formula` block for typeset math via [KaTeX](https://katex.org), rendered with no client-side JavaScript. This adds `katex` as the first new runtime dependency of `packages/core` since the initial release.
+
 ## 0.4.0
 
 ### Minor Changes
