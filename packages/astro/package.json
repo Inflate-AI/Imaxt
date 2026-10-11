@@ -1,6 +1,6 @@
 {
   "name": "@inflate-ai/imaxt-astro",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "description": "Astro components for Imaxt's typographic article blocks.",
   "type": "module",
   "license": "MIT",

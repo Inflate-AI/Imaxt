@@ -1,6 +1,6 @@
 {
   "name": "@inflate-ai/imaxt-editorjs",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "description": "EditorJS block tools for Imaxt's typographic article blocks.",
   "type": "module",
   "license": "MIT",
