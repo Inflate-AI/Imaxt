@@ -17,12 +17,14 @@ compiler that moves content between EditorJS's JSON and plain MDX.
 | [`@inflate-ai/imaxt-editorjs`](./packages/editorjs) | EditorJS Block Tools for every block, for visual article authoring. |
 | [`@inflate-ai/imaxt-mdx`](./packages/mdx) | Bidirectional compiler between EditorJS block JSON and MDX source. |
 | [`@inflate-ai/imaxt-astro`](./packages/astro) | Thin Astro components for sites that author content directly in `.mdx`. |
+| [`@inflate-ai/imaxt-editor`](./packages/editor) | A Medium-style Markdown/MDX editor (built on Lexical) with every Imaxt block as a first-class, insertable block. [Live demo](https://inflate-ai.github.io/Imaxt/). |
 
 ```sh
 bun add @inflate-ai/imaxt-core                           # the render engine
 bun add @inflate-ai/imaxt-editorjs @editorjs/editorjs    # a visual builder
 bun add @inflate-ai/imaxt-mdx                            # EditorJS JSON <-> MDX
 bun add @inflate-ai/imaxt-astro astro                    # an Astro site authoring .mdx
+bun add @inflate-ai/imaxt-editor react react-dom         # a Markdown/MDX editor UI
 ```
 
 See **[docs/getting-started.md](./docs/getting-started.md)** for a working
@@ -30,11 +32,11 @@ example of each.
 
 ## Blocks
 
-40 blocks, every one documented with its data shape and usage from both
+41 blocks, every one documented with its data shape and usage from both
 EditorJS and Astro/MDX in the **[block reference](./docs/blocks/README.md)**:
 
 - **Narrative:** Statement, PullQuote, Sidenote, Callout, Faq, Takeaways,
-  Footnote, Glossary, Versus, Checklist
+  Footnote, Glossary, Versus, Checklist, Embed
 - **Data & numbers:** Bars, Ranked, Matrix, Delta, Gauge, Scorecard,
   Sparkline, Funnel, Stat/StatRow, Heatmap
 - **Technical writing:** CodeWalk, Terminal, Diff, FileTree, ErrorBox,

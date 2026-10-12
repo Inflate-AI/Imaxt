@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+body {
+  font-family: system-ui, sans-serif;
+}
+
+.demo-shell {
+  min-height: 100vh;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.demo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  flex-wrap: wrap;
+}
+.demo-header h1 {
+  margin: 0 0 0.2rem;
+  font-size: 1.4rem;
+}
+.demo-header p {
+  margin: 0;
+  opacity: 0.75;
+  font-size: 0.9rem;
+}
+.demo-controls {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-controls label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  gap: 0.2rem;
+}
+.demo-controls select,
+.demo-controls button {
+  font: inherit;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.demo-main {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.5rem;
+  padding: 0 1.5rem 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .demo-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.demo-editor-pane {
+  min-width: 0;
+}
+.demo-editor {
+  border-radius: 12px;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  overflow: hidden;
+}
+
+.demo-source-pane h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+  margin: 0 0 0.5rem;
+}
+.demo-source {
+  white-space: pre-wrap;
+  font-family: ui-monospace, monospace;
+  font-size: 0.82rem;
+  background: rgba(128, 128, 128, 0.08);
+  border-radius: 10px;
+  padding: 1rem;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.demo-footer {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+.demo-footer a {
+  color: inherit;
+}
