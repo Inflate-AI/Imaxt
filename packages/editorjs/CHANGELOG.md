@@ -1,5 +1,18 @@
 # @inflate-ai/imaxt-editorjs
 
+## 1.1.0
+
+### Minor Changes
+
+- 57dfd57: Add GFM support (tables, task lists, strikethrough, autolinks) to `imaxt-mdx`'s MDX parsing and serialization, and a new `Embed` block (a link card for external URLs, with an optional caption) across `imaxt-core`, `imaxt-editorjs`, `imaxt-astro`, and `imaxt-mdx`'s compiler. Also exports `blockToMdastNode`/`mdastNodeToBlock` from `imaxt-mdx` for converting a single block without a document wrapper.
+
+### Patch Changes
+
+- Updated dependencies [c3e0f67]
+- Updated dependencies [57dfd57]
+- Updated dependencies [f8af798]
+  - @inflate-ai/imaxt-core@1.1.0
+
 ## 1.0.0
 
 ### Major Changes

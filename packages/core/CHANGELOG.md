@@ -1,5 +1,24 @@
 # @inflate-ai/imaxt-core
 
+## 1.1.0
+
+### Minor Changes
+
+- c3e0f67: Production-readiness pass on the editor and its tone system:
+  
+  - `imaxt-core`: preset tones (mint/lilac/sky/rose) now get real dark-mode colors instead of the light pastel swatch with swapped text, which made text unreadable in dark mode on Statement, StatRow, Scorecard, Banner, Marquee, and CurvedText. Dark mode now applies both by OS preference and by an explicit `data-theme="dark"` attribute. Adds `toneAttrs`/`isCustomTone`/`autoOnColor` so any tone field can also take a literal `#rrggbb` custom color with an automatically contrast-safe text color. Delta is visually redesigned (a tone-colored chip with a directional badge) instead of plain unstyled text.
+  - `imaxt-editor`: fixes the slash menu silently dropping multi-word searches ("type lab", "pull quote", ...) and leaving the typed text behind as dead paragraph text. Fixes TypeLab (and Ticker/Scrolly/CodeWalk/StatRow) rendering inert in both the live block preview and Render mode by wiring up their client-side behavior after render, the same way a published page does. Render mode now reuses the exact same classed markup as the Write mode's own contentEditable, so the two are pixel-identical - the only difference is editability. Raw mode is now a full-page view instead of a boxed textarea. `ImaxtEditorTheme` gains `toneMint`/`toneLilac`/`toneSky`/`toneRose`/`onTone` so a consumer's `theme` prop can carry correct per-scheme tone colors. The block editor's tone field is now a swatch picker with a custom-color option instead of a plain preset dropdown.
+- 57dfd57: Add GFM support (tables, task lists, strikethrough, autolinks) to `imaxt-mdx`'s MDX parsing and serialization, and a new `Embed` block (a link card for external URLs, with an optional caption) across `imaxt-core`, `imaxt-editorjs`, `imaxt-astro`, and `imaxt-mdx`'s compiler. Also exports `blockToMdastNode`/`mdastNodeToBlock` from `imaxt-mdx` for converting a single block without a document wrapper.
+- f8af798: Adds a `Mermaid` block (`renderMermaid`/`attachMermaid` in `imaxt-core`, a `<Mermaid>` component in `imaxt-mdx`'s compiler and `imaxt-astro`, reachable from the editor's slash menu under Technical) - a real diagram rendered client-side with the `mermaid` library, themed from Imaxt's own tone tokens so it matches light/dark/custom themes automatically, lazily loaded so it costs nothing until a diagram is actually on the page.
+  
+  Fixes a real, systemic layout bug: Bars, Steps, Timeline, Ranked, Funnel, Sidenote, Callout, PullQuote, and Stat all had their core layout CSS (list-style reset, grid, background, padding) gated behind a `.prose` ancestor class that only Blog's own article wrapper provides - so every one of them rendered with broken or missing spacing inside the editor (both the live block preview and Render mode), which Blog's own layout happened to mask. That gate is removed; the same blocks keep their existing non-`.prose` ancestry.
+  
+  Fixes a real data-loss bug in `imaxt-mdx`'s JS-literal parser used for expression-attribute props (e.g. an array of chart items): it only handled an escaped quote or backslash, silently mangling any other backslash escape sequence (`\n`, `\t`, ...) instead of interpreting it, so a string value containing one of those would round-trip corrupted.
+  
+  Raw mode now grows to fit its content and lets the page scroll, instead of scrolling inside its own fixed-height box like a form input - matching Write and Render mode.
+  
+  The editor demo's sample article is rewritten from a self-referential "look what we built" piece into actual documentation of what Imaxt is, its six block categories, the tone system, and how to use the editor - typeset using Imaxt's own blocks throughout, including the new Mermaid block for a real architecture diagram.
+
 ## 1.0.0
 
 ### Major Changes
