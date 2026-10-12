@@ -1,6 +1,6 @@
 {
   "name": "@inflate-ai/imaxt-core",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Framework-agnostic render engine, design tokens and interactivity for Imaxt's typographic article blocks.",
   "type": "module",
   "license": "MIT",

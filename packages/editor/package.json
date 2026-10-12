@@ -1,6 +1,6 @@
 {
   "name": "@inflate-ai/imaxt-editor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Drafted by Dev-style Markdown/MDX editor, with Imaxt blocks as first-class insertable content.",
   "type": "module",
   "license": "MIT",
