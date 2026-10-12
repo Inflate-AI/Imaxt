@@ -22,6 +22,7 @@ import type {
   HeatmapData,
   MarqueeData,
   MatrixData,
+  MermaidData,
   PullQuoteData,
   RankedData,
   RedactedData,
@@ -73,6 +74,7 @@ export type Block =
   | { type: 'banner'; data: BannerData }
   | { type: 'marquee'; data: MarqueeData }
   | { type: 'heatmap'; data: HeatmapData }
+  | { type: 'mermaid'; data: MermaidData }
   | { type: 'curved-text'; data: CurvedTextData }
   | { type: 'type-lab'; data: TypeLabData }
   | { type: 'stat-row'; data: StatRowData }

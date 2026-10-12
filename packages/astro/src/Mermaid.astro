@@ -1,0 +1,49 @@
+---
+import { type MermaidData, renderMermaid } from '@inflate-ai/imaxt-core';
+
+interface Props extends Omit<MermaidData, 'source'> {
+  /** Optional when a default slot (a fenced ```mermaid code block) is given - its text becomes the diagram source. */
+  source?: string;
+}
+
+// Astro's MDX pipeline hands a fenced code block to us as rendered slot
+// HTML (usually Shiki-highlighted <pre><code>...</code></pre>), not raw
+// text - strip markup and decode the handful of entities a syntax
+// highlighter actually introduces to recover the original diagram source.
+function textFromHtml(html: string): string {
+  const ENTITIES: Record<string, string> = {
+    amp: '&',
+    lt: '<',
+    gt: '>',
+    quot: '"',
+    '#39': "'",
+  };
+  return html
+    .replace(/<[^>]*>/g, '')
+    .replace(/&(amp|lt|gt|quot|#39);/g, (_, name) => ENTITIES[name] ?? _);
+}
+
+const slotHtml = Astro.slots.has('default') ? await Astro.slots.render('default') : undefined;
+const source = Astro.props.source ?? (slotHtml ? textFromHtml(slotHtml) : '');
+const html = renderMermaid({ ...Astro.props, source });
+---
+
+<div class="imx-mermaid-island" data-imx-mermaid set:html={html} />
+<script>
+  import { attachMermaid } from '@inflate-ai/imaxt-core';
+
+  function hydrate() {
+    for (const root of document.querySelectorAll<HTMLElement>('[data-imx-mermaid]')) {
+      if (root.dataset.imxHydrated) continue;
+      root.dataset.imxHydrated = '';
+      attachMermaid(root);
+    }
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) hydrate();
+    }
+  });
+  document.querySelectorAll('[data-imx-mermaid]').forEach((el) => observer.observe(el));
+</script>

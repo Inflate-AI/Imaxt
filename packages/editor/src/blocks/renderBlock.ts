@@ -44,6 +44,7 @@ const RENDERERS: Partial<Record<Block['type'], (data: AnyData) => string>> = {
   scrolly: core.renderScrolly as never,
   'code-walk': core.renderCodeWalk as never,
   embed: core.renderEmbed as never,
+  mermaid: core.renderMermaid as never,
 };
 
 /** Renders one block to HTML for the live preview - the same markup Blog/Prox would produce. */

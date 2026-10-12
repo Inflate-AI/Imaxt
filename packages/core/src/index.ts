@@ -46,6 +46,8 @@ export type { MarqueeData } from './marquee.ts';
 export { renderMarquee } from './marquee.ts';
 export type { MatrixCell, MatrixData } from './matrix.ts';
 export { renderMatrix } from './matrix.ts';
+export type { MermaidData } from './mermaid.ts';
+export { attachMermaid, renderMermaid } from './mermaid.ts';
 export type { PullQuoteData } from './pull-quote.ts';
 export { renderPullQuote } from './pull-quote.ts';
 export type { RankedData, RankedItem } from './ranked.ts';

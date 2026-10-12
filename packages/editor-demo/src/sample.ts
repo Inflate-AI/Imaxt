@@ -1,146 +1,156 @@
-export const SAMPLE_DOCUMENT = `# Why Imaxt
-
-This is a **Drafted by Dev-style** editor whose native format *is* Markdown/MDX.
-Standard Markdown works exactly like you'd expect - [a link](https://github.com/Inflate-AI/Imaxt),
-\`inline code\`, and everything else below - and the same \`/\` menu reaches
-every Imaxt block, inserted on this same document with zero conversion
-step. This article uses one of each to prove it.
+export const SAMPLE_DOCUMENT = `# What Imaxt actually is
 
 <Statement tone="mint" align="center">
-  Most articles reach for a screenshot. Imaxt reaches for **type**.
+  Imaxt is typography that argues **its own case** - numbers, diagrams, and asides rendered as real text, not screenshots.
 </Statement>
 
-## The pitch
+Imaxt is a library of **41 blocks** for Markdown/MDX articles, grouped into six
+categories below. Every one of them renders as real HTML - selectable,
+themeable, readable by a screen reader - styled almost entirely through type
+and color, the same way this sentence is. None of them are images.
 
-<PullQuote by="The Imaxt README">
-  Typographic article blocks - no images, no icons, just type doing the
-  work of figures.
+<PullQuote by="Imaxt's own design note">
+  If a chart can be a sentence instead, make it a sentence.
 </PullQuote>
 
-<Sidenote label="Why it matters">
-  A chart rendered as real text is selectable, themeable, and never goes
-  blurry on a retina display.
+Every block on this page was inserted the same way: press \`/\` on an empty
+line, search, pick a block, fill in its fields. There is one document model
+underneath all of it, so writing a paragraph and inserting a \`<Scorecard>\`
+are not two different modes - they're just the next line.
+
+## The six categories
+
+<Matrix rows={["Typography", "Data & Stats", "Narrative", "Technical", "Visual & Motion", "Media"]} cols={["Blocks", "What it's for"]} cells={[["9", "making a sentence or a term carry more weight"], ["10", "numbers and comparisons as real text"], ["9", "structuring how a reader moves through an argument"], ["7", "writing about code and systems"], ["5", "decorative, display-scale typography"], ["1", "linking out"]]} caption="41 blocks, six jobs" />
+
+### Typography
+
+<Sidenote label="What lives here">
+  Statement, PullQuote, Sidenote, DropCap, Redacted, Stamp, Footnote, Glossary,
+  and Formula. Nine blocks whose only job is making one sentence, one term, or
+  one equation carry more weight than the paragraph around it.
 </Sidenote>
 
 <DropCap tone="accent">
-  Forty-one blocks ship today, covering narrative writing, data, technical
-  documentation, and pure typography - and every one of them is a React
-  component inside this editor, not a screenshot pasted in from somewhere
-  else.
+  Open a section with a DropCap, cite a source with a Footnote, define a term
+  with Glossary, typeset an equation with Formula - each one does a single,
+  small typographic job well, instead of one block trying to do all of them.
 </DropCap>
 
-## The pillars
+### Data & Stats
 
-| Pillar | What it means |
-| --- | --- |
-| Markdown | Headings, lists, tables, checklists, quotes, code, links, images |
-| Imaxt | The same \`/\` menu inserts a typographic block, rendered live |
+Ten blocks turn a number into something you can actually read, not a
+screenshot of a chart:
 
-- [x] Full Markdown editing
-- [x] Imaxt blocks on the same document
-- [ ] Try it yourself - press \`/\` on a new line
+<Bars unit=" blocks" tone="sky" items={[{ label: "Typography", value: 9 }, { label: "Data & Stats", value: 10 }, { label: "Narrative", value: 9 }, { label: "Technical", value: 7 }, { label: "Visual & Motion", value: 5 }, { label: "Media", value: 1 }]} />
 
-## The data side
+<Delta label="A dashboard screenshot, vs." from="one PNG, uneditable" to="one Scorecard, real text" tone="accent" />
 
-<Bars unit="%" tone="accent" items={[{ label: "Lexical bridge", value: 95 }, { label: "Block coverage", value: 100 }, { label: "Theming", value: 90 }]} />
+\`<Scorecard>\`, \`<Gauge>\`, \`<Sparkline>\`, \`<Funnel>\`, \`<Heatmap>\`, \`<StatRow>\`,
+\`<Bars>\`, \`<Ranked>\`, \`<Delta>\`, and \`<Matrix>\` (used twice already on this
+page) all live here.
 
-<Ranked unit="blocks" items={[{ label: "Mechanical, config-driven", value: "34" }, { label: "Custom editing UI", value: "3", delta: "new" }, { label: "Markdown-native", value: "4" }]} />
+### Narrative
 
-<StatRow>
-  <Stat value={41} label="Imaxt blocks" tone="mint" />
-  <Stat value={"0"} unit="conversions" label="to add one to a doc" tone="sky" />
-  <Stat value={"1"} unit="editor" label="for prose and data" tone="lilac" />
-</StatRow>
-
-<Delta label="Time to insert a block" from={"a screenshot tool"} to={"one slash command"} tone="accent" />
-
-<Gauge value={92} max={100} label="Editor completeness" unit="%" tone="mint" />
-
-<Scorecard tone="sky" items={[{ label: "Bridge tests", value: 8, unit: "passing" }, { label: "Block types wired", value: 41 }]} />
-
-<Sparkline values={[12, 18, 14, 22, 30, 28, 35]} label="Weekly commits while building this" />
-
-<Funnel unit="packages" tone="accent" stages={[{ label: "imaxt-core", value: 1 }, { label: "imaxt-mdx", value: 1 }, { label: "imaxt-editor", value: 1 }]} />
-
-<Matrix rows={["Markdown", "Imaxt blocks"]} cols={["Live preview", "Theming", "Slash menu"]} cells={[["yes", "yes", "yes"], ["yes", "yes", "yes"]]} caption="Both pillars, the same guarantees" />
-
-<Heatmap rows={["Prose", "Data", "Technical"]} cols={["Mon", "Tue", "Wed"]} data={[[2, 4, 6], [1, 3, 5], [0, 2, 4]]} min={0} max={6} caption="Where the writing happened this week" />
-
-## Explaining and reassuring
-
-<Callout kind="tip" title="Try the slash menu">
-  Press *slash* on an empty line to insert a heading, a table, an image, or
-  any Imaxt block - everything on this page included.
+<Callout kind="tip" title="Structure, not decoration">
+  Callout, FAQ, Takeaways, Checklist, Versus, Compare, Steps, Timeline, and
+  Scrolly don't decorate a sentence - they structure the article itself: a
+  side-by-side, a sequence, a question a reader actually has.
 </Callout>
 
-<Faq items={[{ q: "Does this replace Markdown?", a: "No - it is Markdown, plus more block types." }, { q: "Can I use it with no Imaxt blocks at all?", a: "Yes - it is a complete plain-Markdown editor on its own." }]} />
+### Technical
 
-<Takeaways title="Key takeaways" items={["One document model for prose and data", "Theming matches the host page automatically", "Images upload in the background, preview instantly"]} />
+Seven blocks for writing about code and systems, including the newest one on
+this page - a real diagram, not a static image export:
 
-<Footnote marker="1">
-  The bridge is tested with real round-trips, not just unit mocks.
-</Footnote>
+<Mermaid caption="How a block gets from a slash command to a published page">
 
-<Glossary items={[{ term: "mdast", definition: "The Markdown AST both the editor and imaxt-mdx share." }, { term: "DecoratorNode", definition: "Lexical's escape hatch for embedding a React component as a block." }]} />
+\`\`\`mermaid
+graph LR
+  A["/ menu"] --> B[Lexical node]
+  B --> C[mdast]
+  C --> D[MDX text]
+  D -->|re-opened| B
+  C -->|Astro/Blog| E[Published HTML]
+\`\`\`
 
-<Versus vsLabel="vs" tone="accent" sides={[{ label: "Screenshot-based editors", html: "Blurry on retina, impossible to theme, unselectable." }, { label: "Imaxt", html: "Real text, real theming, real accessibility." }]} />
+</Mermaid>
 
-<Checklist title="Before publishing" items={[{ text: "Write the body", done: true }, { text: "Insert at least one data block", done: true }, { text: "Proofread", done: false }]} />
+The same six blocks Blog's own build already used - Terminal, Diff, ErrorBox,
+Changelog, CodeWalk, FileTree - plus Mermaid, now wired up the same way every
+other interactive block is: render instantly, then render for real once the
+diagram library loads.
 
-## Technical writing
-
-<Terminal title="Try it locally" lines={[{ prompt: "$", command: "bun add @inflate-ai/imaxt-editor" }, { output: "installed in 1.2s" }]} />
-
-<Diff before="const html = renderX(data);" after="const node = createImaxtBlockNode(block);" lang="tsx" />
-
-<FileTree tree={[{ name: "packages", children: [{ name: "editor", children: [{ name: "src" }] }, { name: "core" }, { name: "mdx" }] }]} />
-
-<ErrorBox title="Before Imaxt" message="Cannot read property 'theme' of undefined" stack="    at renderScreenshot (legacy-tool.js:42)" />
-
-<Changelog entries={[{ version: "0.1.0", date: "2026-10-12", items: ["Lexical<->mdast bridge", "All 41 blocks reachable from the slash menu", "Configurable theme + pluggable image uploads"] }]} />
-
-<Formula tex="\\text{value} = \\text{type} \\times \\text{intent}" caption="The whole thesis, as a formula" />
-
-<CodeWalk steps={[{ lines: "1", title: "Parse", text: "Walk the mdast tree for GFM and Imaxt JSX." }, { lines: "2", title: "Bridge", text: "Map each node onto a Lexical node, one-to-one." }, { lines: "3", title: "Serialize", text: "Walk it back out losslessly." }]}>
+<CodeWalk steps={[{ lines: "1", title: "Parse", text: "Markdown and Imaxt JSX become one mdast tree." }, { lines: "2", title: "Bridge", text: "Each mdast node maps onto a Lexical node, one-to-one." }, { lines: "3", title: "Serialize", text: "It all writes back out to MDX, losslessly." }]}>
 
 \`\`\`ts
 const tree = fromMarkdown(source, PARSE_OPTIONS);
-const lexicalNode = mastNodeToLexical(tree);
+const doc = mdxToBlocks(tree);
 \`\`\`
 
 </CodeWalk>
 
-## Pure typography
+### Visual & Motion
 
-<Ticker tone="accent" phrases={["No images", "No icons", "Just type"]} />
+The smallest, loudest category - five blocks meant for a cover or a section
+break, not a whole article:
 
-<Banner text="Zero screenshots were harmed" tone="rose" />
+<Marquee tone="rose" words={["Ticker", "Banner", "CurvedText", "TypeLab", "Marquee"]} />
 
-<Marquee tone="sky" words={["Markdown", "Imaxt", "One editor"]} />
+#### Why TypeLab exists
 
-<CurvedText text="Imaxt" shape="circle" mark="I" tone="mint" spin />
+Imaxt's whole premise is that typography *is* the interface - no images, no
+icons. That's a claim worth letting a reader check for themselves, not just
+take on faith. TypeLab is a live type specimen: drag a variable font's actual
+weight, width, or optical-size axis, change the size or line-height, and copy
+the resulting CSS straight out. It's most useful in a post that is *about*
+type or a design system - not something every article needs, which is why
+it's filed under Visual & Motion rather than Typography.
 
 <TypeLab sample="Same letters, different voice" family="fraunces" />
 
-<Redacted revealLabel="Reveal the twist">
-  This whole article was written **inside** the editor it's describing.
-</Redacted>
+### Media
 
-<Stamp text="SHIPPED" tone="accent" angle={-8} />
+Just one block - a plain, honest link card for anything that lives
+elsewhere: a video, a talk, a repository.
 
-## Structure
+<Embed url="https://github.com/Inflate-AI/Imaxt" caption="This repository" />
+
+## Tones, not stock photos
+
+Every tone-aware block reads from the same seven presets - \`mint\`, \`lilac\`,
+\`sky\`, \`rose\`, \`accent\`, \`ink\`, \`white\` - or a literal \`#rrggbb\` custom
+color, with a readable text color chosen for you automatically either way.
+In dark mode the pastel presets become deep jewel tones instead of staying
+light with swapped text, so nothing here ever goes illegible:
+
+<StatRow>
+  <Stat value="7" label="preset tones" tone="mint" />
+  <Stat value="1" label="custom color option" tone="lilac" />
+  <Stat value="2" label="themes, handled automatically" tone="sky" />
+</StatRow>
+
+<Banner text="Readable in light or dark, always" tone="rose" />
+
+## Three ways to see your draft
 
 <Compare>
 
-  <Side kind="before" label="Before">
-    A design tool, a screenshot, a paste.
+  <Side kind="before" label="Write">
+    The block-based editor you're looking at right now - live previews,
+    inline forms, drag to reorder.
   </Side>
 
-  <Side label="After">
-    One slash command, rendered live, themed automatically.
+  <Side label="Render">
+    The exact HTML a published page would show. Same classes, same CSS as
+    Write mode - the only difference is nothing here is editable.
   </Side>
 
 </Compare>
+
+Raw mode is the third: the same document as plain MDX text, free-scrolling
+like the other two modes instead of boxed into a fixed-height input.
+
+## Getting a block onto the page
 
 <Steps>
 
@@ -148,31 +158,17 @@ const lexicalNode = mastNodeToLexical(tree);
     Open the insert menu on any empty line.
   </Step>
 
-  <Step title="Pick a block">
-    Search across Markdown and all 41 Imaxt blocks.
+  <Step title="Search or browse">
+    All 41 blocks are grouped by category and visible from the start - search
+    narrows by block name or by category, like "data" or "narrative".
   </Step>
 
-  <Step title="Edit inline">
-    Fill in the generated form - the preview updates live.
+  <Step title="Fill in the form">
+    Each block gets a small, generated form. The live preview updates as you
+    type.
   </Step>
 
 </Steps>
-
-<Timeline>
-
-  <Event date="Phase 1" title="Foundation">
-    GFM support and an Embed block landed in imaxt-mdx.
-  </Event>
-
-  <Event date="Phase 2" title="Core editor">
-    The Lexical bridge and Drafted by Dev-style UX came together.
-  </Event>
-
-  <Event date="Phase 5" title="This demo">
-    Deployed to GitHub Pages, writing its own launch article.
-  </Event>
-
-</Timeline>
 
 <Scrolly tone="lilac">
 
@@ -190,9 +186,13 @@ const lexicalNode = mastNodeToLexical(tree);
 
 </Scrolly>
 
-## Linking out
+## Questions people actually ask
 
-<Embed url="https://github.com/Inflate-AI/Imaxt" caption="The source for everything on this page" />
+<Faq items={[{ q: "Can I write plain Markdown with zero Imaxt blocks?", a: "Yes - Imaxt is a complete plain-Markdown editor on its own. Every block here is optional." }, { q: "What happens to a block a host site doesn't render yet?", a: "It stays in the MDX as a normal component tag - nothing is lost, it just won't render visually until that site adds the matching component." }, { q: "Do tones really adapt to dark mode on their own?", a: "Yes - the color values are CSS custom properties, redeclared for dark mode once, not per block." }]} />
+
+<Checklist title="Before you start writing" items={[{ text: "Try the Raw/Write/Render switch above", done: false }, { text: "Insert one Data & Stats block", done: false }, { text: "Insert one Narrative block", done: false }]} />
+
+<Takeaways title="The short version" items={["One document model for prose and data - no separate preview step", "41 blocks across six categories, all reachable from \`/\`", "Tones - preset or custom - stay readable automatically, in any theme"]} />
 
 <Callout kind="tip" title="Your turn">
   Press *slash* anywhere below this line and start writing.

@@ -23,6 +23,7 @@ import Glossary from './Glossary.astro';
 import Heatmap from './Heatmap.astro';
 import Marquee from './Marquee.astro';
 import Matrix from './Matrix.astro';
+import Mermaid from './Mermaid.astro';
 import PullQuote from './PullQuote.astro';
 import Ranked from './Ranked.astro';
 import Redacted from './Redacted.astro';
@@ -93,4 +94,5 @@ export const imaxt = {
   Beat,
   TypeLab,
   Embed,
+  Mermaid,
 };
