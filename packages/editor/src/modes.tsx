@@ -41,10 +41,25 @@ export function ModeSwitcher({
 export function RawMode(): JSX.Element {
   const [editor] = useLexicalComposerContext();
   const [text, setText] = useState(() => serializeEditorToDocument(editor));
+  const ref = useRef<HTMLTextAreaElement>(null);
+
+  // A <textarea> scrolls internally once its content outgrows its box,
+  // unlike Write/Render mode's content, which just extends the page -
+  // feeling like a cramped input field instead of a page of text. Growing
+  // the element to fit its content (and letting the page scroll instead)
+  // matches the other two modes.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: re-measure whenever text (and so scrollHeight) changes, not read directly in the body
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.height = '0px';
+    el.style.height = `${el.scrollHeight}px`;
+  }, [text]);
 
   return (
     <div className="imx-ed-raw">
       <textarea
+        ref={ref}
         className="imx-ed-raw-textarea"
         value={text}
         onChange={(e) => setText(e.target.value)}

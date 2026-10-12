@@ -41,6 +41,15 @@ describe('parseJsLiteral', () => {
     ]);
   });
 
+  test('parses a backtick-quoted template literal, including raw newlines', () => {
+    expect(parseJsLiteral('`graph TD;\n  A-->B;`')).toBe('graph TD;\n  A-->B;');
+  });
+
+  test('interprets standard escape sequences (not just stripping the backslash)', () => {
+    expect(parseJsLiteral('"a\\nb\\tc"')).toBe('a\nb\tc');
+    expect(parseJsLiteral('"a\\\\b"')).toBe('a\\b');
+  });
+
   test('throws on expressions outside the supported literal grammar', () => {
     expect(() => parseJsLiteral('someVariable')).toThrow();
     expect(() => parseJsLiteral('1 + 1')).toThrow();
@@ -72,5 +81,13 @@ describe('stringifyJsLiteral', () => {
   test('uses double-quoted strings and unquoted identifier keys', () => {
     expect(stringifyJsLiteral('hi')).toBe('"hi"');
     expect(stringifyJsLiteral({ label: 'a' })).toBe('{ label: "a" }');
+  });
+
+  test('round-trips a multi-line string correctly (as a single \\n-escaped line, not a literal line break)', () => {
+    const value = 'graph TD;\n  A-->B;';
+    const out = stringifyJsLiteral(value);
+    expect(out).toBe('"graph TD;\\n  A-->B;"');
+    expect(out.includes('\n')).toBe(false);
+    expect(parseJsLiteral(out)).toBe(value);
   });
 });

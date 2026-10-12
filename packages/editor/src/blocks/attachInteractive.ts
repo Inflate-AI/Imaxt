@@ -7,6 +7,7 @@
 // `attachTypeLab` sets `data-ready`, so they look broken rather than static).
 import {
   attachCodeWalk,
+  attachMermaid,
   attachScrolly,
   attachStatCountUp,
   attachTicker,
@@ -22,6 +23,7 @@ const ATTACHERS: Partial<Record<Block['type'], Attacher>> = {
   scrolly: attachScrolly,
   'code-walk': attachCodeWalk,
   'stat-row': attachStatCountUp,
+  mermaid: attachMermaid,
 };
 
 const ALL_ATTACHERS: Attacher[] = [
@@ -30,6 +32,7 @@ const ALL_ATTACHERS: Attacher[] = [
   attachScrolly,
   attachCodeWalk,
   attachStatCountUp,
+  attachMermaid,
 ];
 
 /** Wires up one freshly-rendered block's interactive behavior, if its type needs any. */

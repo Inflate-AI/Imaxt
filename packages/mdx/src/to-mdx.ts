@@ -281,6 +281,15 @@ export function blockToMdastNode(block: Block): unknown {
       return jsxElement('CodeWalk', exprAttr('steps', block.data.steps), [
         { type: 'code', lang: null, value: block.data.code },
       ]);
+    case 'mermaid':
+      // A child code fence, not a `source` prop: a multi-line expression
+      // attribute value breaks flow-separation from sibling blocks when
+      // serialized into a full document (verified by the round-trip test
+      // below) - a child node doesn't have that problem, same as CodeWalk's
+      // `code` field.
+      return jsxElement('Mermaid', stringAttr('caption', block.data.caption), [
+        { type: 'code', lang: 'mermaid', value: block.data.source },
+      ]);
     case 'markdown':
       return parseMarkdownFragment(block.source);
   }

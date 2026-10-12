@@ -145,6 +145,10 @@ const SAMPLE_BLOCKS: Block[] = [
     },
   },
   {
+    type: 'mermaid',
+    data: { source: 'graph TD;\n  A[Start] --> B[Finish];', caption: 'A trivial flow' },
+  },
+  {
     type: 'curved-text',
     data: {
       text: 'Drafted',
@@ -247,6 +251,7 @@ const COMPONENT_NAME: Record<Block['type'], string> = {
   banner: 'Banner',
   marquee: 'Marquee',
   heatmap: 'Heatmap',
+  mermaid: 'Mermaid',
   'curved-text': 'CurvedText',
   'type-lab': 'TypeLab',
   'stat-row': 'StatRow',

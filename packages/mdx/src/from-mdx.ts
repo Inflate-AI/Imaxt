@@ -365,6 +365,16 @@ function elementToBlock(element: MdxJsxElement): Block | null {
         data: { code: codeNode?.value ?? '', steps: getExprAttr(element, 'steps') as never },
       };
     }
+    case 'Mermaid': {
+      const codeNode = element.children.find(
+        (child): child is { type: 'code'; value: string } =>
+          (child as { type?: string }).type === 'code',
+      );
+      return {
+        type: 'mermaid',
+        data: { source: codeNode?.value ?? '', caption: getStringAttr(element, 'caption') },
+      };
+    }
     default:
       return null;
   }

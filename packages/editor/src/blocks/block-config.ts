@@ -538,6 +538,15 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
       { name: 'caption', label: 'Caption', kind: 'text' },
     ],
   },
+  mermaid: {
+    type: 'mermaid',
+    title: 'Mermaid',
+    category: 'Technical',
+    fields: [
+      { name: 'source', label: 'Diagram (Mermaid syntax)', kind: 'textarea' },
+      { name: 'caption', label: 'Caption', kind: 'text' },
+    ],
+  },
 };
 
 /** Block types with real custom editing logic, handled by their own component instead of this table - see ImaxtBlockEditor.tsx and SlashMenuPlugin.tsx. */

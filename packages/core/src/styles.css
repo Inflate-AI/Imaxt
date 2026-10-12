@@ -87,7 +87,7 @@
 .imx {
   container-type: inline-size;
 }
-.prose .imx {
+.imx {
   margin-block: 2.4rem;
 }
 .imx,
@@ -148,8 +148,8 @@
   font-size: 12px;
   line-height: 1.3;
 }
-.prose .imx,
-.prose .imx-side {
+.imx,
+.imx-side {
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.5;
@@ -246,18 +246,18 @@
   font-size: 12px;
   opacity: 0.9;
 }
-.prose > .imx-stat {
+.imx-stat {
   max-width: 320px;
 }
 
 /* ---------- PullQuote ---------- */
-.prose .imx-quote {
+.imx-quote {
   border: 0;
   padding: 0;
   font-style: normal;
   position: relative;
 }
-.prose blockquote.imx-quote-t {
+blockquote.imx-quote-t {
   border: 0;
   padding: 0;
   margin: 0;
@@ -341,8 +341,8 @@
 }
 
 /* ---------- Steps & Timeline ---------- */
-.prose ol.imx-steps,
-.prose ol.imx-timeline {
+ol.imx-steps,
+ol.imx-timeline {
   list-style: none;
   padding-left: 0;
   position: relative;
@@ -459,7 +459,7 @@
 }
 
 /* ---------- Bars ---------- */
-.prose ul.imx-bars {
+ul.imx-bars {
   list-style: none;
   padding-left: 0;
   display: grid;
@@ -513,7 +513,7 @@
 }
 
 /* ---------- Sidenote ---------- */
-.prose aside.imx-note {
+aside.imx-note {
   margin-block: 1.8rem;
   padding: 14px 18px;
   border-left: 4px solid var(--accent);
@@ -1139,7 +1139,7 @@
 }
 
 /* ---------- Ranked ---------- */
-.prose ol.imx-ranked {
+ol.imx-ranked {
   list-style: none;
   padding-left: 0;
   display: grid;
@@ -1381,7 +1381,7 @@
 }
 
 /* ---------- Funnel ---------- */
-.prose ol.imx-funnel {
+ol.imx-funnel {
   list-style: none;
   padding-left: 0;
   display: grid;
@@ -1429,7 +1429,7 @@
 }
 
 /* ---------- Callout ---------- */
-.prose aside.imx-callout {
+aside.imx-callout {
   margin-block: 1.8rem;
   padding: 16px 20px;
   border-left: 4px solid var(--line);
@@ -1925,4 +1925,38 @@
   letter-spacing: -0.02em;
   text-align: center;
   overflow-wrap: anywhere;
+}
+
+/* ---------- Mermaid ---------- */
+.imx-mermaid {
+  margin: 1.4rem 0;
+  padding: 0;
+  text-align: center;
+}
+.imx-mermaid-canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  overflow-x: auto;
+}
+.imx-mermaid-canvas svg {
+  max-width: 100%;
+  height: auto;
+}
+.imx-mermaid-loading,
+.imx-mermaid-error {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--muted);
+}
+.imx-mermaid-cap {
+  margin-top: 8px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--muted);
 }

@@ -99,6 +99,8 @@ export function createDefaultBlock(type: Block['type']): Block {
       return { type, data: { code: 'const id = 1;', steps: [{ lines: '1', title: 'id' }] } };
     case 'embed':
       return { type, data: { url: 'https://example.com' } };
+    case 'mermaid':
+      return { type, data: { source: 'graph TD;\n  A[Start] --> B[Finish];' } };
     case 'markdown':
       return { type, source: '' };
   }

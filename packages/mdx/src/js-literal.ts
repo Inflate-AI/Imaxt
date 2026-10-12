@@ -52,16 +52,37 @@ class Reader {
   }
 }
 
+const ESCAPES: Record<string, string> = {
+  n: '\n',
+  t: '\t',
+  r: '\r',
+  b: '\b',
+  f: '\f',
+  v: '\v',
+  '0': '\0',
+};
+
 function parseString(reader: Reader): string {
   const quote = reader.next();
-  if (quote !== '"' && quote !== "'") throw new Error('Expected a string literal');
+  if (quote !== '"' && quote !== "'" && quote !== '`') {
+    throw new Error('Expected a string literal');
+  }
   let out = '';
   for (;;) {
     const char = reader.nextRaw();
     if (char === '') throw new Error('Unterminated string literal');
     if (char === quote) break;
     if (char === '\\') {
-      out += reader.nextRaw();
+      const next = reader.nextRaw();
+      if (next === 'u') {
+        const hex = reader.nextRaw() + reader.nextRaw() + reader.nextRaw() + reader.nextRaw();
+        out += String.fromCharCode(Number.parseInt(hex, 16));
+      } else {
+        // Unrecognized escapes (e.g. \" \\ \` \$) fall through to the
+        // character itself, matching how JS treats a backslash before any
+        // character without its own meaning.
+        out += ESCAPES[next] ?? next;
+      }
     } else {
       out += char;
     }
@@ -115,7 +136,7 @@ function parseObject(reader: Reader): Record<string, unknown> {
 
 function parseValue(reader: Reader): unknown {
   const char = reader.peek();
-  if (char === '"' || char === "'") return parseString(reader);
+  if (char === '"' || char === "'" || char === '`') return parseString(reader);
   if (char === '[') return parseArray(reader);
   if (char === '{') return parseObject(reader);
   if (char === '-' || (char >= '0' && char <= '9')) return parseNumber(reader);
@@ -137,6 +158,13 @@ function isIdentifier(key: string): boolean {
 export function stringifyJsLiteral(value: unknown): string {
   if (value === null) return 'null';
   if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+  // Always a single JSON-escaped line, even for a multi-line string: a
+  // multi-line *expression attribute value* breaks flow-separation from
+  // sibling blocks when serialized into a full document (verified by
+  // to-mdx.ts's own round-trip test), so nothing here should emit one. A
+  // block whose data is inherently multi-line (Mermaid's diagram source,
+  // CodeWalk's code) is written as a child code fence instead, never
+  // through this path - see blockToMdastNode.
   if (typeof value === 'string') return JSON.stringify(value);
   if (Array.isArray(value)) return `[${value.map(stringifyJsLiteral).join(', ')}]`;
   if (typeof value === 'object') {
