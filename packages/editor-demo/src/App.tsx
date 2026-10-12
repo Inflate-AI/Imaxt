@@ -8,7 +8,6 @@ import { THEME_PRESETS, type ThemePresetKey } from './themes.ts';
 export function App() {
   const [presetKey, setPresetKey] = useState<ThemePresetKey>('blog');
   const [colorScheme, setColorScheme] = useState<'light' | 'dark'>('light');
-  const [markdown, setMarkdown] = useState(SAMPLE_DOCUMENT);
   const [resetNonce, setResetNonce] = useState(0);
 
   const preset = THEME_PRESETS[presetKey];
@@ -62,10 +61,7 @@ export function App() {
           <button
             type="button"
             className="demo-btn demo-btn-accent"
-            onClick={() => {
-              setMarkdown(SAMPLE_DOCUMENT);
-              setResetNonce((n) => n + 1);
-            }}
+            onClick={() => setResetNonce((n) => n + 1)}
           >
             Reset content
           </button>
@@ -76,16 +72,11 @@ export function App() {
         <section className="demo-editor-pane">
           <ImaxtEditor
             key={resetNonce}
-            initialValue={markdown}
-            onChange={setMarkdown}
+            initialValue={SAMPLE_DOCUMENT}
             theme={theme}
             colorScheme={colorScheme}
             className="demo-editor"
           />
-        </section>
-        <section className="demo-source-pane">
-          <h2>Markdown/MDX source</h2>
-          <pre className="demo-source">{markdown}</pre>
         </section>
       </main>
 
