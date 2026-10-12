@@ -9,6 +9,12 @@ import { renderBlockPreview } from './renderBlock.ts';
 
 type AnyData = Record<string, unknown>;
 
+const CUSTOM_BLOCK_TITLES: Record<string, string> = {
+  matrix: 'Matrix',
+  heatmap: 'Heatmap',
+  'file-tree': 'FileTree',
+};
+
 export function ImaxtBlockEditor({
   block,
   onChange,
@@ -29,7 +35,9 @@ export function ImaxtBlockEditor({
   return (
     <div className="imx-ed-imaxt-block" data-editing={editing}>
       <div className="imx-ed-block-toolbar">
-        <span className="imx-ed-block-label">{config?.title ?? block.type}</span>
+        <span className="imx-ed-block-label">
+          {config?.title ?? CUSTOM_BLOCK_TITLES[block.type] ?? block.type}
+        </span>
         <button type="button" onClick={() => setEditing((v) => !v)}>
           {editing ? 'Done' : 'Edit'}
         </button>

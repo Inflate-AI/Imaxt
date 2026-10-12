@@ -1,7 +1,7 @@
 import '@inflate-ai/imaxt-core/styles.css';
 import '@inflate-ai/imaxt-editor/styles.css';
 import { ImaxtEditor } from '@inflate-ai/imaxt-editor';
-import { useMemo, useState } from 'react';
+import { type CSSProperties, useMemo, useState } from 'react';
 import { SAMPLE_DOCUMENT } from './sample.ts';
 import { THEME_PRESETS, type ThemePresetKey } from './themes.ts';
 
@@ -14,18 +14,33 @@ export function App() {
   const preset = THEME_PRESETS[presetKey];
   const theme = colorScheme === 'dark' ? preset.dark : preset.light;
 
-  const bodyBg = useMemo(() => theme.paper, [theme]);
+  const shellStyle = useMemo<CSSProperties>(
+    () =>
+      ({
+        background: theme.paper,
+        color: theme.text,
+        '--demo-card': theme.card,
+        '--demo-line': theme.line,
+        '--demo-hair': theme.hair,
+        '--demo-muted': theme.muted,
+        '--demo-accent': theme.accent,
+        '--demo-on-accent': theme.onAccent,
+        '--demo-font-sans': theme.fontSans,
+        '--demo-font-display': theme.fontDisplay,
+      }) as CSSProperties,
+    [theme],
+  );
 
   return (
-    <div className="demo-shell" style={{ background: bodyBg, color: theme.text }}>
+    <div className="demo-shell" style={shellStyle}>
       <header className="demo-header">
-        <div>
+        <div className="demo-title">
           <h1>Imaxt Editor</h1>
           <p>A Medium-style Markdown/MDX editor with Imaxt blocks as first-class content.</p>
         </div>
         <div className="demo-controls">
-          <label>
-            Theme
+          <label className="demo-theme-select">
+            <span>Theme</span>
             <select
               value={presetKey}
               onChange={(e) => setPresetKey(e.target.value as ThemePresetKey)}
@@ -39,12 +54,14 @@ export function App() {
           </label>
           <button
             type="button"
+            className="demo-btn"
             onClick={() => setColorScheme((s) => (s === 'light' ? 'dark' : 'light'))}
           >
             {colorScheme === 'light' ? '🌙 Dark' : '☀️ Light'}
           </button>
           <button
             type="button"
+            className="demo-btn demo-btn-accent"
             onClick={() => {
               setMarkdown(SAMPLE_DOCUMENT);
               setResetNonce((n) => n + 1);
