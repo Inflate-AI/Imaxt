@@ -1,0 +1,58 @@
+name: Deploy editor demo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/editor/**'
+      - 'packages/editor-demo/**'
+      - 'packages/core/**'
+      - 'packages/mdx/**'
+      - '.github/workflows/deploy-demo.yml'
+  workflow_dispatch: {}
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Build imaxt-core
+        run: bun run build
+        working-directory: packages/core
+      - name: Build imaxt-mdx
+        run: bun run build
+        working-directory: packages/mdx
+      - name: Build imaxt-editor
+        run: bun run build
+        working-directory: packages/editor
+      - name: Build demo site
+        run: bun run build
+        working-directory: packages/editor-demo
+        env:
+          GITHUB_PAGES: 'true'
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: packages/editor-demo/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

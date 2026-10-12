@@ -67,6 +67,10 @@ describe('every component renders in a real Astro build', () => {
     expect(html).toContain('The launch date is March 3rd.');
     expect(html).toContain('DRAFT');
     expect(html).toContain('Launching soon');
+    expect(html).toContain('imx-embed-link');
+    expect(html).toContain('href="https://example.com/talk"');
+    expect(html).toContain('Watch the full talk');
+    expect(html).not.toContain('<iframe');
   });
 
   test('composite components render their nested children, in order', () => {

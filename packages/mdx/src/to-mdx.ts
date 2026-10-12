@@ -1,7 +1,9 @@
 import { fromMarkdown } from 'mdast-util-from-markdown';
 import { frontmatterToMarkdown } from 'mdast-util-frontmatter';
+import { gfmFromMarkdown, gfmToMarkdown } from 'mdast-util-gfm';
 import { mdxFromMarkdown, mdxToMarkdown } from 'mdast-util-mdx';
 import { toMarkdown } from 'mdast-util-to-markdown';
+import { gfm } from 'micromark-extension-gfm';
 import { mdxjs } from 'micromark-extension-mdxjs';
 import { stringify as stringifyYaml } from 'yaml';
 import type { Block, ImaxtDocument } from './blocks.ts';
@@ -12,7 +14,8 @@ function htmlChildren(html: string): unknown[] {
   return paragraphChildren(htmlToPhrasing(html));
 }
 
-function blockToNode(block: Block): unknown {
+/** Converts one `Block` to its mdast/MDX-JSX node, independent of a whole document. */
+export function blockToMdastNode(block: Block): unknown {
   switch (block.type) {
     case 'statement':
       return jsxElement(
@@ -177,6 +180,11 @@ function blockToNode(block: Block): unknown {
         ...stringAttr('text', block.data.text),
         ...stringAttr('tone', block.data.tone),
       ]);
+    case 'embed':
+      return jsxElement('Embed', [
+        ...stringAttr('url', block.data.url),
+        ...stringAttr('caption', block.data.caption),
+      ]);
     case 'marquee':
       return jsxElement('Marquee', [
         ...exprAttr('words', block.data.words),
@@ -280,8 +288,8 @@ function blockToNode(block: Block): unknown {
 
 function parseMarkdownFragment(source: string): unknown[] {
   const tree = fromMarkdown(source, {
-    extensions: [mdxjs()],
-    mdastExtensions: [mdxFromMarkdown()],
+    extensions: [mdxjs(), gfm()],
+    mdastExtensions: [mdxFromMarkdown(), gfmFromMarkdown()],
   });
   return tree.children;
 }
@@ -293,14 +301,14 @@ export function blocksToMdx(doc: ImaxtDocument): string {
     children.push({ type: 'yaml', value: stringifyYaml(doc.frontmatter).trimEnd() });
   }
   for (const block of doc.blocks) {
-    const node = blockToNode(block);
+    const node = blockToMdastNode(block);
     if (Array.isArray(node)) children.push(...node);
     else children.push(node);
   }
   return toMarkdown(
     { type: 'root', children } as never,
     {
-      extensions: [mdxToMarkdown(), frontmatterToMarkdown(['yaml'])],
+      extensions: [mdxToMarkdown(), frontmatterToMarkdown(['yaml']), gfmToMarkdown()],
     } as never,
   );
 }

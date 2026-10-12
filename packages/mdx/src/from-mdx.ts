@@ -1,8 +1,10 @@
 import { fromMarkdown } from 'mdast-util-from-markdown';
 import { frontmatterFromMarkdown, frontmatterToMarkdown } from 'mdast-util-frontmatter';
+import { gfmFromMarkdown, gfmToMarkdown } from 'mdast-util-gfm';
 import { mdxFromMarkdown, mdxToMarkdown } from 'mdast-util-mdx';
 import { toMarkdown } from 'mdast-util-to-markdown';
 import { frontmatter } from 'micromark-extension-frontmatter';
+import { gfm } from 'micromark-extension-gfm';
 import { mdxjs } from 'micromark-extension-mdxjs';
 import { parse as parseYaml } from 'yaml';
 import type { Block, ImaxtDocument } from './blocks.ts';
@@ -245,6 +247,14 @@ function elementToBlock(element: MdxJsxElement): Block | null {
           tone: getStringAttr(element, 'tone'),
         },
       };
+    case 'Embed':
+      return {
+        type: 'embed',
+        data: {
+          url: getStringAttr(element, 'url') ?? '',
+          caption: getStringAttr(element, 'caption'),
+        },
+      };
     case 'Marquee':
       return {
         type: 'marquee',
@@ -361,9 +371,20 @@ function elementToBlock(element: MdxJsxElement): Block | null {
 }
 
 const PARSE_OPTIONS = {
-  extensions: [mdxjs(), frontmatter(['yaml'])],
-  mdastExtensions: [mdxFromMarkdown(), frontmatterFromMarkdown(['yaml'])],
+  extensions: [mdxjs(), frontmatter(['yaml']), gfm()],
+  mdastExtensions: [mdxFromMarkdown(), frontmatterFromMarkdown(['yaml']), gfmFromMarkdown()],
 };
+
+/**
+ * Converts one mdast node to its `Block`, independent of a whole document. Returns `null` for a
+ * node that isn't a recognized Imaxt component (the whole-document path falls back to the
+ * `markdown` passthrough in that case, which needs the surrounding nodes this function doesn't
+ * have).
+ */
+export function mdastNodeToBlock(node: unknown): Block | null {
+  const unwrapped = unwrapSoleJsxChild(node);
+  return isMdxJsxElement(unwrapped) ? elementToBlock(unwrapped) : null;
+}
 
 function unwrapSoleJsxChild(node: unknown): unknown {
   const paragraph = node as { type?: string; children?: unknown[] };
@@ -377,7 +398,7 @@ function stringifyFragment(nodes: unknown[]): string {
   return toMarkdown(
     { type: 'root', children: nodes } as never,
     {
-      extensions: [mdxToMarkdown(), frontmatterToMarkdown(['yaml'])],
+      extensions: [mdxToMarkdown(), frontmatterToMarkdown(['yaml']), gfmToMarkdown()],
     } as never,
   ).trimEnd();
 }

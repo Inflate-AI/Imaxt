@@ -1,0 +1,82 @@
+{
+  "name": "@inflate-ai/imaxt-editor",
+  "version": "0.1.0",
+  "description": "A Medium-style Markdown/MDX editor, with Imaxt blocks as first-class insertable content.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Inflate AI",
+  "homepage": "https://github.com/Inflate-AI/Imaxt/tree/main/packages/editor#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Inflate-AI/Imaxt.git",
+    "directory": "packages/editor"
+  },
+  "bugs": "https://github.com/Inflate-AI/Imaxt/issues",
+  "keywords": [
+    "imaxt",
+    "editor",
+    "lexical",
+    "markdown",
+    "mdx"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rm -rf dist && bun build ./src/index.ts --outdir dist --target browser --format esm --sourcemap=external --packages=external && tsc -p tsconfig.build.json --emitDeclarationOnly --declaration --declarationMap --outDir dist && cp src/theme/editor.css dist/styles.css",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@inflate-ai/imaxt-core": "workspace:*",
+    "@inflate-ai/imaxt-mdx": "workspace:*",
+    "@lexical/code": "0.52.0",
+    "@lexical/link": "0.52.0",
+    "@lexical/list": "0.52.0",
+    "@lexical/react": "0.52.0",
+    "@lexical/rich-text": "0.52.0",
+    "@lexical/selection": "0.52.0",
+    "@lexical/table": "0.52.0",
+    "@lexical/utils": "0.52.0",
+    "lexical": "0.52.0",
+    "mdast-util-from-markdown": "2.1.0",
+    "mdast-util-gfm": "3.1.0",
+    "mdast-util-mdx": "3.0.0",
+    "mdast-util-to-markdown": "2.2.0",
+    "micromark-extension-gfm": "3.0.0",
+    "micromark-extension-mdxjs": "3.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@lexical/headless": "0.52.0",
+    "@types/mdast": "4.0.4",
+    "@types/node": "26.6.5",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@types/unist": "3.0.3",
+    "bun-types": "1.4.3",
+    "happy-dom": "20.14.6",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "typescript": "7.0.2"
+  }
+}

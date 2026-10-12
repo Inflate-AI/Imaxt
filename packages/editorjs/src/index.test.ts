@@ -16,6 +16,7 @@ describe('imaxtTools', () => {
         'delta',
         'diff',
         'dropCap',
+        'embed',
         'errorBox',
         'faq',
         'fileTree',
