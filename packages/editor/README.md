@@ -1,6 +1,6 @@
 # @inflate-ai/imaxt-editor
 
-A Medium-style Markdown/MDX editor built on [Lexical](https://lexical.dev),
+A Drafted by Dev-style Markdown/MDX editor built on [Lexical](https://lexical.dev),
 whose native document model **is** Markdown/MDX - full standard Markdown
 (headings, lists, tables, checklists, quotes, code, links, images) as a
 first-class, standalone capability, with Imaxt's typographic blocks

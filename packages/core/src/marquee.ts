@@ -1,4 +1,4 @@
-import { classNames, escapeHtml, resolveTone } from './shared.ts';
+import { classNames, escapeHtml, toneAttrs } from './shared.ts';
 
 export interface MarqueeData {
   words: string[];
@@ -8,7 +8,6 @@ export interface MarqueeData {
 }
 
 export function renderMarquee(data: MarqueeData): string {
-  const tone = resolveTone(data.tone);
   const seconds = data.seconds ?? 34;
   // Each set must be wider than the screen so the loop has no gap.
   const run = Array.from({ length: 4 }, () => data.words).flat();
@@ -25,7 +24,7 @@ export function renderMarquee(data: MarqueeData): string {
       .join('')}</div>`;
 
   return (
-    `<div class="${wrapClass}" data-tone="${tone}">` +
+    `<div class="${wrapClass}"${toneAttrs(data.tone)}>` +
     `<div class="imx-marquee" role="img" aria-label="${label}" style="--dur:${seconds}s">` +
     `<div class="imx-marquee-track">${set(false)}${set(true)}</div></div></div>`
   );

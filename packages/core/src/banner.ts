@@ -1,4 +1,4 @@
-import { escapeHtml, resolveTone } from './shared.ts';
+import { escapeHtml, toneAttrs } from './shared.ts';
 
 export interface BannerData {
   text: string;
@@ -6,9 +6,8 @@ export interface BannerData {
 }
 
 export function renderBanner(data: BannerData): string {
-  const tone = resolveTone(data.tone);
   return (
-    `<div class="imx"><div class="imx-banner" data-tone="${tone}">` +
+    `<div class="imx"><div class="imx-banner"${toneAttrs(data.tone)}>` +
     `<span class="imx-banner-t">${escapeHtml(data.text)}</span></div></div>`
   );
 }

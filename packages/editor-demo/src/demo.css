@@ -53,24 +53,6 @@ body {
   flex-shrink: 0;
 }
 
-.demo-theme-select {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--demo-muted);
-}
-.demo-theme-select select {
-  font: inherit;
-  font-size: 0.85rem;
-  padding: 0.45rem 0.7rem;
-  border-radius: 8px;
-  border: 1px solid var(--demo-line);
-  background: var(--demo-card);
-  color: inherit;
-  cursor: pointer;
-}
-
 .demo-btn {
   font: inherit;
   font-size: 0.85rem;
@@ -98,6 +80,44 @@ body {
 }
 .demo-btn-accent:hover {
   filter: brightness(1.08);
+}
+
+.demo-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.demo-theme-icon {
+  flex: none;
+}
+.demo-theme-icon-sun,
+.demo-theme-icon-moon {
+  transform-origin: 12px 12px;
+  transition:
+    opacity 0.35s ease,
+    transform 0.5s ease;
+}
+.demo-theme-icon-moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+.demo-theme-icon[data-dark="false"] .demo-theme-icon-sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+.demo-theme-icon[data-dark="true"] .demo-theme-icon-sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.6);
+}
+.demo-theme-icon[data-dark="true"] .demo-theme-icon-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo-theme-icon-sun,
+  .demo-theme-icon-moon {
+    transition: none;
+  }
 }
 
 @media (max-width: 720px) {

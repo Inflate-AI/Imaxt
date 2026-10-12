@@ -17,7 +17,7 @@ compiler that moves content between EditorJS's JSON and plain MDX.
 | [`@inflate-ai/imaxt-editorjs`](./packages/editorjs) | EditorJS Block Tools for every block, for visual article authoring. |
 | [`@inflate-ai/imaxt-mdx`](./packages/mdx) | Bidirectional compiler between EditorJS block JSON and MDX source. |
 | [`@inflate-ai/imaxt-astro`](./packages/astro) | Thin Astro components for sites that author content directly in `.mdx`. |
-| [`@inflate-ai/imaxt-editor`](./packages/editor) | A Medium-style Markdown/MDX editor (built on Lexical) with every Imaxt block as a first-class, insertable block. [Live demo](https://inflate-ai.github.io/Imaxt/). |
+| [`@inflate-ai/imaxt-editor`](./packages/editor) | A Drafted by Dev-style Markdown/MDX editor (built on Lexical) with every Imaxt block as a first-class, insertable block. [Live demo](https://inflate-ai.github.io/Imaxt/). |
 
 ```sh
 bun add @inflate-ai/imaxt-core                           # the render engine

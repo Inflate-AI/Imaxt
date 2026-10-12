@@ -21,6 +21,13 @@ export interface ImaxtEditorTheme {
   fontSerif?: string;
   fontMono?: string;
   fontDisplay?: string;
+  /** Preset tone backgrounds for Statement/StatRow/Scorecard/Banner/Marquee/CurvedText blocks (imaxt-core's --t-mint/--t-lilac/--t-sky/--t-rose) - redeclare per color scheme so pastel tones stay readable in dark mode instead of inheriting imaxt-core's own defaults. */
+  toneMint?: string;
+  toneLilac?: string;
+  toneSky?: string;
+  toneRose?: string;
+  /** Text color paired with every preset tone above (imaxt-core's --on-tone). */
+  onTone?: string;
 }
 
 const VAR_NAMES: Record<keyof ImaxtEditorTheme, string> = {
@@ -38,6 +45,11 @@ const VAR_NAMES: Record<keyof ImaxtEditorTheme, string> = {
   fontSerif: '--font-serif',
   fontMono: '--font-mono',
   fontDisplay: '--font-display',
+  toneMint: '--t-mint',
+  toneLilac: '--t-lilac',
+  toneSky: '--t-sky',
+  toneRose: '--t-rose',
+  onTone: '--on-tone',
 };
 
 /** Converts a `theme` prop into inline CSS custom properties for the editor's root element. */

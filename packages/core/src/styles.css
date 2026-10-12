@@ -24,10 +24,14 @@
   --accent: #c23b2e;
   --accent-lt: #e8a79c;
   --on-accent: #fdf6f0;
-  --t-mint: #bfe3d0;
-  --t-lilac: #d9cdf0;
-  --t-sky: #c7e0f4;
-  --t-rose: #f3d0da;
+  /* Pastel preset tones - each pairs with --on-tone below for guaranteed
+     contrast. In dark mode these become deep jewel tones (not the same
+     light pastels with swapped text) so the backgrounds stay legible too -
+     see the dark blocks below. */
+  --t-mint: #b6f0d3;
+  --t-lilac: #d6cbff;
+  --t-sky: #b8dcff;
+  --t-rose: #ffc6d6;
   --on-tone: #1c1c1c;
   --signal: #2563eb;
 
@@ -37,8 +41,14 @@
   --clay-sh-sm: 0 1px 2px rgba(0, 0, 0, 0.18);
 }
 
+/*
+ * Dark mode, two ways: by OS preference (guarded so an explicit
+ * data-theme="light" on the page still wins), and by an explicit
+ * data-theme="dark" attribute (Blog's own toggle mechanism, and the
+ * editor's `colorScheme` prop). Both apply the exact same tokens.
+ */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --paper: #17171a;
     --paper2: #1f1f23;
     --card: #232327;
@@ -47,9 +57,30 @@
     --line: #35353b;
     --hair: #2b2b30;
     --on-accent: #1c1c1c;
+    --t-mint: #28493b;
+    --t-lilac: #40386a;
+    --t-sky: #2c4565;
+    --t-rose: #5d3446;
     --on-tone: #f4f1e8;
     --clay-bg: #2a2a2e;
   }
+}
+
+:root[data-theme="dark"] {
+  --paper: #17171a;
+  --paper2: #1f1f23;
+  --card: #232327;
+  --text: #f4f1e8;
+  --muted: #a9a59a;
+  --line: #35353b;
+  --hair: #2b2b30;
+  --on-accent: #1c1c1c;
+  --t-mint: #28493b;
+  --t-lilac: #40386a;
+  --t-sky: #2c4565;
+  --t-rose: #5d3446;
+  --on-tone: #f4f1e8;
+  --clay-bg: #2a2a2e;
 }
 
 /* ---------- Shared ---------- */
@@ -1206,39 +1237,50 @@
 /* ---------- Delta ---------- */
 .imx-delta {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 16px 20px;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 22px;
 }
 .imx-delta-l {
+  flex: 1 1 auto;
   font-family: var(--font-sans);
   font-weight: 600;
-  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
 }
 .imx-delta-vals {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
-  font-size: 20px;
 }
 .imx-delta-from {
-  color: var(--muted);
+  font-size: 15px;
+  opacity: 0.55;
   text-decoration: line-through;
-  font-size: 0.85em;
 }
 .imx-delta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 999px;
+  font-size: 13px;
   color: var(--muted);
+  background: color-mix(in srgb, currentColor 16%, transparent);
 }
-.imx-delta[data-direction="up"] .imx-delta-to {
+.imx-delta[data-direction="up"] .imx-delta-arrow {
   color: #1a7a4c;
 }
-.imx-delta[data-direction="down"] .imx-delta-to {
-  color: var(--accent);
+.imx-delta[data-direction="down"] .imx-delta-arrow {
+  color: #b3261e;
 }
 .imx-delta-to {
+  font-size: 26px;
   font-weight: 800;
 }
 

@@ -1,4 +1,4 @@
-import { escapeHtml, resolveTone } from './shared.ts';
+import { escapeHtml, toneAttrs } from './shared.ts';
 
 export interface StatData {
   value: string | number;
@@ -15,14 +15,13 @@ export interface StatRowData {
 const NUMERIC = /^\d+(\.\d+)?$/;
 
 export function renderStat(data: StatData): string {
-  const tone = resolveTone(data.tone);
   const text = String(data.value);
   const numeric = NUMERIC.test(text);
   const dataTo = numeric ? ` data-to="${escapeHtml(text)}"` : '';
   const unit = data.unit ? `<span class="imx-stat-u">${escapeHtml(data.unit)}</span>` : '';
   const note = data.note ? `<div class="imx-stat-n">${escapeHtml(data.note)}</div>` : '';
   return (
-    `<div class="imx imx-stat-wrap"><div class="imx-stat imx-slab" data-tone="${tone}">` +
+    `<div class="imx imx-stat-wrap"><div class="imx-stat imx-slab"${toneAttrs(data.tone)}>` +
     `<div class="imx-stat-v"><span class="imx-count"${dataTo}>${escapeHtml(text)}</span>${unit}</div>` +
     `<div class="imx-label imx-stat-l">${escapeHtml(data.label)}</div>${note}</div></div>`
   );

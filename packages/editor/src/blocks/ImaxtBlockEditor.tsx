@@ -1,5 +1,6 @@
 import type { Block } from '@inflate-ai/imaxt-mdx';
-import { type JSX, useState } from 'react';
+import { type JSX, useEffect, useRef, useState } from 'react';
+import { attachInteractiveBlock } from './attachInteractive.ts';
 import { BLOCK_CONFIGS } from './block-config.ts';
 import { FileTreeBlock } from './FileTreeBlock.tsx';
 import { GenericBlockForm } from './GenericBlockForm.tsx';
@@ -14,6 +15,26 @@ const CUSTOM_BLOCK_TITLES: Record<string, string> = {
   heatmap: 'Heatmap',
   'file-tree': 'FileTree',
 };
+
+/** The live preview for one block - the exact HTML `renderBlockPreview` produces, with its client-side behavior (if any) wired up, same as a published page. */
+function BlockPreview({ block }: { block: Block }): JSX.Element {
+  const ref = useRef<HTMLDivElement>(null);
+  const html = renderBlockPreview(block);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    return attachInteractiveBlock(ref.current, block.type);
+  }, [block]);
+
+  return (
+    <div
+      ref={ref}
+      className="imx-ed-block-preview"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: this is imaxt-core's own sanitized render output
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
+}
 
 export function ImaxtBlockEditor({
   block,
@@ -30,7 +51,6 @@ export function ImaxtBlockEditor({
   }
 
   const config = BLOCK_CONFIGS[block.type];
-  const preview = renderBlockPreview(block);
 
   return (
     <div className="imx-ed-imaxt-block" data-editing={editing}>
@@ -70,8 +90,7 @@ export function ImaxtBlockEditor({
           )}
         </div>
       ) : (
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: this is imaxt-core's own sanitized render output
-        <div className="imx-ed-block-preview" dangerouslySetInnerHTML={{ __html: preview }} />
+        <BlockPreview block={block} />
       )}
     </div>
   );
