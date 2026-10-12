@@ -1,5 +1,6 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import { type JSX, useEffect, useState } from 'react';
+import { type JSX, useEffect, useRef, useState } from 'react';
+import { attachInteractiveBlocks } from './blocks/attachInteractive.ts';
 import { parseDocumentIntoEditor, serializeEditorToDocument } from './bridge/document.ts';
 import { renderEditorToHtml } from './bridge/renderHtml.ts';
 import { useImageAdapter } from './image/context.ts';
@@ -15,7 +16,7 @@ export function ModeSwitcher({
 }): JSX.Element {
   const options: Array<{ key: EditorMode; label: string }> = [
     { key: 'raw', label: 'Raw' },
-    { key: 'medium', label: 'Medium' },
+    { key: 'medium', label: 'Write' },
     { key: 'render', label: 'Render' },
   ];
   return (
@@ -55,13 +56,20 @@ export function RawMode(): JSX.Element {
   );
 }
 
-/** A read-only preview of the exact HTML a published page would render - standard Markdown as plain tags, Imaxt blocks through their real render functions. */
+/**
+ * A read-only preview of the exact HTML a published page would render.
+ * Reuses `imx-ed-content` - the same class Write mode's own contentEditable
+ * uses - and the same per-element classes (imx-ed-p, imx-ed-h1, ...), so
+ * this is styled by the exact same rules as Write mode. The only
+ * difference from Write mode is that this one isn't editable.
+ */
 export function RenderMode(): JSX.Element {
   const [editor] = useLexicalComposerContext();
   const imageAdapter = useImageAdapter();
   const [html, setHtml] = useState(() => renderEditorToHtml(editor, imageAdapter));
+  const ref = useRef<HTMLElement>(null);
 
-  // Keep in sync while this view stays mounted: an edit made in Medium mode
+  // Keep in sync while this view stays mounted: an edit made in Write mode
   // right before switching here is already covered by the lazy initializer
   // above, but Raw mode can still commit a change while Render mode is open
   // in another instance, or a future image resolve() can settle later.
@@ -71,8 +79,22 @@ export function RenderMode(): JSX.Element {
     });
   }, [editor, imageAdapter]);
 
+  // Wires up TypeLab/Ticker/Scrolly/CodeWalk/StatRow's client-side behavior,
+  // same as a published page does - see attachInteractive.ts. Depends on
+  // `html` (re-run whenever the DOM it attaches to is replaced), not on
+  // anything the effect body reads directly off it.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: html drives re-attachment, see above
+  useEffect(() => {
+    if (!ref.current) return;
+    return attachInteractiveBlocks(ref.current);
+  }, [html]);
+
   return (
-    // biome-ignore lint/security/noDangerouslySetInnerHtml: composed from imaxt-core's own render functions plus our own escaped text
-    <article className="imx-ed-render prose" dangerouslySetInnerHTML={{ __html: html }} />
+    <article
+      ref={ref}
+      className="imx-ed-content imx-ed-render"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: composed from imaxt-core's own render functions plus our own escaped text
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
   );
 }

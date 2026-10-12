@@ -1,6 +1,6 @@
 export const SAMPLE_DOCUMENT = `# Why Imaxt
 
-This is a **Medium-style** editor whose native format *is* Markdown/MDX.
+This is a **Drafted by Dev-style** editor whose native format *is* Markdown/MDX.
 Standard Markdown works exactly like you'd expect - [a link](https://github.com/Inflate-AI/Imaxt),
 \`inline code\`, and everything else below - and the same \`/\` menu reaches
 every Imaxt block, inserted on this same document with zero conversion
@@ -165,7 +165,7 @@ const lexicalNode = mastNodeToLexical(tree);
   </Event>
 
   <Event date="Phase 2" title="Core editor">
-    The Lexical bridge and Medium-style UX came together.
+    The Lexical bridge and Drafted by Dev-style UX came together.
   </Event>
 
   <Event date="Phase 5" title="This demo">

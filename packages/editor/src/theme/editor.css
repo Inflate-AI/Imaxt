@@ -50,116 +50,41 @@
 }
 
 /* ---------- Raw mode ---------- */
+/* A full page of source, not a boxed-in input: no border/background chip,
+   fills the available height, and uses the editor's full width since MDX
+   source benefits from the room (unlike prose, which stays line-length-
+   limited via .imx-ed-content). */
 .imx-ed-raw {
-  padding: 1rem 1.5rem 1.5rem;
+  display: flex;
+  min-height: 60vh;
 }
 .imx-ed-raw-textarea {
+  flex: 1 1 auto;
   width: 100%;
-  min-height: 420px;
-  resize: vertical;
+  min-height: 60vh;
+  resize: none;
+  border: none;
+  outline: none;
   font-family: var(--font-mono, monospace);
-  font-size: 0.88rem;
-  line-height: 1.6;
-  padding: 1rem;
-  border: 1px solid var(--line, #d8d3c4);
-  border-radius: var(--imx-ed-radius);
-  background: var(--paper2, #efebe0);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  padding: 1.5rem;
+  background: transparent;
   color: var(--text, #1c1c1c);
+}
+@media (max-width: 640px) {
+  .imx-ed-raw-textarea {
+    padding: 1rem;
+    font-size: 0.88rem;
+  }
 }
 
 /* ---------- Render mode ---------- */
+/* No typography rules of its own - `imx-ed-content` (below) plus the
+   per-element imx-ed-* classes render.ts emits are the single source of
+   truth, so Render mode is pixel-identical to Medium mode. */
 .imx-ed-render {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 1.5rem;
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-@media (max-width: 640px) {
-  .imx-ed-render {
-    padding: 1rem;
-  }
-}
-.imx-ed-render h1,
-.imx-ed-render h2,
-.imx-ed-render h3,
-.imx-ed-render h4,
-.imx-ed-render h5,
-.imx-ed-render h6 {
-  font-family: var(--font-display, var(--font-sans, sans-serif));
-  font-weight: 700;
-  line-height: 1.25;
-  margin: 1.4em 0 0.6em;
-}
-.imx-ed-render h1 {
-  font-size: clamp(1.8rem, 5vw, 2.4rem);
-}
-.imx-ed-render h2 {
-  font-size: clamp(1.5rem, 4vw, 1.9rem);
-}
-.imx-ed-render h3 {
-  font-size: 1.4rem;
-}
-.imx-ed-render p {
-  margin: 0 0 1em;
-}
-.imx-ed-render blockquote {
-  margin: 1em 0;
-  padding-left: 1em;
-  border-left: 3px solid var(--line, #d8d3c4);
-  color: var(--muted, #5c5a52);
-  font-style: italic;
-}
-.imx-ed-render ul,
-.imx-ed-render ol {
-  margin: 0 0 1em;
-  padding-left: 1.4em;
-}
-.imx-ed-render li {
-  margin: 0.2em 0;
-}
-.imx-ed-render a {
-  color: var(--accent, #c23b2e);
-}
-.imx-ed-render code {
-  font-family: var(--font-mono, monospace);
-  background: var(--paper2, #efebe0);
-  padding: 0.1em 0.35em;
-  border-radius: 4px;
-  font-size: 0.92em;
-}
-.imx-ed-render pre {
-  margin: 1em 0;
-  padding: 0.9em 1em;
-  background: var(--paper2, #efebe0);
-  border: 1px solid var(--hair, #e5e0d2);
-  border-radius: var(--imx-ed-radius);
-  overflow-x: auto;
-}
-.imx-ed-render pre code {
-  background: none;
-  padding: 0;
-}
-.imx-ed-render table {
-  border-collapse: collapse;
-  margin: 1em 0;
-  width: 100%;
-  display: block;
-  overflow-x: auto;
-}
-.imx-ed-render th,
-.imx-ed-render td {
-  border: 1px solid var(--line, #d8d3c4);
-  padding: 0.5em 0.7em;
-  text-align: left;
-}
-.imx-ed-render th {
-  background: var(--paper2, #efebe0);
-  font-weight: 700;
-}
-.imx-ed-render img {
-  max-width: 100%;
-  border-radius: var(--imx-ed-radius);
+  cursor: default;
 }
 
 .imx-ed-content {
@@ -427,6 +352,48 @@
 }
 .imx-ed-field-checkbox input {
   width: auto;
+}
+.imx-ed-tone-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  align-items: center;
+}
+.imx-ed-tone-swatch {
+  position: relative;
+  width: 1.6em;
+  height: 1.6em;
+  padding: 0;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background: var(--imx-tone, var(--paper2));
+  cursor: pointer;
+  box-shadow: 0 0 0 1px var(--line, #d8d3c4);
+  display: inline-flex;
+  overflow: hidden;
+}
+.imx-ed-tone-swatch[data-active="true"] {
+  border-color: var(--accent, #c23b2e);
+}
+.imx-ed-tone-swatch input[type="radio"] {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.imx-ed-tone-custom {
+  background: conic-gradient(from 90deg, #ff5f6d, #ffc371, #6dd5a7, #4facfe, #a16ae8, #ff5f6d);
+}
+.imx-ed-tone-custom input[type="color"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border: none;
+  padding: 0;
 }
 .imx-ed-list {
   display: flex;

@@ -81,7 +81,14 @@ export function SlashMenuPlugin(): JSX.Element | null {
   const [editor] = useLexicalComposerContext();
   const [query, setQuery] = useState<string | null>(null);
   const imageAdapter = useImageAdapter();
-  const checkForTriggerMatch = useBasicTypeaheadTriggerMatch('/', { minLength: 0 });
+  // allowWhitespace: true - several block titles are two words ("Pull
+  // quote", "Stat row", "Type lab", ...), and without it the match ends at
+  // the first space, silently dropping the menu and leaving the rest of the
+  // query behind as plain text.
+  const checkForTriggerMatch = useBasicTypeaheadTriggerMatch('/', {
+    minLength: 0,
+    allowWhitespace: true,
+  });
 
   const allOptions = useMemo(() => {
     const mediaOption = new SlashOption('Image', 'Media', '🖼', () => {

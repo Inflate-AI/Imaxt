@@ -54,21 +54,41 @@ export function FieldInput({
   }
 
   if (field.kind === 'tone') {
+    const current = String(data[field.name] ?? '');
+    const isCustom = current.startsWith('#');
     return (
-      <label className="imx-ed-field">
+      <div className="imx-ed-field">
         <span>{field.label}</span>
-        <select
-          value={String(data[field.name] ?? '')}
-          onChange={(e) => onChange(setField(data, field, e.target.value || undefined))}
-        >
-          <option value="">(default)</option>
+        <div className="imx-ed-tone-picker" role="radiogroup" aria-label={field.label}>
           {TONES.map((t) => (
-            <option key={t} value={t}>
-              {t}
-            </option>
+            <label
+              key={t}
+              className="imx-ed-tone-swatch"
+              data-tone={t}
+              data-active={!isCustom && (current === t || (current === '' && t === 'ink'))}
+              title={t}
+            >
+              <input
+                type="radio"
+                name={`${field.name}-tone`}
+                checked={current === t}
+                onChange={() => onChange(setField(data, field, t))}
+              />
+            </label>
           ))}
-        </select>
-      </label>
+          <label
+            className="imx-ed-tone-swatch imx-ed-tone-custom"
+            data-active={isCustom}
+            title="Custom color"
+          >
+            <input
+              type="color"
+              value={isCustom ? current : '#5b3df0'}
+              onChange={(e) => onChange(setField(data, field, e.target.value))}
+            />
+          </label>
+        </div>
+      </div>
     );
   }
 

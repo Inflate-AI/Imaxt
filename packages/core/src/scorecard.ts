@@ -1,4 +1,4 @@
-import { escapeHtml, resolveTone } from './shared.ts';
+import { escapeHtml, toneAttrs } from './shared.ts';
 
 export interface ScorecardItem {
   label: string;
@@ -13,7 +13,6 @@ export interface ScorecardData {
 }
 
 export function renderScorecard(data: ScorecardData): string {
-  const tone = resolveTone(data.tone);
   const items = data.items
     .map(
       (item) =>
@@ -25,5 +24,5 @@ export function renderScorecard(data: ScorecardData): string {
         '</li>',
     )
     .join('');
-  return `<div class="imx"><ul class="imx-scorecard" data-tone="${tone}">${items}</ul></div>`;
+  return `<div class="imx"><ul class="imx-scorecard"${toneAttrs(data.tone)}>${items}</ul></div>`;
 }

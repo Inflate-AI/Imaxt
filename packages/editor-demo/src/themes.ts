@@ -1,7 +1,7 @@
 import type { ImaxtEditorTheme } from '@inflate-ai/imaxt-editor';
 
-/** Blog's own light tokens (src/styles/tokens.css) - this is what "in the theme of the blog" means: the exact same values, not a lookalike. */
-export const BLOG_LIGHT: ImaxtEditorTheme = {
+/** Drafted by Dev's own light tokens (src/styles/tokens.css) - this is what "in the Drafted style" means: the exact same values, not a lookalike. */
+export const DRAFTED_LIGHT: ImaxtEditorTheme = {
   paper: '#f6f3ea',
   paper2: '#ebe6d8',
   card: '#fffdf6',
@@ -16,11 +16,16 @@ export const BLOG_LIGHT: ImaxtEditorTheme = {
   fontDisplay: "'Archivo Variable', 'Archivo', system-ui, sans-serif",
   fontSerif: "'Source Serif 4 Variable', 'Source Serif 4', Georgia, serif",
   fontMono: "'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace",
+  toneMint: '#b6f0d3',
+  toneLilac: '#d6cbff',
+  toneSky: '#b8dcff',
+  toneRose: '#ffc6d6',
+  onTone: '#1c1c1c',
 };
 
-/** Blog's dark-mode tokens (`:root[data-theme='dark']`). */
-export const BLOG_DARK: ImaxtEditorTheme = {
-  ...BLOG_LIGHT,
+/** Drafted by Dev's dark-mode tokens (`:root[data-theme='dark']`) - deep jewel tones, not the light pastels with swapped text, so block backgrounds stay legible. */
+export const DRAFTED_DARK: ImaxtEditorTheme = {
+  ...DRAFTED_LIGHT,
   accent: '#6aad91',
   onAccent: '#1c1c1c',
   paper: '#1c1c1c',
@@ -30,42 +35,9 @@ export const BLOG_DARK: ImaxtEditorTheme = {
   muted: '#a8a498',
   line: '#f4f1e8',
   hair: 'color-mix(in srgb, #f4f1e8 16%, transparent)',
+  toneMint: '#28493b',
+  toneLilac: '#40386a',
+  toneSky: '#2c4565',
+  toneRose: '#5d3446',
+  onTone: '#f4f1e8',
 };
-
-/** A deliberately different palette - proves the theme is genuinely configurable, not hardcoded to Blog's look. */
-export const CUSTOM: ImaxtEditorTheme = {
-  paper: '#f4f3ff',
-  paper2: '#e8e6ff',
-  card: '#ffffff',
-  text: '#1d1b3a',
-  muted: '#6b67a0',
-  line: '#c9c5f2',
-  hair: '#ddd9f7',
-  accent: '#5b3df0',
-  accentLt: '#a79bf7',
-  onAccent: '#ffffff',
-  fontSans: 'system-ui, sans-serif',
-  fontDisplay: "'Fraunces', Georgia, serif",
-  fontSerif: 'Georgia, serif',
-  fontMono: "'Space Mono', monospace",
-};
-
-export const CUSTOM_DARK: ImaxtEditorTheme = {
-  ...CUSTOM,
-  paper: '#16142b',
-  paper2: '#201d3c',
-  card: '#201d3c',
-  text: '#ece9ff',
-  muted: '#a9a4d9',
-  line: '#3a3660',
-  hair: '#2a2750',
-  accent: '#a79bf7',
-  onAccent: '#16142b',
-};
-
-export const THEME_PRESETS = {
-  blog: { light: BLOG_LIGHT, dark: BLOG_DARK, label: 'Blog theme' },
-  custom: { light: CUSTOM, dark: CUSTOM_DARK, label: 'Custom theme' },
-} as const;
-
-export type ThemePresetKey = keyof typeof THEME_PRESETS;

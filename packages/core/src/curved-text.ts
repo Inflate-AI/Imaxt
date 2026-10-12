@@ -1,4 +1,4 @@
-import { classNames, escapeHtml, resolveTone } from './shared.ts';
+import { classNames, escapeHtml, toneAttrs } from './shared.ts';
 
 export interface CurvedTextData {
   text: string;
@@ -37,7 +37,7 @@ export function renderCurvedText(data: CurvedTextData): string {
   const a11y = data.decorative
     ? ' aria-hidden="true"'
     : ` role="img" aria-label="${escapeHtml(data.text)}"`;
-  const tone = data.tone ? ` data-tone="${resolveTone(data.tone)}"` : '';
+  const tone = data.tone ? toneAttrs(data.tone) : '';
   const spinClass = circle && data.spin ? ' imx-spin' : '';
   const disc = circle ? '<circle cx="100" cy="100" r="96" class="imx-curved-disc" />' : '';
   const mark =
