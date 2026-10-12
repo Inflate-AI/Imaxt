@@ -1,7 +1,7 @@
 import type { Block } from '@inflate-ai/imaxt-mdx';
 import { type JSX, useEffect, useRef, useState } from 'react';
 import { attachInteractiveBlock } from './attachInteractive.ts';
-import { BLOCK_CONFIGS } from './block-config.ts';
+import { BLOCK_CONFIGS, CUSTOM_BLOCK_META } from './block-config.ts';
 import { FileTreeBlock } from './FileTreeBlock.tsx';
 import { GenericBlockForm } from './GenericBlockForm.tsx';
 import { HeatmapBlock } from './HeatmapBlock.tsx';
@@ -9,12 +9,6 @@ import { MatrixBlock } from './MatrixBlock.tsx';
 import { renderBlockPreview } from './renderBlock.ts';
 
 type AnyData = Record<string, unknown>;
-
-const CUSTOM_BLOCK_TITLES: Record<string, string> = {
-  matrix: 'Matrix',
-  heatmap: 'Heatmap',
-  'file-tree': 'FileTree',
-};
 
 /** The live preview for one block - the exact HTML `renderBlockPreview` produces, with its client-side behavior (if any) wired up, same as a published page. */
 function BlockPreview({ block }: { block: Block }): JSX.Element {
@@ -56,7 +50,9 @@ export function ImaxtBlockEditor({
     <div className="imx-ed-imaxt-block" data-editing={editing}>
       <div className="imx-ed-block-toolbar">
         <span className="imx-ed-block-label">
-          {config?.title ?? CUSTOM_BLOCK_TITLES[block.type] ?? block.type}
+          {config?.title ??
+            CUSTOM_BLOCK_META[block.type as keyof typeof CUSTOM_BLOCK_META]?.title ??
+            block.type}
         </span>
         <button type="button" onClick={() => setEditing((v) => !v)}>
           {editing ? 'Done' : 'Edit'}
