@@ -14,6 +14,7 @@ import { type JSX, useEffect, useState } from 'react';
 import { parseDocumentIntoEditor, serializeEditorToDocument } from './bridge/document.ts';
 import { createInMemoryImageStorageAdapter, type ImageStorageAdapter } from './image/adapter.ts';
 import { ImageAdapterContext } from './image/context.ts';
+import { type EditorMode, ModeSwitcher, RawMode, RenderMode } from './modes.tsx';
 import { EDITOR_NODES } from './nodes/index.ts';
 import { DragHandlePlugin } from './plugins/DragHandlePlugin.tsx';
 import { FloatingToolbarPlugin } from './plugins/FloatingToolbarPlugin.tsx';
@@ -71,6 +72,7 @@ export function ImaxtEditor({
   const [adapter] = useState<ImageStorageAdapter>(
     () => imageAdapter ?? createInMemoryImageStorageAdapter(),
   );
+  const [mode, setMode] = useState<EditorMode>('medium');
 
   const initialConfig = {
     namespace: 'imaxt-editor',
@@ -89,7 +91,12 @@ export function ImaxtEditor({
           data-theme={colorScheme}
           style={themeToStyle(theme)}
         >
-          <div className="imx-ed-editable-wrap" ref={setFloatingAnchorElem}>
+          <ModeSwitcher mode={mode} onChange={setMode} />
+          <div
+            className="imx-ed-editable-wrap"
+            style={{ display: mode === 'medium' ? undefined : 'none' }}
+            ref={setFloatingAnchorElem}
+          >
             <RichTextPlugin
               contentEditable={
                 <ContentEditable
@@ -107,6 +114,8 @@ export function ImaxtEditor({
               </>
             )}
           </div>
+          {mode === 'raw' && <RawMode />}
+          {mode === 'render' && <RenderMode />}
           <HistoryPlugin />
           <AutoFocusPlugin />
           <ListPlugin />
