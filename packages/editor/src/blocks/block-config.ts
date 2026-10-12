@@ -15,9 +15,19 @@ export interface FieldConfig {
   separator?: string;
 }
 
+/** Groups the 40 Imaxt blocks into browsable sections for the slash menu - see SlashMenuPlugin.tsx. */
+export type BlockCategory =
+  | 'Typography'
+  | 'Data & Stats'
+  | 'Narrative'
+  | 'Technical'
+  | 'Visual & Motion'
+  | 'Media';
+
 export interface BlockTypeConfig {
   type: Block['type'];
   title: string;
+  category: BlockCategory;
   fields: readonly FieldConfig[];
 }
 
@@ -36,6 +46,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   statement: {
     type: 'statement',
     title: 'Statement',
+    category: 'Typography',
     fields: [
       html(),
       tone,
@@ -47,6 +58,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   'pull-quote': {
     type: 'pull-quote',
     title: 'Pull quote',
+    category: 'Typography',
     fields: [
       html(),
       { name: 'by', label: 'Attribution', kind: 'text' },
@@ -56,11 +68,13 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   sidenote: {
     type: 'sidenote',
     title: 'Sidenote',
+    category: 'Typography',
     fields: [html(), { name: 'label', label: 'Label', kind: 'text' }],
   },
   bars: {
     type: 'bars',
     title: 'Bars',
+    category: 'Data & Stats',
     fields: [
       {
         name: 'items',
@@ -79,6 +93,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   ranked: {
     type: 'ranked',
     title: 'Ranked',
+    category: 'Data & Stats',
     fields: [
       {
         name: 'items',
@@ -98,6 +113,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   delta: {
     type: 'delta',
     title: 'Delta',
+    category: 'Data & Stats',
     fields: [
       { name: 'label', label: 'Label', kind: 'text' },
       { name: 'from', label: 'From', kind: 'text' },
@@ -109,6 +125,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   gauge: {
     type: 'gauge',
     title: 'Gauge',
+    category: 'Data & Stats',
     fields: [
       { name: 'value', label: 'Value', kind: 'number' },
       { name: 'max', label: 'Max', kind: 'number' },
@@ -120,6 +137,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   scorecard: {
     type: 'scorecard',
     title: 'Scorecard',
+    category: 'Data & Stats',
     fields: [
       {
         name: 'items',
@@ -139,6 +157,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   sparkline: {
     type: 'sparkline',
     title: 'Sparkline',
+    category: 'Data & Stats',
     fields: [
       { name: 'values', label: 'Values', kind: 'textarea', arrayOf: 'number', separator: ',' },
       { name: 'label', label: 'Label', kind: 'text' },
@@ -147,6 +166,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   funnel: {
     type: 'funnel',
     title: 'Funnel',
+    category: 'Data & Stats',
     fields: [
       {
         name: 'stages',
@@ -165,6 +185,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   callout: {
     type: 'callout',
     title: 'Callout',
+    category: 'Narrative',
     fields: [
       { name: 'kind', label: 'Kind', kind: 'select', options: ['info', 'tip', 'warn', 'danger'] },
       { name: 'title', label: 'Title', kind: 'text' },
@@ -174,6 +195,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   faq: {
     type: 'faq',
     title: 'FAQ',
+    category: 'Narrative',
     fields: [
       {
         name: 'items',
@@ -190,6 +212,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   takeaways: {
     type: 'takeaways',
     title: 'Takeaways',
+    category: 'Narrative',
     fields: [
       { name: 'title', label: 'Title', kind: 'text' },
       { name: 'items', label: 'Items (one per line)', kind: 'textarea', arrayOf: 'string' },
@@ -198,11 +221,13 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   footnote: {
     type: 'footnote',
     title: 'Footnote',
+    category: 'Typography',
     fields: [{ name: 'marker', label: 'Marker', kind: 'text' }, html()],
   },
   glossary: {
     type: 'glossary',
     title: 'Glossary',
+    category: 'Typography',
     fields: [
       {
         name: 'items',
@@ -219,6 +244,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   versus: {
     type: 'versus',
     title: 'Versus',
+    category: 'Narrative',
     fields: [
       {
         name: 'sides',
@@ -234,6 +260,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   checklist: {
     type: 'checklist',
     title: 'Checklist',
+    category: 'Narrative',
     fields: [
       { name: 'title', label: 'Title', kind: 'text' },
       {
@@ -251,6 +278,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   terminal: {
     type: 'terminal',
     title: 'Terminal',
+    category: 'Technical',
     fields: [
       { name: 'title', label: 'Title', kind: 'text' },
       {
@@ -269,6 +297,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   diff: {
     type: 'diff',
     title: 'Diff',
+    category: 'Technical',
     fields: [
       { name: 'before', label: 'Before', kind: 'textarea' },
       { name: 'after', label: 'After', kind: 'textarea' },
@@ -278,6 +307,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   'error-box': {
     type: 'error-box',
     title: 'Error box',
+    category: 'Technical',
     fields: [
       { name: 'title', label: 'Title', kind: 'text' },
       { name: 'message', label: 'Message', kind: 'text' },
@@ -287,6 +317,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   changelog: {
     type: 'changelog',
     title: 'Changelog',
+    category: 'Technical',
     fields: [
       {
         name: 'entries',
@@ -304,6 +335,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   formula: {
     type: 'formula',
     title: 'Formula',
+    category: 'Typography',
     fields: [
       { name: 'tex', label: 'TeX', kind: 'text' },
       { name: 'display', label: 'Display (block)', kind: 'boolean' },
@@ -313,6 +345,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   ticker: {
     type: 'ticker',
     title: 'Ticker',
+    category: 'Visual & Motion',
     fields: [
       { name: 'phrases', label: 'Phrases (one per line)', kind: 'textarea', arrayOf: 'string' },
       { name: 'seconds', label: 'Seconds', kind: 'number' },
@@ -322,16 +355,19 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   'drop-cap': {
     type: 'drop-cap',
     title: 'Drop cap',
+    category: 'Typography',
     fields: [html(), tone],
   },
   redacted: {
     type: 'redacted',
     title: 'Redacted',
+    category: 'Typography',
     fields: [html(), { name: 'revealLabel', label: 'Reveal label', kind: 'text' }],
   },
   stamp: {
     type: 'stamp',
     title: 'Stamp',
+    category: 'Typography',
     fields: [
       { name: 'text', label: 'Text', kind: 'text' },
       { name: 'angle', label: 'Angle', kind: 'number' },
@@ -341,11 +377,13 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   banner: {
     type: 'banner',
     title: 'Banner',
+    category: 'Visual & Motion',
     fields: [{ name: 'text', label: 'Text', kind: 'text' }, tone],
   },
   marquee: {
     type: 'marquee',
     title: 'Marquee',
+    category: 'Visual & Motion',
     fields: [
       { name: 'words', label: 'Words (one per line)', kind: 'textarea', arrayOf: 'string' },
       tone,
@@ -356,6 +394,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   'curved-text': {
     type: 'curved-text',
     title: 'Curved text',
+    category: 'Visual & Motion',
     fields: [
       { name: 'text', label: 'Text', kind: 'text' },
       { name: 'shape', label: 'Shape', kind: 'select', options: ['arc', 'wave', 'circle'] },
@@ -368,6 +407,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   'type-lab': {
     type: 'type-lab',
     title: 'Type lab',
+    category: 'Visual & Motion',
     fields: [
       { name: 'sample', label: 'Sample', kind: 'text' },
       {
@@ -381,6 +421,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   'stat-row': {
     type: 'stat-row',
     title: 'Stat row',
+    category: 'Data & Stats',
     fields: [
       {
         name: 'items',
@@ -400,6 +441,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   compare: {
     type: 'compare',
     title: 'Compare',
+    category: 'Narrative',
     fields: [
       {
         name: 'sides',
@@ -419,6 +461,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   steps: {
     type: 'steps',
     title: 'Steps',
+    category: 'Narrative',
     fields: [
       {
         name: 'items',
@@ -432,6 +475,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   timeline: {
     type: 'timeline',
     title: 'Timeline',
+    category: 'Narrative',
     fields: [
       {
         name: 'items',
@@ -449,6 +493,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   scrolly: {
     type: 'scrolly',
     title: 'Scrolly',
+    category: 'Narrative',
     fields: [
       {
         name: 'items',
@@ -467,6 +512,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   'code-walk': {
     type: 'code-walk',
     title: 'Code walk',
+    category: 'Technical',
     fields: [
       { name: 'code', label: 'Code', kind: 'textarea' },
       {
@@ -486,6 +532,7 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   embed: {
     type: 'embed',
     title: 'Embed',
+    category: 'Media',
     fields: [
       { name: 'url', label: 'URL', kind: 'text' },
       { name: 'caption', label: 'Caption', kind: 'text' },
@@ -493,5 +540,15 @@ export const BLOCK_CONFIGS: Partial<Record<Block['type'], BlockTypeConfig>> = {
   },
 };
 
-/** Block types with real custom editing logic, handled by their own component instead of this table. */
+/** Block types with real custom editing logic, handled by their own component instead of this table - see ImaxtBlockEditor.tsx and SlashMenuPlugin.tsx. */
 export const CUSTOM_BLOCK_TYPES = ['matrix', 'heatmap', 'file-tree'] as const;
+
+/** Title/category for the three CUSTOM_BLOCK_TYPES - the single source of truth both the slash menu and the block editor's toolbar label read from. */
+export const CUSTOM_BLOCK_META: Record<
+  (typeof CUSTOM_BLOCK_TYPES)[number],
+  { title: string; category: BlockCategory }
+> = {
+  matrix: { title: 'Matrix', category: 'Data & Stats' },
+  heatmap: { title: 'Heatmap', category: 'Data & Stats' },
+  'file-tree': { title: 'File tree', category: 'Technical' },
+};

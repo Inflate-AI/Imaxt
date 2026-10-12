@@ -111,6 +111,7 @@ export function ImaxtEditor({
               <>
                 <FloatingToolbarPlugin anchorElem={floatingAnchorElem} />
                 <DragHandlePlugin anchorElem={floatingAnchorElem} />
+                <SlashMenuPlugin anchorElem={floatingAnchorElem} />
               </>
             )}
           </div>
@@ -122,7 +123,6 @@ export function ImaxtEditor({
           <CheckListPlugin />
           <LinkPlugin />
           <TablePlugin />
-          <SlashMenuPlugin />
           <LoadInitialValuePlugin initialValue={initialValue} />
           {onChange && <ChangeListenerPlugin onChange={onChange} />}
         </div>

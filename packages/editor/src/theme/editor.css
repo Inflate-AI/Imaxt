@@ -486,39 +486,114 @@
 /* ---------- Slash menu ---------- */
 .imx-ed-slash-menu {
   z-index: 30;
-  max-height: min(60vh, 420px);
+  max-height: min(65vh, 460px);
   overflow-y: auto;
-  width: min(320px, 90vw);
+  overscroll-behavior: contain;
+  width: min(340px, 92vw);
   background: var(--card, #fff);
   border: 1px solid var(--line, #d8d3c4);
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.22);
   padding: 6px;
 }
+.imx-ed-slash-section + .imx-ed-slash-section {
+  margin-top: 2px;
+  padding-top: 6px;
+  border-top: 1px solid var(--hair, #e5e0d2);
+}
 .imx-ed-slash-group {
-  padding: 4px 8px;
-  font-size: 0.72em;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--card, #fff);
+  padding: 6px 8px 4px;
+  font-size: 0.7em;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   color: var(--muted, #5c5a52);
 }
 .imx-ed-slash-item {
   display: flex;
   align-items: center;
-  gap: 0.6em;
-  padding: 0.5em 0.6em;
-  border-radius: 6px;
+  gap: 0.65em;
+  padding: 0.4em 0.6em;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 0.92em;
 }
 .imx-ed-slash-item[data-selected="true"],
 .imx-ed-slash-item:hover {
   background: var(--paper2, #efebe0);
 }
 .imx-ed-slash-item-icon {
-  width: 1.4em;
+  flex: none;
+  width: 2em;
+  height: 2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  font-size: 0.76em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.imx-ed-slash-item-icon[data-category="Markdown"] {
+  background: var(--paper2, #efebe0);
+  color: var(--muted, #5c5a52);
+}
+.imx-ed-slash-item-icon[data-category="Media"] {
+  background: var(--accent, #c23b2e);
+  color: var(--on-accent, #fdf6f0);
+}
+.imx-ed-slash-item-icon[data-category="Typography"] {
+  background: var(--t-mint, #b6f0d3);
+  color: var(--on-tone, #1c1c1c);
+}
+.imx-ed-slash-item-icon[data-category="Data & Stats"] {
+  background: var(--t-sky, #b8dcff);
+  color: var(--on-tone, #1c1c1c);
+}
+.imx-ed-slash-item-icon[data-category="Narrative"] {
+  background: var(--t-lilac, #d6cbff);
+  color: var(--on-tone, #1c1c1c);
+}
+.imx-ed-slash-item-icon[data-category="Technical"] {
+  background: #1c1c1c;
+  color: #f4f1e8;
+}
+.imx-ed-slash-item-icon[data-category="Visual & Motion"] {
+  background: var(--t-rose, #ffc6d6);
+  color: var(--on-tone, #1c1c1c);
+}
+.imx-ed-slash-item-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.25;
+}
+.imx-ed-slash-item-label {
+  font-size: 0.92em;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.imx-ed-slash-item-desc {
+  font-size: 0.76em;
+  color: var(--muted, #5c5a52);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.imx-ed-slash-empty {
+  padding: 1.4em 1em;
   text-align: center;
-  color: var(--accent, #c23b2e);
+  color: var(--muted, #5c5a52);
+  font-size: 0.88em;
+}
+.imx-ed-slash-empty strong {
+  color: var(--text, #1c1c1c);
 }
 
 /* ---------- Drag handle ---------- */
