@@ -47,6 +47,7 @@ just like any other parent/child composition in MDX or Astro.
 | [CurvedText](./curved-text.md) | `curved-text.ts` | `CurvedTextTool` | `CurvedText` |
 | [Scrolly / Beat](./scrolly.md) | `scrolly.ts` | `ScrollyTool` (composite) | `Scrolly`, `Beat` |
 | [TypeLab](./type-lab.md) | `type-lab.ts` | `TypeLabTool` | `TypeLab` |
+| [Embed](./embed.md) | `embed.ts` | `EmbedTool` | `Embed` |
 | [ImaxtCover](./imaxt-cover.md) | `imaxt-cover.ts` | *(none — post-level, not a body block)* | `ImaxtCover` |
 
 ## Adding a new block

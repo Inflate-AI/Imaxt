@@ -10,6 +10,7 @@ import CurvedText from './CurvedText.astro';
 import Delta from './Delta.astro';
 import Diff from './Diff.astro';
 import DropCap from './DropCap.astro';
+import Embed from './Embed.astro';
 import ErrorBox from './ErrorBox.astro';
 import Event from './Event.astro';
 import Faq from './Faq.astro';
@@ -91,4 +92,5 @@ export const imaxt = {
   Scrolly,
   Beat,
   TypeLab,
+  Embed,
 };

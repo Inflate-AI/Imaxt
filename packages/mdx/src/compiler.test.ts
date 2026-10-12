@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 import type { Block } from './blocks.ts';
-import { mdxToBlocks } from './from-mdx.ts';
-import { blocksToMdx } from './to-mdx.ts';
+import { mdastNodeToBlock, mdxToBlocks } from './from-mdx.ts';
+import { blocksToMdx, blockToMdastNode } from './to-mdx.ts';
 
 const SAMPLE_BLOCKS: Block[] = [
   {
@@ -212,6 +212,7 @@ const SAMPLE_BLOCKS: Block[] = [
       ],
     },
   },
+  { type: 'embed', data: { url: 'https://example.com/talk', caption: 'Watch the full talk' } },
 ];
 
 const COMPONENT_NAME: Record<Block['type'], string> = {
@@ -254,6 +255,7 @@ const COMPONENT_NAME: Record<Block['type'], string> = {
   timeline: 'Timeline',
   scrolly: 'Scrolly',
   'code-walk': 'CodeWalk',
+  embed: 'Embed',
   markdown: '',
 };
 
@@ -342,5 +344,60 @@ describe('unrecognized content passthrough', () => {
     const parsed = mdxToBlocks(source);
     const recompiled = blocksToMdx(parsed);
     expect(recompiled.trim()).toBe(source);
+  });
+});
+
+describe('GFM support', () => {
+  test('a bare URL is recognized as a GFM autolink', () => {
+    // A plain-CommonMark parse leaves a bare URL as literal text, so it
+    // reserializes unchanged. With the GFM autolink-literal extension wired
+    // in, it parses as a real link node and reserializes as an explicit
+    // markdown link - the clearest, cheapest signal that the extension is
+    // actually active, independent of the Block[] passthrough's own
+    // byte-for-byte preservation (which holds either way for opaque text).
+    const source = 'See https://example.com for details.';
+    const recompiled = blocksToMdx(mdxToBlocks(source));
+    expect(recompiled).toContain('[https://example.com](https://example.com)');
+  });
+
+  test('a GFM table round-trips with its structure intact', () => {
+    const source = ['| Model | Score |', '| --- | --- |', '| A | 92 |', '| B | 88 |'].join('\n');
+    const parsed = mdxToBlocks(source);
+    expect(parsed.blocks.length).toBe(1);
+    const markdownBlock = parsed.blocks[0] as { type: 'markdown'; source: string };
+    expect(markdownBlock.type).toBe('markdown');
+    const recompiled = blocksToMdx(parsed);
+    const reparsed = mdxToBlocks(recompiled);
+    expect(reparsed.blocks).toEqual(parsed.blocks);
+    // gfmToMarkdown pads/aligns the delimiter row's dashes - assert the
+    // row's shape (two dash-only cells), not its exact whitespace.
+    expect(recompiled).toMatch(/\|\s*-+\s*\|\s*-+\s*\|/);
+  });
+
+  test('a GFM task-list item round-trips its checked state', () => {
+    const source = ['- [x] Write tests', '- [ ] Ship it'].join('\n');
+    const parsed = mdxToBlocks(source);
+    const recompiled = blocksToMdx(parsed);
+    expect(recompiled).toContain('[x] Write tests');
+    expect(recompiled).toContain('[ ] Ship it');
+    const reparsed = mdxToBlocks(recompiled);
+    expect(reparsed.blocks).toEqual(parsed.blocks);
+  });
+});
+
+describe('single-node conversion', () => {
+  test('round-trips one block through blockToMdastNode/mdastNodeToBlock with no document wrapper', () => {
+    const block: Block = { type: 'banner', data: { text: 'Launching soon', tone: 'rose' } };
+    const node = blockToMdastNode(block);
+    expect(mdastNodeToBlock(node)).toEqual(block);
+  });
+
+  test('blockToMdastNode produces the same node the whole-document path uses', () => {
+    const block: Block = { type: 'banner', data: { text: 'Launching soon', tone: 'rose' } };
+    const node = blockToMdastNode(block);
+    const doc = blocksToMdx({ frontmatter: {}, blocks: [block] });
+    const parsed = mdxToBlocks(doc);
+    expect(parsed.blocks.length).toBe(1);
+    expect(mdastNodeToBlock(node)).toEqual(parsed.blocks[0]!);
   });
 });

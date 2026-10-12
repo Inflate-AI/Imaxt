@@ -20,6 +20,8 @@ export type { DiffData } from './diff.ts';
 export { renderDiff } from './diff.ts';
 export type { DropCapData } from './drop-cap.ts';
 export { renderDropCap } from './drop-cap.ts';
+export type { EmbedData } from './embed.ts';
+export { renderEmbed } from './embed.ts';
 export type { ErrorBoxData } from './error-box.ts';
 export { renderErrorBox } from './error-box.ts';
 export type { FaqData, FaqItem } from './faq.ts';

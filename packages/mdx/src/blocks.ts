@@ -10,6 +10,7 @@ import type {
   DeltaData,
   DiffData,
   DropCapData,
+  EmbedData,
   ErrorBoxData,
   FaqData,
   FileTreeData,
@@ -80,6 +81,7 @@ export type Block =
   | { type: 'timeline'; data: TimelineData }
   | { type: 'scrolly'; data: ScrollyData }
   | { type: 'code-walk'; data: CodeWalkData }
+  | { type: 'embed'; data: EmbedData }
   /** Content this compiler does not recognize (plain prose, non-Imaxt JSX): preserved verbatim. */
   | { type: 'markdown'; source: string };
 

@@ -9,6 +9,7 @@ import { CurvedTextTool } from './curved-text.ts';
 import { DeltaTool } from './delta.ts';
 import { DiffTool } from './diff.ts';
 import { DropCapTool } from './drop-cap.ts';
+import { EmbedTool } from './embed.ts';
 import { ErrorBoxTool } from './error-box.ts';
 import { FaqTool } from './faq.ts';
 import { FileTreeTool } from './file-tree.ts';
@@ -50,6 +51,7 @@ export {
   DeltaTool,
   DiffTool,
   DropCapTool,
+  EmbedTool,
   ErrorBoxTool,
   FaqTool,
   FileTreeTool,
@@ -98,6 +100,7 @@ export const imaxtTools = {
   delta: DeltaTool,
   diff: DiffTool,
   dropCap: DropCapTool,
+  embed: EmbedTool,
   errorBox: ErrorBoxTool,
   faq: FaqTool,
   fileTree: FileTreeTool,
