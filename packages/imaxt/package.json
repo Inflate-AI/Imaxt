@@ -1,6 +1,6 @@
 {
   "name": "@inflate-ai/imaxt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Framework-neutral typographic blocks and a native React editor.",
   "type": "module",
   "license": "MIT",
