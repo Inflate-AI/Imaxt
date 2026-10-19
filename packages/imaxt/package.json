@@ -24,7 +24,8 @@
     "*.css"
   ],
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "exports": {
     ".": {
