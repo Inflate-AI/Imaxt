@@ -21,29 +21,12 @@ interface ImaxtCoverData {
 }
 ```
 
-## EditorJS
+## Render
 
-**Not registered as a tool.** This is post-level data (the article's
-cover), not a block that lives in the body - it has no toolbox entry and
-can't be inserted into the editor canvas. A builder app should surface it
-as a post-settings field instead, and the [MDX compiler](../../packages/mdx)
-reads/writes it from frontmatter's `cover` key.
+```ts
+import { renderImaxtCover } from '@inflate-ai/imaxt/core';
 
-## Astro / MDX
-
-```astro
----
-import { ImaxtCover } from '@inflate-ai/imaxt-astro';
----
-<ImaxtCover title={post.data.title} cover={post.data.cover} tone="mint" ratio="4 / 3" />
-```
-
-In frontmatter:
-
-```yaml
-cover:
-  kind: stack
-  text: "One API for every vector"
+renderImaxtCover({ title: 'One API for every vector', tone: 'mint' });
 ```
 
 ## Notes

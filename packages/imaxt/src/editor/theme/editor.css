@@ -1,0 +1,652 @@
+/*
+ * All colors/fonts here read Imaxt's own design tokens via var(--x, fallback):
+ * --paper, --paper2, --card, --text, --muted, --line, --hair, --accent,
+ * --accent-lt, --on-accent, --font-sans, --font-serif, --font-mono,
+ * --font-display. These are the exact token names imaxt-core's styles.css
+ * and Blog's own tokens.css both already use - load either one (or redeclare
+ * the tokens yourself, or set them inline via the `theme` prop) and the
+ * editor matches automatically. The fallback literals below are only used
+ * when nothing upstream defines the token at all.
+ */
+
+.imx-editor {
+  --imx-ed-radius: 8px;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  color: var(--text, #1c1c1c);
+  background: var(--paper, #f7f5ee);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.imx-editor * {
+  box-sizing: border-box;
+}
+
+/* ---------- Mode switcher ---------- */
+.imx-ed-mode-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  padding: 0.75rem 0.75rem 0;
+}
+.imx-ed-mode-switcher button {
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--line, #d8d3c4);
+  background: transparent;
+  color: var(--muted, #5c5a52);
+  cursor: pointer;
+  border-radius: 999px;
+}
+.imx-ed-mode-switcher button[data-active="true"] {
+  background: var(--accent, #c23b2e);
+  border-color: var(--accent, #c23b2e);
+  color: var(--on-accent, #fdf6f0);
+}
+
+.imx-ed-editable-wrap {
+  position: relative;
+}
+
+/* ---------- Raw mode ---------- */
+/* A full page of source, not a boxed-in input: no border/background chip,
+   fills the available height, and uses the editor's full width since MDX
+   source benefits from the room (unlike prose, which stays line-length-
+   limited via .imx-ed-content). */
+.imx-ed-raw {
+  display: flex;
+}
+.imx-ed-raw-textarea {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 60vh;
+  resize: none;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  padding: 1.5rem;
+  background: transparent;
+  color: var(--text, #1c1c1c);
+}
+@media (max-width: 640px) {
+  .imx-ed-raw-textarea {
+    padding: 1rem;
+    font-size: 0.88rem;
+  }
+}
+
+/* ---------- Render mode ---------- */
+/* No typography rules of its own - `imx-ed-content` (below) plus the
+   per-element imx-ed-* classes render.ts emits are the single source of
+   truth, so Render mode is pixel-identical to Medium mode. */
+.imx-ed-render {
+  cursor: default;
+}
+
+.imx-ed-content {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  min-height: 240px;
+  outline: none;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  .imx-ed-content {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+.imx-ed-placeholder {
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  right: 0;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  color: var(--muted, #5c5a52);
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 640px) {
+  .imx-ed-placeholder {
+    top: 1rem;
+    padding: 0 1rem;
+  }
+}
+
+/* ---------- Typography ---------- */
+.imx-ed-p {
+  margin: 0 0 1em;
+}
+.imx-ed-h1,
+.imx-ed-h2,
+.imx-ed-h3,
+.imx-ed-h4,
+.imx-ed-h5,
+.imx-ed-h6 {
+  font-family: var(--font-display, var(--font-sans, sans-serif));
+  font-weight: 700;
+  margin: 1.4em 0 0.6em;
+  line-height: 1.25;
+}
+.imx-ed-h1 {
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+}
+.imx-ed-h2 {
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
+}
+.imx-ed-h3 {
+  font-size: 1.4rem;
+}
+.imx-ed-h4,
+.imx-ed-h5,
+.imx-ed-h6 {
+  font-size: 1.15rem;
+}
+.imx-ed-quote {
+  margin: 1em 0;
+  padding-left: 1em;
+  border-left: 3px solid var(--line, #d8d3c4);
+  color: var(--muted, #5c5a52);
+  font-style: italic;
+}
+.imx-ed-ul,
+.imx-ed-ol {
+  margin: 0 0 1em;
+  padding-left: 1.4em;
+}
+.imx-ed-li {
+  margin: 0.2em 0;
+}
+.imx-ed-li-checked,
+.imx-ed-li-unchecked {
+  list-style: none;
+  margin-left: -1.4em;
+  padding-left: 1.4em;
+  position: relative;
+}
+.imx-ed-li-checked::before,
+.imx-ed-li-unchecked::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+  width: 0.9em;
+  height: 0.9em;
+  border: 1px solid var(--line, #d8d3c4);
+  border-radius: 3px;
+  background: var(--card, #fff);
+}
+.imx-ed-li-checked::before {
+  background: var(--accent, #c23b2e);
+  border-color: var(--accent, #c23b2e);
+}
+.imx-ed-li-checked {
+  text-decoration: line-through;
+  color: var(--muted, #5c5a52);
+}
+.imx-ed-link {
+  color: var(--accent, #c23b2e);
+  text-decoration: underline;
+}
+.imx-ed-code {
+  display: block;
+  margin: 1em 0;
+  padding: 0.9em 1em;
+  background: var(--paper2, #efebe0);
+  border: 1px solid var(--hair, #e5e0d2);
+  border-radius: var(--imx-ed-radius);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.9em;
+  overflow-x: auto;
+  white-space: pre;
+}
+.imx-ed-inline-code {
+  font-family: var(--font-mono, monospace);
+  background: var(--paper2, #efebe0);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.92em;
+}
+.imx-ed-bold {
+  font-weight: 700;
+}
+.imx-ed-italic {
+  font-style: italic;
+}
+.imx-ed-strikethrough {
+  text-decoration: line-through;
+}
+.imx-ed-table {
+  border-collapse: collapse;
+  margin: 1em 0;
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+.imx-ed-table-cell,
+.imx-ed-table-cell-header {
+  border: 1px solid var(--line, #d8d3c4);
+  padding: 0.5em 0.7em;
+  text-align: left;
+}
+.imx-ed-table-cell-header {
+  background: var(--paper2, #efebe0);
+  font-weight: 700;
+}
+
+/* ---------- Images ---------- */
+.imx-ed-image {
+  display: block;
+  margin: 1.2em 0;
+}
+.imx-ed-image img {
+  max-width: 100%;
+  border-radius: var(--imx-ed-radius);
+  display: block;
+}
+.imx-ed-image-loading {
+  display: block;
+  padding: 2em;
+  text-align: center;
+  color: var(--muted, #5c5a52);
+  background: var(--paper2, #efebe0);
+  border-radius: var(--imx-ed-radius);
+}
+
+/* ---------- Imaxt block chrome ---------- */
+.imx-ed-block {
+  margin: 1.2em 0;
+}
+.imx-ed-imaxt-block {
+  border: 1px dashed var(--line, #d8d3c4);
+  border-radius: var(--imx-ed-radius);
+  overflow: hidden;
+}
+.imx-ed-block-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4em 0.7em;
+  background: var(--paper2, #efebe0);
+  font-size: 0.82em;
+}
+.imx-ed-block-label {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted, #5c5a52);
+}
+.imx-ed-block-toolbar button {
+  border: 1px solid var(--line, #d8d3c4);
+  background: var(--card, #fff);
+  color: var(--text, #1c1c1c);
+  border-radius: 6px;
+  padding: 0.25em 0.7em;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+.imx-ed-block-preview {
+  padding: 0.8em;
+}
+.imx-ed-block-edit {
+  padding: 0.8em;
+}
+.imx-ed-block-raw {
+  padding: 0.8em;
+  white-space: pre-wrap;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85em;
+  color: var(--muted, #5c5a52);
+}
+
+/* ---------- Generic block form ---------- */
+.imx-ed-form {
+  display: grid;
+  gap: 0.7em;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+.imx-ed-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  font-size: 0.88em;
+}
+.imx-ed-field span {
+  color: var(--muted, #5c5a52);
+  font-size: 0.85em;
+}
+.imx-ed-field input,
+.imx-ed-field select,
+.imx-ed-field textarea {
+  font: inherit;
+  padding: 0.4em 0.55em;
+  border: 1px solid var(--line, #d8d3c4);
+  border-radius: 6px;
+  background: var(--card, #fff);
+  color: var(--text, #1c1c1c);
+  width: 100%;
+}
+.imx-ed-field textarea {
+  min-height: 4.5em;
+  resize: vertical;
+}
+.imx-ed-field-wide {
+  grid-column: 1 / -1;
+}
+.imx-ed-field-checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+}
+.imx-ed-field-checkbox input {
+  width: auto;
+}
+.imx-ed-tone-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  align-items: center;
+}
+.imx-ed-tone-swatch {
+  position: relative;
+  width: 1.6em;
+  height: 1.6em;
+  padding: 0;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background: var(--imx-tone, var(--paper2));
+  cursor: pointer;
+  box-shadow: 0 0 0 1px var(--line, #d8d3c4);
+  display: inline-flex;
+  overflow: hidden;
+}
+.imx-ed-tone-swatch[data-active="true"] {
+  border-color: var(--accent, #c23b2e);
+}
+.imx-ed-tone-swatch input[type="radio"] {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.imx-ed-tone-custom {
+  background: conic-gradient(from 90deg, #ff5f6d, #ffc371, #6dd5a7, #4facfe, #a16ae8, #ff5f6d);
+}
+.imx-ed-tone-custom input[type="color"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+.imx-ed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+.imx-ed-list-item {
+  display: grid;
+  gap: 0.5em;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  padding: 0.6em;
+  border: 1px solid var(--hair, #e5e0d2);
+  border-radius: 6px;
+  background: var(--paper2, #efebe0);
+}
+.imx-ed-list-add,
+.imx-ed-list-remove {
+  justify-self: start;
+  border: 1px solid var(--line, #d8d3c4);
+  background: var(--card, #fff);
+  color: var(--text, #1c1c1c);
+  border-radius: 6px;
+  padding: 0.3em 0.8em;
+  font-size: 0.85em;
+  cursor: pointer;
+}
+
+.imx-ed-grid {
+  grid-column: 1 / -1;
+  border-collapse: collapse;
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+.imx-ed-grid th,
+.imx-ed-grid td {
+  border: 1px solid var(--line, #d8d3c4);
+  padding: 0.3em;
+}
+.imx-ed-grid input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font: inherit;
+}
+
+.imx-ed-tree-node {
+  margin-left: 1.2em;
+}
+.imx-ed-tree-row {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  margin: 0.3em 0;
+}
+.imx-ed-tree-row input {
+  flex: 1;
+}
+
+/* ---------- Floating toolbar ---------- */
+.imx-ed-floating-toolbar {
+  position: absolute;
+  z-index: 20;
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+  background: var(--card, #fff);
+  border: 1px solid var(--line, #d8d3c4);
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+.imx-ed-floating-toolbar button {
+  border: none;
+  background: transparent;
+  color: var(--text, #1c1c1c);
+  width: 2em;
+  height: 2em;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95em;
+}
+.imx-ed-floating-toolbar button[data-active="true"] {
+  background: var(--accent, #c23b2e);
+  color: var(--on-accent, #fdf6f0);
+}
+.imx-ed-floating-toolbar button:hover {
+  background: var(--paper2, #efebe0);
+}
+
+/* ---------- Slash menu ---------- */
+.imx-ed-slash-menu {
+  z-index: 30;
+  max-height: min(65vh, 460px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  width: min(340px, 92vw);
+  background: var(--card, #fff);
+  border: 1px solid var(--line, #d8d3c4);
+  border-radius: 12px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.22);
+  padding: 6px;
+}
+.imx-ed-slash-section + .imx-ed-slash-section {
+  margin-top: 2px;
+  padding-top: 6px;
+  border-top: 1px solid var(--hair, #e5e0d2);
+}
+.imx-ed-slash-group {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--card, #fff);
+  padding: 6px 8px 4px;
+  font-size: 0.7em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted, #5c5a52);
+}
+.imx-ed-slash-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65em;
+  padding: 0.4em 0.6em;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.imx-ed-slash-item[data-selected="true"],
+.imx-ed-slash-item:hover {
+  background: var(--paper2, #efebe0);
+}
+.imx-ed-slash-item-icon {
+  flex: none;
+  width: 2em;
+  height: 2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  font-size: 0.76em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.imx-ed-slash-item-icon[data-category="Writing"] {
+  background: var(--paper2, #efebe0);
+  color: var(--muted, #5c5a52);
+}
+.imx-ed-slash-item-icon[data-category="Media"] {
+  background: var(--accent, #c23b2e);
+  color: var(--on-accent, #fdf6f0);
+}
+.imx-ed-slash-item-icon[data-category="Typography"] {
+  background: var(--t-mint, #b6f0d3);
+  color: var(--on-tone, #1c1c1c);
+}
+.imx-ed-slash-item-icon[data-category="Data & Stats"] {
+  background: var(--t-sky, #b8dcff);
+  color: var(--on-tone, #1c1c1c);
+}
+.imx-ed-slash-item-icon[data-category="Narrative"] {
+  background: var(--t-lilac, #d6cbff);
+  color: var(--on-tone, #1c1c1c);
+}
+.imx-ed-slash-item-icon[data-category="Technical"] {
+  background: #1c1c1c;
+  color: #f4f1e8;
+}
+.imx-ed-slash-item-icon[data-category="Visual & Motion"] {
+  background: var(--t-rose, #ffc6d6);
+  color: var(--on-tone, #1c1c1c);
+}
+.imx-ed-slash-item-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.25;
+}
+.imx-ed-slash-item-label {
+  font-size: 0.92em;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.imx-ed-slash-item-desc {
+  font-size: 0.76em;
+  color: var(--muted, #5c5a52);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.imx-ed-slash-empty {
+  padding: 1.4em 1em;
+  text-align: center;
+  color: var(--muted, #5c5a52);
+  font-size: 0.88em;
+}
+.imx-ed-slash-empty strong {
+  color: var(--text, #1c1c1c);
+}
+
+/* ---------- Drag handle ---------- */
+.imx-ed-drag-handle {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted, #5c5a52);
+  background: transparent;
+  border: none;
+  font-size: 0.9em;
+}
+.imx-ed-drag-handle:hover {
+  background: var(--paper2, #efebe0);
+}
+.imx-ed-drag-target-line {
+  position: absolute;
+  height: 2px;
+  background: var(--accent, #c23b2e);
+  border-radius: 1px;
+}
+
+/* Drag handles are a precision-pointer affordance; hide on touch/narrow
+   viewports where dragging is unreliable and get in the way of tapping. */
+@media (max-width: 640px), (pointer: coarse) {
+  .imx-ed-drag-handle,
+  .imx-ed-drag-target-line {
+    display: none;
+  }
+}
+
+/* ---------- Toolbar (image upload etc.) ---------- */
+.imx-ed-toolbar {
+  display: flex;
+  gap: 0.4em;
+  padding: 0.5em 0.75em;
+  border-bottom: 1px solid var(--hair, #e5e0d2);
+  flex-wrap: wrap;
+}
+.imx-ed-toolbar button {
+  border: 1px solid var(--line, #d8d3c4);
+  background: var(--card, #fff);
+  color: var(--text, #1c1c1c);
+  border-radius: 6px;
+  padding: 0.35em 0.7em;
+  font-size: 0.85em;
+  cursor: pointer;
+}
+.imx-ed-toolbar button:hover {
+  background: var(--paper2, #efebe0);
+}

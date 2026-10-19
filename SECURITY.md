@@ -2,9 +2,7 @@
 
 ## Supported versions
 
-This project is pre-1.0 (`0.x`). Security fixes target the latest
-published version of each package; there is no long-term support branch
-yet.
+Security fixes target the latest `@inflate-ai/imaxt` release.
 
 ## Reporting a vulnerability
 
@@ -25,9 +23,6 @@ report (unless you'd prefer otherwise) in the release notes.
 
 ## Scope
 
-This covers the four packages published from this repository
-(`@inflate-ai/imaxt-core`, `@inflate-ai/imaxt-editorjs`,
-`@inflate-ai/imaxt-mdx`, `@inflate-ai/imaxt-astro`). A vulnerability in a
-dependency should generally be reported upstream as well; if it
-specifically affects how these packages use that dependency, report it
-here too.
+This covers `@inflate-ai/imaxt`. A vulnerability in a dependency should
+generally be reported upstream as well; if it specifically affects how Imaxt
+uses that dependency, report it here too.

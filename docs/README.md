@@ -1,22 +1,20 @@
 # Imaxt documentation
 
-Imaxt is a set of typographic article blocks — no images, no icons, just type
-doing the work of figures — built once as a framework-agnostic rendering
-engine and exposed as [EditorJS](https://editorjs.io) tools, [Astro](https://astro.build)
-components, and an MDX compiler that moves content between them.
+Imaxt is a set of typographic article blocks, built once as a framework-agnostic
+rendering engine with a native React editor. The editor stores Markdown/GFM and
+Imaxt's established MDX block syntax.
 
 ## Start here
 
-- **[Getting started](./getting-started.md)** — install each package, see a
-  minimal example for EditorJS, Astro, and the MDX compiler.
-- **[Architecture](./architecture.md)** — the four packages, how they relate,
-  and why they're split the way they are.
+- **[Getting started](./getting-started.md)** — install the package and use the
+  renderers or React editor.
+- **[Architecture](./architecture.md)** — the public package entry points and
+  the editor's Markdown/MDX contract.
 - **[Publishing](./publishing.md)** — the release process, for maintainers.
 
 ## Blocks
 
-- **[Block reference](./blocks/README.md)** — every block: its data shape,
-  how to use it from EditorJS, and how to use it from Astro/MDX.
+- **[Block reference](./blocks/README.md)** — every block and its data shape.
 
 This is the part meant to grow. Adding a new block means adding one page
 under `docs/blocks/` and one row in its index — nothing else here needs to

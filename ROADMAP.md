@@ -8,12 +8,11 @@ issue.
 
 ## Shipped
 
-- Four packages: `imaxt-core` (the render engine), `imaxt-editorjs`
-  (visual authoring), `imaxt-mdx` (JSON ↔ MDX compiler), `imaxt-astro`
-  (static-site components)
-- **40 typographic blocks** plus the post cover, each documented with
-  its data shape from both EditorJS and Astro/MDX - the v1.0.0 release
-  locks this as the stable API surface going forward
+- One package: `@inflate-ai/imaxt`, with framework-neutral block renderers and
+  a native React editor that persists Markdown/GFM plus Imaxt MDX blocks
+- **40 typographic blocks** plus the post cover, documented by their data shape
+  and editor MDX syntax - the v1.0.0 release locks this as the stable API
+  surface going forward
 - Published to npm under `@inflate-ai`, releasing via [Trusted
   Publishing](https://docs.npmjs.com/trusted-publishers/) (OIDC) - no
   long-lived registry token, triggered by merging a Changesets version
@@ -25,33 +24,25 @@ issue.
 
 ## Now
 
-- **A demo site.** A small Astro site, built with Imaxt itself, that
-  renders every block with real content - doubles as living
-  documentation and a visual baseline.
-- **Visual regression coverage.** Screenshot every block (EditorJS
-  canvas and Astro render) with Playwright, so a CSS change can't
-  silently break a block the unit tests don't reach.
+- **Visual regression coverage.** Screenshot every block in the native editor
+  and rendered output with Playwright, so a CSS change can't silently break a
+  block the unit tests don't reach.
 - **An accessibility pass.** Several blocks already carry ARIA roles and
   respect `prefers-reduced-motion` ad hoc; audit all of them against
   WCAG 2.1 AA deliberately, not incidentally.
 
 ## Next
 
-- **A second framework adapter.** `imaxt-core`'s render functions are
-  already framework-agnostic - a thin React (Next.js) wrapper is the
-  natural second consumer, and the real test of whether the
-  core/adapter split holds up outside Astro.
+- **A second framework adapter.** `imaxt-core`'s render functions are already
+  framework-agnostic; a thin React wrapper is the natural second consumer.
 - **A formal theming contract.** The CSS custom properties in
   `imaxt-core`'s stylesheet are today's de facto API; document and
   stabilize them as a real theming surface, then ship a second built-in
   theme to prove it isn't shaped around one site.
-- **EditorJS authoring polish.** Keyboard shortcuts, drag-to-reorder,
-  and a consistent inline toolbar across the blocks that currently roll
-  their own editing UI.
-- **MDX compiler hardening.** Expand round-trip fidelity tests against
-  hand-written (not just generated) MDX, and decide how the compiler
-  should behave when it meets content it didn't write - unknown
-  components, non-Imaxt JSX.
+- **Editor authoring polish.** Keyboard shortcuts, drag-to-reorder, and a
+  consistent inline toolbar across blocks that currently roll their own UI.
+- **MDX editor hardening.** Expand round-trip fidelity tests against
+  hand-written MDX and clarify handling for unknown components.
 
 ## Later
 
@@ -59,8 +50,7 @@ issue.
   and published independently of this monorepo instead of requiring a
   PR here.
 - **CMS adapters** - structured-content integrations (Sanity, Keystatic,
-  Contentful) that map onto the same EditorJS JSON shape `imaxt-mdx`
-  already compiles.
+  Contentful) that map to the editor's Markdown/MDX persistence format.
 - **i18n and RTL.** Several blocks (Marquee, CurvedText, Scrolly) make
   layout assumptions that haven't been tested right-to-left.
 - **A second or third published theme**, once the theming contract above

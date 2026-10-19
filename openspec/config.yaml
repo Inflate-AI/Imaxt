@@ -1,48 +1,15 @@
 schema: spec-driven
 
 context: |
-  Imaxt is a Bun workspace monorepo with 4 packages under packages/:
-    - @inflate-ai/imaxt-core: framework-agnostic render functions, CSS design tokens,
-      and vanilla-JS interactivity for every block. Single source of truth.
-    - @inflate-ai/imaxt-editorjs: EditorJS (editorjs.io) BlockTool classes per block,
-      built on imaxt-core. Browser-only.
-    - @inflate-ai/imaxt-mdx: bidirectional compiler between EditorJS block JSON and
-      MDX source (blocksToMdx / mdxToBlocks), using mdast-util-from-markdown /
-      mdast-util-to-markdown / mdast-util-mdx / mdast-util-frontmatter directly
-      (no unified pipeline).
-    - @inflate-ai/imaxt-astro: thin Astro components wrapping imaxt-core's render
-      functions, for sites that author content directly in .mdx.
-  The 19 blocks being ported (porting 1:1 from saranmahadev/blog's
-  src/components/imaxt/*.astro, which is the reference implementation and the
-  ground truth for visual output and prop shapes): Statement, Stat, StatRow,
-  PullQuote, Compare, Side, Steps, Step, Timeline, Event, Bars, Sidenote,
-  CodeWalk, Marquee, Heatmap, CurvedText, Scrolly, Beat, TypeLab, plus the
-  ImaxtCover post-cover block. Design tokens (tone: mint/lilac/sky/rose/accent/ink)
-  come from that repo's src/styles/imaxt.css.
-  Blocks that nest children in MDX (StatRow>Stat, Compare>Side, Steps>Step,
-  Timeline>Event, Scrolly>Beat, CodeWalk wrapping a code sample) become a single
-  EditorJS composite tool with a repeatable internal sub-item editor, not
-  separate nested EditorJS blocks (EditorJS has no stable nested-block API).
-  ImaxtCover is post-level frontmatter, not a body block: the mdx compiler reads
-  / writes it from frontmatter, and it is not an EditorJS body tool.
-  TypeLab was a React island in the source repo; it is ported to vanilla
-  TypeScript in imaxt-core so it needs no framework runtime.
-  Development is TDD: a failing test is written (or the test intent is made
-  explicit) before the implementation that makes it pass. Tests use `bun test`;
-  DOM-dependent tests use happy-dom (see bunfig.toml / test/happydom.ts).
-  Every dependency must be pinned to its current latest stable npm version and
-  mutually compatible - re-verify with `npm view <pkg> version` rather than
-  assuming. Exception: packages/astro pins typescript to 6.0.3 (not the
-  workspace-wide 7.0.2) because `astro check` does not yet support TypeScript 7.
-  All 4 packages are public npm packages (scope @inflate-ai, MIT license,
-  publishConfig.access "public") and the GitHub repo is public - no secrets,
-  no internal URLs, no proprietary content from the blog repo (which is itself
-  all-rights-reserved) beyond the open visual/behavioral spec of the 19 blocks.
+  Imaxt publishes one public package: @inflate-ai/imaxt.
+  - @inflate-ai/imaxt/core is framework-neutral and owns block data types,
+    HTML renderers, styles, and browser hydration helpers.
+   - @inflate-ai/imaxt/editor is a React/Lexical editor that reads and writes
+     Markdown/GFM plus the established Imaxt MDX block syntax.
+   The private editor codec is not a public compiler API. The package excludes
+   EditorJS tools and an Astro package. Tests use bun test; DOM-dependent tests
+   use happy-dom.
 
 rules:
   tasks:
-    - Group tasks by package (core, editorjs, mdx, astro) and, within a
-      package, by block, so each task is independently completable and
-      testable.
-    - Every implementation task has a paired test-writing step that precedes
-      it (TDD), not a separate "write tests" task at the end.
+    - Group tasks by core or editor and pair behavior changes with tests.

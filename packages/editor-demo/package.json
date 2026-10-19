@@ -1,5 +1,5 @@
 {
-  "name": "@inflate-ai/imaxt-editor-demo",
+  "name": "imaxt-demo",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -9,8 +9,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@inflate-ai/imaxt-core": "workspace:*",
-    "@inflate-ai/imaxt-editor": "workspace:*",
+    "@inflate-ai/imaxt": "workspace:*",
     "react": "19.2.0",
     "react-dom": "19.2.0"
   },

@@ -1,93 +1,41 @@
 # Getting started
 
-Pick the package(s) you need — you don't need all four unless you're
-building both a visual editor and the site that renders its output.
-
-## Install
+Imaxt publishes one package.
 
 ```sh
-# the render engine - a dependency of the other three, install it alongside them
-bun add @inflate-ai/imaxt-core
-
-# pick what you actually need:
-bun add @inflate-ai/imaxt-editorjs @editorjs/editorjs   # a visual builder
-bun add @inflate-ai/imaxt-mdx                           # EditorJS JSON <-> MDX
-bun add @inflate-ai/imaxt-astro astro                   # an Astro site authoring .mdx directly
+bun add @inflate-ai/imaxt react react-dom
 ```
 
-(`npm install`/`pnpm add` work the same way - these are ordinary npm
-packages regardless of what built them.)
-
-## Astro: author blocks directly in `.mdx`
-
-```astro
----
-import { imaxt } from '@inflate-ai/imaxt-astro';
-import '@inflate-ai/imaxt-astro/styles.css';
----
-
-<Content components={imaxt} />
-```
-
-Now any `.mdx` post under that content collection can use every block with
-no per-file imports:
-
-```mdx
-<Statement tone="mint">Every retrieval project rebuilds the **same plumbing**.</Statement>
-
-<StatRow>
-  <Stat value="5" unit="ms" label="p95 query time" tone="mint" />
-  <Stat value="10×" label="fewer calls" tone="sky" />
-</StatRow>
-```
-
-See the [block reference](./blocks/README.md) for every block's full prop
-list.
-
-## EditorJS: a visual builder
+## Render a block
 
 ```ts
-import EditorJS from '@editorjs/editorjs';
-import { imaxtTools } from '@inflate-ai/imaxt-editorjs';
+import '@inflate-ai/imaxt/styles.css';
+import { renderStatement } from '@inflate-ai/imaxt/core';
 
-const editor = new EditorJS({
-  holder: 'editor',
-  tools: imaxtTools, // every Imaxt block tool, keyed by name
+const html = renderStatement({
+  html: 'Boring is <em>dependable</em>.',
+  tone: 'mint',
 });
 ```
 
-Pass a subset instead of all of `imaxtTools` if you only want some blocks
-available in the toolbox.
+The renderers are framework-neutral. A host framework owns how that HTML is
+mounted and how it calls any matching `attach*` hydration helper.
 
-## MDX compiler: move content between the builder and `.mdx` files
+## Use the editor
 
-```ts
-import { blocksToMdx, mdxToBlocks } from '@inflate-ai/imaxt-mdx';
+```tsx
+import '@inflate-ai/imaxt/styles.css';
+import '@inflate-ai/imaxt/editor.css';
+import { ImaxtEditor } from '@inflate-ai/imaxt/editor';
+export function ArticleEditor() {
+  return <ImaxtEditor initialValue="# New article" onChange={persist} />;
+}
 
-// On "Publish": EditorJS's save() output -> .mdx source
-const mdx = blocksToMdx({
-  frontmatter: { title: 'One API for every vector' },
-  blocks: editorData.blocks, // from editor.save()
-});
-
-// On "Edit": an existing .mdx post -> EditorJS block data
-const { frontmatter, blocks } = mdxToBlocks(existingPostSource);
+function persist(source: string) {
+  localStorage.setItem('article', source);
+}
 ```
 
-`mdxToBlocks` never drops content it doesn't recognize — plain prose or
-non-Imaxt JSX comes back as a `{ type: 'markdown', source }` block, so a
-hand-written post round-trips without losing anything.
-
-## Core: the render engine directly
-
-Most consumers don't need this package directly — `imaxt-editorjs` and
-`imaxt-astro` already depend on it and use it internally. Reach for it
-yourself only if you're building a third consumer (a different framework's
-component wrapper, a server-side preview renderer, etc.):
-
-```ts
-import { renderStatement } from '@inflate-ai/imaxt-core';
-
-renderStatement({ html: 'Boring is <em>dependable</em>.', tone: 'mint' });
-// -> '<div class="imx"><div class="imx-statement imx-slab" data-tone="mint" ...>...'
-```
+The editor reads and writes standard Markdown/GFM plus Imaxt's strict MDX block
+syntax, such as `<Statement tone="mint">...</Statement>`. Its parser and
+serializer are private editor implementation details, not a public compiler API.

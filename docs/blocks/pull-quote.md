@@ -12,20 +12,10 @@ interface PullQuoteData {
 }
 ```
 
-## EditorJS
+## Render
 
-`PullQuoteTool` — a contentEditable field for the quote, a plain input for
-the attribution.
+```ts
+import { renderPullQuote } from '@inflate-ai/imaxt/core';
 
-## Astro / MDX
-
-```mdx
-<PullQuote by="Design rule">The best API is the one you can describe in a single paragraph.</PullQuote>
-```
-
-```astro
----
-import { PullQuote } from '@inflate-ai/imaxt-astro';
----
-<PullQuote by="Someone">Quoted text</PullQuote>
+renderPullQuote({ html: 'Quoted text', by: 'Someone' });
 ```

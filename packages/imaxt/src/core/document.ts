@@ -1,0 +1,84 @@
+import type { BannerData } from './banner.ts';
+import type { BarsData } from './bars.ts';
+import type { CalloutData } from './callout.ts';
+import type { ChangelogData } from './changelog.ts';
+import type { ChecklistData } from './checklist.ts';
+import type { CodeWalkData } from './code-walk.ts';
+import type { CompareData } from './compare.ts';
+import type { CurvedTextData } from './curved-text.ts';
+import type { DeltaData } from './delta.ts';
+import type { DiffData } from './diff.ts';
+import type { DropCapData } from './drop-cap.ts';
+import type { EmbedData } from './embed.ts';
+import type { ErrorBoxData } from './error-box.ts';
+import type { FaqData } from './faq.ts';
+import type { FileTreeData } from './file-tree.ts';
+import type { FootnoteData } from './footnote.ts';
+import type { FormulaData } from './formula.ts';
+import type { FunnelData } from './funnel.ts';
+import type { GaugeData } from './gauge.ts';
+import type { GlossaryData } from './glossary.ts';
+import type { HeatmapData } from './heatmap.ts';
+import type { MarqueeData } from './marquee.ts';
+import type { MatrixData } from './matrix.ts';
+import type { MermaidData } from './mermaid.ts';
+import type { PullQuoteData } from './pull-quote.ts';
+import type { RankedData } from './ranked.ts';
+import type { RedactedData } from './redacted.ts';
+import type { ScorecardData } from './scorecard.ts';
+import type { ScrollyData } from './scrolly.ts';
+import type { SidenoteData } from './sidenote.ts';
+import type { SparklineData } from './sparkline.ts';
+import type { StampData } from './stamp.ts';
+import type { StatRowData } from './stat.ts';
+import type { StatementData } from './statement.ts';
+import type { StepsData } from './steps.ts';
+import type { TakeawaysData } from './takeaways.ts';
+import type { TerminalData } from './terminal.ts';
+import type { TickerData } from './ticker.ts';
+import type { TimelineData } from './timeline.ts';
+import type { TypeLabData } from './type-lab.ts';
+import type { VersusData } from './versus.ts';
+
+export type ImaxtBlock =
+  | { type: 'statement'; data: StatementData }
+  | { type: 'pull-quote'; data: PullQuoteData }
+  | { type: 'sidenote'; data: SidenoteData }
+  | { type: 'bars'; data: BarsData }
+  | { type: 'ranked'; data: RankedData }
+  | { type: 'matrix'; data: MatrixData }
+  | { type: 'delta'; data: DeltaData }
+  | { type: 'gauge'; data: GaugeData }
+  | { type: 'scorecard'; data: ScorecardData }
+  | { type: 'sparkline'; data: SparklineData }
+  | { type: 'funnel'; data: FunnelData }
+  | { type: 'callout'; data: CalloutData }
+  | { type: 'faq'; data: FaqData }
+  | { type: 'takeaways'; data: TakeawaysData }
+  | { type: 'footnote'; data: FootnoteData }
+  | { type: 'glossary'; data: GlossaryData }
+  | { type: 'versus'; data: VersusData }
+  | { type: 'checklist'; data: ChecklistData }
+  | { type: 'terminal'; data: TerminalData }
+  | { type: 'diff'; data: DiffData }
+  | { type: 'file-tree'; data: FileTreeData }
+  | { type: 'error-box'; data: ErrorBoxData }
+  | { type: 'changelog'; data: ChangelogData }
+  | { type: 'formula'; data: FormulaData }
+  | { type: 'ticker'; data: TickerData }
+  | { type: 'drop-cap'; data: DropCapData }
+  | { type: 'redacted'; data: RedactedData }
+  | { type: 'stamp'; data: StampData }
+  | { type: 'banner'; data: BannerData }
+  | { type: 'marquee'; data: MarqueeData }
+  | { type: 'heatmap'; data: HeatmapData }
+  | { type: 'mermaid'; data: MermaidData }
+  | { type: 'curved-text'; data: CurvedTextData }
+  | { type: 'type-lab'; data: TypeLabData }
+  | { type: 'stat-row'; data: StatRowData }
+  | { type: 'compare'; data: CompareData }
+  | { type: 'steps'; data: StepsData }
+  | { type: 'timeline'; data: TimelineData }
+  | { type: 'scrolly'; data: ScrollyData }
+  | { type: 'code-walk'; data: CodeWalkData }
+  | { type: 'embed'; data: EmbedData };

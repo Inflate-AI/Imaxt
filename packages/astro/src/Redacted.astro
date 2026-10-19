@@ -1,9 +1,0 @@
----
-import { type RedactedData, renderRedacted } from '@inflate-ai/imaxt-core';
-
-interface Props extends Omit<RedactedData, 'html'> {}
-const { revealLabel } = Astro.props;
-const html = await Astro.slots.render('default');
----
-
-<Fragment set:html={renderRedacted({ html, revealLabel })} />

@@ -1,4 +1,4 @@
-import type { ImaxtEditorTheme } from '@inflate-ai/imaxt-editor';
+import type { ImaxtEditorTheme } from '@inflate-ai/imaxt/editor';
 
 /** Drafted by Dev's own light tokens (src/styles/tokens.css) - this is what "in the Drafted style" means: the exact same values, not a lookalike. */
 export const DRAFTED_LIGHT: ImaxtEditorTheme = {

@@ -31,7 +31,7 @@
       }
     },
     {
-      "includes": ["packages/core/src/styles.css"],
+      "includes": ["packages/imaxt/src/styles.css"],
       "linter": {
         "rules": {
           "style": { "noDescendingSpecificity": "off" }

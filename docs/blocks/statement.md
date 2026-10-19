@@ -15,29 +15,12 @@ interface StatementData {
 }
 ```
 
-## EditorJS
-
-`StatementTool` — a contentEditable field for the text, block settings for
-alignment and tone.
+## Render
 
 ```ts
-import { imaxtTools } from '@inflate-ai/imaxt-editorjs';
-new EditorJS({ tools: { statement: imaxtTools.statement } });
-```
+import { renderStatement } from '@inflate-ai/imaxt/core';
 
-## Astro / MDX
-
-```mdx
-<Statement tone="mint" align="center">
-  Every retrieval project rebuilds the **same plumbing**.
-</Statement>
-```
-
-```astro
----
-import { Statement } from '@inflate-ai/imaxt-astro';
----
-<Statement tone="mint">Boring is <em>dependable</em>.</Statement>
+renderStatement({ html: 'Boring is <em>dependable</em>.', tone: 'mint' });
 ```
 
 ## Notes

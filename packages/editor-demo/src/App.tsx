@@ -1,6 +1,6 @@
-import '@inflate-ai/imaxt-core/styles.css';
-import '@inflate-ai/imaxt-editor/styles.css';
-import { ImaxtEditor } from '@inflate-ai/imaxt-editor';
+import '@inflate-ai/imaxt/styles.css';
+import '@inflate-ai/imaxt/editor.css';
+import { ImaxtEditor } from '@inflate-ai/imaxt/editor';
 import { type CSSProperties, useMemo, useState } from 'react';
 import { SAMPLE_DOCUMENT } from './sample.ts';
 import { DRAFTED_DARK, DRAFTED_LIGHT } from './themes.ts';
@@ -67,9 +67,7 @@ export function App() {
       <header className="demo-header">
         <div className="demo-title">
           <h1>Imaxt Editor</h1>
-          <p>
-            A Drafted by Dev-style Markdown/MDX editor with Imaxt blocks as first-class content.
-          </p>
+          <p>A native document editor for Imaxt's typographic blocks.</p>
         </div>
         <div className="demo-controls">
           <button
@@ -108,10 +106,7 @@ export function App() {
         <p>
           Images here are stored in-memory only (no backend) - see <code>ImageStorageAdapter</code>{' '}
           in the package README for wiring up a real one. Source:{' '}
-          <a href="https://github.com/Inflate-AI/Imaxt/tree/main/packages/editor">
-            packages/editor
-          </a>
-          .
+          <a href="https://github.com/Inflate-AI/Imaxt/tree/main/packages/imaxt">packages/imaxt</a>.
         </p>
       </footer>
     </div>

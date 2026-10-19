@@ -3,7 +3,14 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "noEmit": true,
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "paths": {
+      "@inflate-ai/imaxt": ["../imaxt/src/index.ts"],
+      "@inflate-ai/imaxt/core": ["../imaxt/src/core.ts"],
+      "@inflate-ai/imaxt/editor": ["../imaxt/src/editor.ts"],
+      "@inflate-ai/imaxt/styles.css": ["../imaxt/src/styles.css"],
+      "@inflate-ai/imaxt/editor.css": ["../imaxt/src/editor/theme/editor.css"]
+    }
   },
   "include": ["src"]
 }

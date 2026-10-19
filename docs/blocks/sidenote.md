@@ -11,20 +11,10 @@ interface SidenoteData {
 }
 ```
 
-## EditorJS
+## Render
 
-`SidenoteTool` — a plain input for the label, a contentEditable field for
-the body.
+```ts
+import { renderSidenote } from '@inflate-ai/imaxt/core';
 
-## Astro / MDX
-
-```mdx
-<Sidenote label="Mock data">Numbers here are placeholders.</Sidenote>
-```
-
-```astro
----
-import { Sidenote } from '@inflate-ai/imaxt-astro';
----
-<Sidenote>Defaults to the "Note" label when none is given.</Sidenote>
+renderSidenote({ html: 'Numbers here are placeholders.', label: 'Mock data' });
 ```
