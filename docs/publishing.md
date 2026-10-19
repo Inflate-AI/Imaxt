@@ -38,20 +38,17 @@ attached to it. So each new package goes through this once:
 1. Make sure `main` exists and is this repo's default branch - the release
    workflow only triggers on pushes to `main`.
 2. Publish the package for the first time from a maintainer's own machine,
-   signed in with `npm login`. If your account requires 2FA for publishing,
-   pass a fresh one-time code directly rather than relying on the
-   interactive prompt - `changeset publish`'s OTP prompt depends on the
-   terminal reporting a real TTY, which some shells don't do reliably
-   through `bunx`:
+   signed in with `npm login`. The publishable manifest is
+   `packages/imaxt/package.json`; the root manifest is private and must
+   never be published. If your account requires 2FA for publishing, pass a
+   fresh one-time code directly:
    ```sh
-   bun install
-   bun run release -- --otp=123456
+   bun run build
+   cd packages/imaxt
+   npm publish --access public --otp=123456
    ```
-   `release` builds every package, resolves each package's `workspace:*`
-   dependency ranges to the matching real version (npm has no notion of
-   that range, unlike pnpm/yarn, which resolve it natively), runs
-   `changeset publish`, and restores the `workspace:*` ranges in the
-   working tree afterward either way.
+   This bootstrap publishes the version declared in that manifest. Verify
+   it with `npm view @inflate-ai/imaxt version` before continuing.
 3. On that package's page on npmjs.com, go to **Settings → Trusted
    Publisher** and add a GitHub Actions publisher: organization/user,
    repository name, and the workflow filename (`release.yml`) - these are
@@ -64,4 +61,7 @@ attached to it. So each new package goes through this once:
 After that, the normal loop is: merge PRs with changesets → the bot keeps
 a "Version Packages" PR up to date → merge that PR when you're ready to
 release → the workflow publishes the packages with version bumps via
-OIDC, no token involved.
+OIDC, no token involved. The release workflow also typechecks, tests,
+builds, and verifies the npm tarball before creating a version PR or
+publishing. Use Actions → Release → Run workflow to re-run those checks
+without making a new commit.
